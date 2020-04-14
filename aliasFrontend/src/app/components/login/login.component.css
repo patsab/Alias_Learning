@@ -1,0 +1,35 @@
+.mat-toolbar.mat-primary {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.mat-form-field{
+    width: 300px;
+    margin: 0;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) 
+}
+
+.logo img{
+    width: 300px;
+    margin: 0;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)  
+}
+
+button{
+    width: 200px;
+    margin: 0;
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) 
+}
