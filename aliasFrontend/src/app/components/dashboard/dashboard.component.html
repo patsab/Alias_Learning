@@ -1,4 +1,5 @@
 <div class="grid-container">
+  <!--the main nav needs to go inside the grid container to be on the same page-->
   <app-main-nav></app-main-nav>
   <mat-grid-list 
     [cols]="(isHandset$ | async) ? '1':'3'"
@@ -13,6 +14,7 @@
       </mat-card>
     </mat-grid-tile>
     
+    <!--The following 2 cards are constant. They provide functionallity instead of showing user filters-->
     <mat-grid-tile colspan="1" rowspan="1">
       <mat-card class="dashboard-card">
         <mat-card-header>
