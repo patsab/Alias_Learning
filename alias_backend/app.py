@@ -61,7 +61,6 @@ def create_card():
         dataRequest = request.get_json(force=True)
     except :
         return jsonify({'error':'Payload is not a valid json object'}),400
-    print(dataRequest)
     #enter valid field
     dataInsert = {}
     try:
@@ -69,7 +68,7 @@ def create_card():
         dataInsert['created_by']=dataRequest['email']
         dataInsert['question']=dataRequest['question']
         dataInsert['answer']=dataRequest['answer']
-        dataInsert['tags']=dataRequest['tags']
+        dataInsert['tags']=list(dataRequest['tags'])
         #fields which are filled at Creation-Time
         dataInsert['created']=datetime.utcnow()
         dataInsert['createdSemester']=get_current_Semester()
@@ -78,7 +77,6 @@ def create_card():
         dataInsert['answer_count']=0
     except:
         return jsonify({'error':'Payload does not contain all necessary fields'}),400
-    print(dataInsert)
     #Insert card and return id
     card = cardsCollection.insert_one(dataInsert)
     return jsonify({'Message':'Card "{0}" was created with id {1}'.format(dataInsert['question'],str(card.inserted_id))})
@@ -128,22 +126,22 @@ def create_new_answer_and_get_result():
     #enter valid field
     dataInsert = {}
     try:
-        #fields which needed to be provided
+        #fields which are provided by the angular frontend
         dataInsert['created_by']=dataRequest['email']
-        dataInsert['userAnswer']=dataRequest['answer']
-        dataInsert['cardId']=dataRequest['tags']
-        #fields which are filled at Creation-Time
+        dataInsert['userAnswer']=dataRequest['userAnswer']
+        dataInsert['question']=dataRequest['question']
+        dataInsert['cardId']=dataRequest['cardId']
+        dataInsert['correctAnswer']=dataRequest['correctAnswer']
+        
+        #fields which are filled at creation-time
         dataInsert['created']=datetime.utcnow()
         dataInsert['createdSemester']=get_current_Semester()
-        #TODO predictCorrectness
-        #TODO save question and shoulb be answer also 
-        dataInsert['predictedCorrectness']=compare(dataInsert['userAnswer'],"test")
+        dataInsert['predictedCorrectness']=compare(dataInsert['userAnswer'],dataInsert['correctAnswer'])
         dataInsert['cardLatest']=True
         dataInsert['userCorrectness']=[]
         dataInsert['averageCorrectness']=dataInsert['predictedCorrectness']
     except:
         return jsonify({'error':'Payload does not contain all necessary fields'}),400
-    print(dataInsert)
     #Insert card and return id
     answer = answersCollection.insert_one(dataInsert)
     return jsonify({'Message':'Answer "{0}" was created with id {1}'.format(dataInsert['userAnswer'],str(answer.inserted_id)),
@@ -179,8 +177,7 @@ def get_filters_for_user(email):
         return jsonify({})
     output=[]
     for filters in user['filter']:
-        output.append({'title':', '.join(filters),'tags':filters})
-    
+        output.append({'title':', '.join(filters),'tags':filters})   
     return jsonify({'filters':output})
 
 
@@ -206,7 +203,6 @@ def create_new_filter():
     else:
         dataInsert = {}
         dataInsert['email'] = dataRequest['email']
-        print(dataRequest['filter'])
         dataInsert['filter'] = []
         dataInsert['filter'].append(list(dataRequest['filter']))
         #insert in DB
