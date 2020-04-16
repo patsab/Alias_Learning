@@ -196,7 +196,7 @@ def create_new_filter():
     #check if user already has some filters
     if usersCollection.find_one({"email":dataRequest['email']}) is not None:
         try:
-            usersCollection.update_one({"email":dataRequest['email']},{"$push":{'filter':list(dataRequest['filter'])}})
+            usersCollection.update_one({"email":dataRequest['email']},{"$addToSet":{'filter':list(dataRequest['filter'])}})
         except:
             return jsonify({'error':'filter could not be updated'}),400
         return jsonify({'message':'Filter with tags {0} was added for user {1}'.format(dataRequest['filter'],dataRequest['email'])})

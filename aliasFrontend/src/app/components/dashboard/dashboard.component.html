@@ -5,33 +5,27 @@
     [cols]="(isHandset$ | async) ? '1':'3'"
     [rowHeight]="(isHandset$ | async) ? '200px':'350px'">
     <mat-grid-tile *ngFor="let filter of filters " colspan="1" rowspan="1">
-      <mat-card class="dashboard-card">
-        <mat-card-header>
+      <mat-card (click)="navigateTo(filter)" class="dashboard-card">
           <mat-card-title class="dashboard-card-content">
             {{filter.title}}
           </mat-card-title>
-        </mat-card-header>
       </mat-card>
     </mat-grid-tile>
     
     <!--The following 2 cards are constant. They provide functionallity instead of showing user filters-->
     <mat-grid-tile colspan="1" rowspan="1">
-      <mat-card class="dashboard-card">
-        <mat-card-header>
+      <mat-card routerLink='/create/thema' class="dashboard-card">
           <mat-card-title class="dashboard-card-content">
             Neues Thema anlegen
           </mat-card-title>
-        </mat-card-header>
       </mat-card>
     </mat-grid-tile>
 
     <mat-grid-tile colspan="1" rowspan="1">
       <mat-card class="dashboard-card">
-        <mat-card-header>
           <mat-card-title class="dashboard-card-content">
             Fragen evaluieren
           </mat-card-title>
-        </mat-card-header>
       </mat-card>
     </mat-grid-tile>
 

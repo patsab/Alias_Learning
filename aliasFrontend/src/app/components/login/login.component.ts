@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(email:string) {
+    email = email.toLowerCase();
     if(email.endsWith('@th-nuernberg.de')){
       //set session vars for user
       sessionStorage.setItem('email',email);

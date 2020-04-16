@@ -8,9 +8,8 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
   
-  loggedIn:boolean = false;
   title = 'aliasFrontend';
-  constructor(){
-   
-  }
+
+  constructor(){}
+
 }

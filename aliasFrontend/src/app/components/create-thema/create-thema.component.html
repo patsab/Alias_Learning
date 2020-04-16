@@ -1,0 +1,19 @@
+<div class="container">
+    <app-main-nav></app-main-nav>
+    
+        <h1>
+          Neues Thema hinzufügen
+        </h1>
+    
+        <form class="tags">
+            <mat-form-field class="tags">
+              <mat-label>Tags/Filter einfügen</mat-label>
+              <input matInput #userInput (keydown.enter)="createThema((userInput.value))" placeholder="Professor, Fach, ...">
+            </mat-form-field>
+        </form>
+      
+        <p>
+          <button mat-raised-button (click)="createThema((userInput.value))" color="accent">Thema erstellen</button>
+        </p>
+    
+    </div>

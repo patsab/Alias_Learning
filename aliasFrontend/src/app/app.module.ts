@@ -21,6 +21,8 @@ import { QuestionComponent } from './components/question/question.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
+import { CreateThemaComponent } from './components/create-thema/create-thema.component';
+import { ThemaOverviewComponent } from './components/thema-overview/thema-overview.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { MatMenuModule } from '@angular/material/menu';
     MainNavComponent,
     LoginComponent,
     QuestionComponent,
-    DashboardComponent
+    DashboardComponent,
+    CreateThemaComponent,
+    ThemaOverviewComponent
   ],
   imports: [
     BrowserModule,

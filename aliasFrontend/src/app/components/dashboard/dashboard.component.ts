@@ -26,19 +26,24 @@ export class DashboardComponent implements OnInit {
     ,private filterService: FilterService
     ,private router: Router) {}
   
-
   //ngOnInit is triggered after the component is opened, so basically at the creation of the component
   ngOnInit(){
     //if the user hasn't a valid session, he will be routed to the login page
     if (!sessionStorage.getItem('email')){
-      this.router.navigate(['/login'])
+      this.router.navigate(['/login']);
     }
 
     //get the filters for the user to show these in the frontend
     this.filterService.getFilterfromBackend(sessionStorage.getItem('email'))
-        .subscribe(filters => {this.filters=filters})
+        .subscribe(filters => {this.filters=filters});
   }
 
+  //function is used to navigate to the Theme overview
+  //it uses the tags of the clicked card ans insert them in the url
+  //so the routing looks like this: /thema?tags=Tag1&tags=Tag2
+  navigateTo(filter:Filter){
+    this.router.navigate(['/thema'],{queryParams:{tags:filter.tags}});
+  }
 
   //this is true if the user device is a smartphone,otherwise it is false
   //this is used for the responsive design
