@@ -23,6 +23,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { CreateThemaComponent } from './components/create-thema/create-thema.component';
 import { ThemaOverviewComponent } from './components/thema-overview/thema-overview.component';
+import { ResultComponent } from './components/result/result.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ThemaOverviewComponent } from './components/thema-overview/thema-overvi
     QuestionComponent,
     DashboardComponent,
     CreateThemaComponent,
-    ThemaOverviewComponent
+    ThemaOverviewComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,

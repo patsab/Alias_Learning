@@ -60,11 +60,13 @@ export class QuestionComponent implements OnInit {
 
     //after the POST returns a result, redirect to result page
     this.questionService.createAnswer(this.answer).subscribe(result =>
-          {this.router.navigate(['/thema'],{queryParams:{tags:this.tags,predictedCorrectness:result}})});
+          {this.router.navigate(['/result'],{queryParams:{tags:this.tags,predictedCorrectness:result}})});
   }
 
-  //TODO find a way to show the user the answer, maybe in an new component or in the Result Page
-  showAnswer(){}
+  //Navigate to the result page but with the query param correctAnswer
+  showAnswer(){
+    this.router.navigate(['/result'],{queryParams:{tags:this.tags,correctAnswer:this.question.answer}});
+  }
 
 
 }

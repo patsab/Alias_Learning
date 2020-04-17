@@ -5,6 +5,7 @@ import { QuestionComponent } from './components/question/question.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CreateThemaComponent } from './components/create-thema/create-thema.component';
 import { ThemaOverviewComponent } from './components/thema-overview/thema-overview.component';
+import { ResultComponent } from './components/result/result.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'create/thema', component: CreateThemaComponent},
   {path: 'thema',component: ThemaOverviewComponent},
   {path: 'question',component: QuestionComponent},
+  {path: 'result',component: ResultComponent},
   {path: '**',redirectTo:'home', pathMatch:'full'}
 ];
 
