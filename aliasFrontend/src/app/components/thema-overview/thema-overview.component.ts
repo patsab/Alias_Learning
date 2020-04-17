@@ -18,8 +18,10 @@ import { StatistikService } from  '../../services/statistik.service'
 export class ThemaOverviewComponent implements OnInit {
 
   tags:string[];
-  oneDay:Statistik[];
-  sevenDays:Statistik[];
+  //initialise the statistiks with 0 values
+  //it prevents errors if the design is rendered, but the request is not proceses until now
+  oneDay:Statistik = {cardsCorrect:0, cardsOverall:0};
+  sevenDays:Statistik = {cardsCorrect:0,cardsOverall:0};
 
   constructor(private router:Router,
     private route:ActivatedRoute,
@@ -35,15 +37,11 @@ export class ThemaOverviewComponent implements OnInit {
     //get the tags out of the url
     this.route.queryParamMap.subscribe(params => this.tags = params.getAll('tags'));
 
-    //TODO - not working
     //get the statistiks of one day and 7 days
-    this.statistikService.getStatisticsfromBackend(sessionStorage.getItem('email'),1)
-        .subscribe(res =>{this.oneDay=res});
-    this.statistikService.getStatisticsfromBackend(sessionStorage.getItem('email'),7)
-        .subscribe(res =>{this.sevenDays=res});
-
-    console.log(this.oneDay)
-    console.log(this.sevenDays)
+    this.statistikService.getStatisticsfromBackend(sessionStorage.getItem('email'),1,this.tags)
+        .subscribe(res => {this.oneDay=res});
+    this.statistikService.getStatisticsfromBackend(sessionStorage.getItem('email'),7,this.tags)
+        .subscribe(res => {this.sevenDays=res});
   }
 
   //this is true if the user device is a smartphone,otherwise it is false
@@ -54,6 +52,8 @@ export class ThemaOverviewComponent implements OnInit {
       shareReplay()
   );
 
-  
+  jetztLernen(){
+    this.router.navigate(['/question'],{queryParams:{tags:this.tags}});
+  }
 
 }

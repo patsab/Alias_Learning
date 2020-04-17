@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 //import the necessary classes from the models
@@ -13,13 +13,6 @@ import { Filter, Thema} from '../models/Filter'
 
 export class FilterService {
   constructor(private http:HttpClient) { }
-
-  //standard http option for POST
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
-  }
 
   //Return an Observable for the filters of a user
   //if the user doens't have a filter, it will return an empty []

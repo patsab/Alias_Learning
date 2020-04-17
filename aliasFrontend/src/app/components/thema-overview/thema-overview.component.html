@@ -6,14 +6,20 @@
       
       <mat-grid-tile  colspan="1" rowspan="2">
         <mat-card class="dashboard-card">
-            <mat-card-title class="dashboard-card-content">
-              Statistik zum Thema <br/> <b *ngFor="let tag of tags">{{ tag }}</b>
+            <mat-card-title class="statistik-card-header">
+              Statistik zum Thema <br/> <b *ngFor="let tag of tags"> {{ tag }} <br/> </b>
             </mat-card-title>
+            <mat-card-content>
+              {{ oneDay.cardsCorrect}} von {{ oneDay.cardsOverall }}
+            </mat-card-content>
+            <mat-card-content>
+              {{ sevenDays.cardsCorrect}} von {{ sevenDays.cardsOverall }}
+            </mat-card-content>
         </mat-card>
       </mat-grid-tile>
       
       <mat-grid-tile colspan="1" rowspan="1">
-        <mat-card  class="dashboard-card">
+        <mat-card (click)="jetztLernen()" class="dashboard-card">
             <mat-card-title class="dashboard-card-content">
               Jetzt lernen
             </mat-card-title>

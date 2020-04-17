@@ -13,6 +13,7 @@ const routes: Routes = [
   {path: 'home', component: DashboardComponent},
   {path: 'create/thema', component: CreateThemaComponent},
   {path: 'thema',component: ThemaOverviewComponent},
+  {path: 'question',component: QuestionComponent},
   {path: '**',redirectTo:'home', pathMatch:'full'}
 ];
 

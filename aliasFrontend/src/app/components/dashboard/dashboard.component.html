@@ -4,6 +4,23 @@
   <mat-grid-list 
     [cols]="(isHandset$ | async) ? '1':'3'"
     [rowHeight]="(isHandset$ | async) ? '200px':'350px'">
+    
+    <mat-grid-tile  
+      [colspan]="(isHandset$ | async) ? '1':'2'"
+      rowspan="2">
+      <mat-card class="dashboard-card">
+          <mat-card-title class="statistik-card-header">
+            Statistik overall 
+          </mat-card-title>
+          <mat-card-content>
+            {{ oneDay.cardsCorrect}} von {{ oneDay.cardsOverall }} 
+          </mat-card-content>
+          <mat-card-content>
+            {{ sevenDays.cardsCorrect}} von {{ sevenDays.cardsOverall }}
+          </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    
     <mat-grid-tile *ngFor="let filter of filters " colspan="1" rowspan="1">
       <mat-card (click)="navigateTo(filter)" class="dashboard-card">
           <mat-card-title class="dashboard-card-content">
@@ -24,12 +41,10 @@
     <mat-grid-tile colspan="1" rowspan="1">
       <mat-card class="dashboard-card">
           <mat-card-title class="dashboard-card-content">
-            Fragen evaluieren
+            Antworten evaluieren
           </mat-card-title>
       </mat-card>
     </mat-grid-tile>
-
-
 
   </mat-grid-list>
 </div>

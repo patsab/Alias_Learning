@@ -217,6 +217,8 @@ Methods for getting learning advance for user
 #Get number of card in period with correctness over 50
 @app.route('/users/<email>/progress',methods = ['GET'])   
 def get_progress_for_user(email):
+    #get tags if some are provided
+    tags = request.args.getlist('tags')
     #get given timeperiod
     try:
         day = int(request.args['days'])
@@ -227,7 +229,19 @@ def get_progress_for_user(email):
     #get data for user
     count_overall = 0
     count_correct = 0
-    for answer in answersCollection.find({'created_by': {'$gte': startTime}}):
+    #if tags are provided collect all answers in the time period and check if the card which was answered has the tags
+    if tags:
+        temp_all_answers = answersCollection.find({'created_by': {'$gte': startTime}})
+        all_answers=[]
+        #Check for each answer if the appropiate card contains the tags
+        for answer in temp_all_answers:
+            cardId = answer['cardId']
+            if cardsCollection.find({'_id':ObjectId(cardId),'tags':{'$all':[str(tag) for tag in tags]}}) is not None:
+                all_answers.append(answer)
+    else:
+        all_answers = answersCollection.find({'created_by': {'$gte': startTime}})
+    
+    for answer in all_answers:
         count_overall += 1
         if answer['averageCorrectness'] >= 50:
             count_correct += 1
