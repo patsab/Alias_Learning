@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-import { Question } from '../models/Question';
+import { Question, Answer } from '../models/Question';
+
 
 @Injectable({
   providedIn: 'root'
@@ -19,4 +21,9 @@ export class QuestionsService {
           { params:{'tags':tags}})
   }
   
+  //POST an answer and return the predictedCorrectness 
+  createAnswer(answer:Answer):Observable<number>{
+    return this.http
+    .post<any>('http://localhost:5000/answer',answer).pipe(map(res => res['predictedCorrectness']));
+  }
 }

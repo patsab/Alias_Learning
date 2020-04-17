@@ -93,23 +93,31 @@ def get_question():
     #search cards which contains ALL tags
     #tags from request are stored as unicode and needs to be encoded to UTF8
     if tags:
-        print("Search for tags")
         card = cardsCollection.aggregate([
             {"$sample":{'size':1}},
             {"$match":{"tags":{"$all":[str(tag) for tag in tags]}}},
             {"$match":{'latest':True}}])
     else:
-        print("No Tags")
         card = cardsCollection.aggregate([
             {"$sample":{"size":1}},
             {"$match":{'latest':True}}])
     output={}
+    #Die Id der "Wie gefällt dir ALIAS?"-Frage ist hartgecoded
+    #Sollte in Produktion nicht sein
+    #TODO
+    #Einmal am Anfanng der App suchen und dann als const speichern
+    output['cardId']="5e999ac501ab83ee55635a84"
+    output['question']="Es gibt keine Fragen mit diesen Tags, erstell doch einfach eine neue Karte. Oder wenn du schonmal hier bist, beantworte einfach folgende Frage: Wie gefällt dir ALIAS?"
+    output['answer']="gut"
+    
     for c in card:
         if c is None:
-            return jsonify({'error':"There is no question available"}),400 
-        output['cardId']=str(c['_id'])
-        output['question']=c['question']
-        output['answer']=c['answer']
+            continue
+        else:
+            output['cardId']=str(c['_id'])
+            output['question']=c['question']
+            output['answer']=c['answer']
+    
     return jsonify(output)
 
    
@@ -231,7 +239,7 @@ def get_progress_for_user(email):
     count_correct = 0
     #if tags are provided collect all answers in the time period and check if the card which was answered has the tags
     if tags:
-        temp_all_answers = answersCollection.find({'created_by': {'$gte': startTime}})
+        temp_all_answers = answersCollection.find({'created': {'$gte': startTime},'created_by':email})
         all_answers=[]
         #Check for each answer if the appropiate card contains the tags
         for answer in temp_all_answers:
@@ -239,7 +247,7 @@ def get_progress_for_user(email):
             if cardsCollection.find({'_id':ObjectId(cardId),'tags':{'$all':[str(tag) for tag in tags]}}) is not None:
                 all_answers.append(answer)
     else:
-        all_answers = answersCollection.find({'created_by': {'$gte': startTime}})
+        all_answers = answersCollection.find({'created': {'$gte': startTime},'created_by':email})
     
     for answer in all_answers:
         count_overall += 1

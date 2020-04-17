@@ -12,7 +12,6 @@ export class Answer{
     email:string;
     userAnswer:string;
     correctAnswer:string;
-
     cardId:string;
     question:string;
     

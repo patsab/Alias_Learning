@@ -17,18 +17,21 @@ synonyms={
 
 #compare 2 strings with the core_language pack
 def compare(a_str, b_str):
-    a_processed = process_text(a_str)
-    b_processed = process_text(b_str)
-    #comparison with 'de_core_news_md'
-    a = nlp(a_processed)
-    b = nlp(b_processed)
-    res1 = int(round(a.similarity(b)*100))
-    #comparison with 'de_trf_bertbasecased_lg'
-    a = nlp2(a_processed)
-    b = nlp2(b_processed)
-    res2 = int(round(a.similarity(b)*100))
-    #return the greater value of the 2 results
-    return max(res1,res2)
+    try:
+        a_processed = process_text(a_str)
+        b_processed = process_text(b_str)
+        #comparison with 'de_core_news_md'
+        a = nlp(a_processed)
+        b = nlp(b_processed)
+        res1 = int(round(a.similarity(b)*100))
+        #comparison with 'de_trf_bertbasecased_lg'
+        a = nlp2(a_processed)
+        b = nlp2(b_processed)
+        res2 = int(round(a.similarity(b)*100))
+        #return the greater value of the 2 results
+        return max(res1,res2)
+    except:
+        return 50
 
 #prepare the text for comparison 
 def process_text(text):

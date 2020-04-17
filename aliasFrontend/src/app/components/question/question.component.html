@@ -8,13 +8,18 @@
     <form class="answer-field">
       <mat-form-field class="answer">
         <mat-label>Antwort</mat-label>
-        <textarea matInput rows=3 placeholder="Hier könnte die richtige Antwort stehen..."></textarea>
+        <textarea matInput #userInput rows=3 placeholder="Hier könnte die richtige Antwort stehen..."></textarea>
       </mat-form-field>
     </form>
   
     <p>
-      <button mat-raised-button color="accent">Überspringen</button>
-      <button mat-raised-button color="accent">Antworten</button>
+      <button mat-raised-button class="answerButton" (click)="createAnswer(userInput.value)" color="primary">Antworten</button>
+    </p>
+    <br/>
+
+    <p>
+      <button mat-raised-button (click)="showAnswer()"color="accent">Antwort anzeigen</button>
+      <button mat-raised-button (click)="nextQuestion()" color="accent">Überspringen</button><br/>
     </p>
 
 </div>
