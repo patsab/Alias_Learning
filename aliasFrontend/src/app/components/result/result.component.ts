@@ -19,10 +19,6 @@ export class ResultComponent implements OnInit {
         ,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-    //if the user hasn't a valid session, he will be routed to the login page
-    if (!sessionStorage.getItem('email')){
-      this.router.navigate(['/login'])
-    }
 
     //get the tags out of the url
     this.route.queryParamMap.subscribe(params => {

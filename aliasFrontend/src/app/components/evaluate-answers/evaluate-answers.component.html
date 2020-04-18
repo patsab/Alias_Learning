@@ -1,0 +1,25 @@
+<div class="container">
+    <app-main-nav></app-main-nav>
+        <h1>
+        Die Frage war: {{ answerForEvaluation.question }}
+        </h1>
+        <h1>
+        Die Antwort des Users war: {{ answerForEvaluation.userAnswer }}
+        </h1>
+        <h1>
+        Die Antwort auf der Karte war: {{ answerForEvaluation.correctAnswer }}
+        </h1>
+    
+        <form class="answer-field">
+          <mat-slider #points color="primary" max="10" min="0" step="1" thumbLabel="true"></mat-slider>
+        </form>
+      
+        <p>
+          <button mat-raised-button (click)="evaluate( points.value *10)" color="primary">Antwort bewerten</button>
+        </p>
+        <br/>
+        <p>
+          <button mat-raised-button (click)="nextEvaluation()" color="accent">Überspringen</button>
+        </p>
+    
+    </div>

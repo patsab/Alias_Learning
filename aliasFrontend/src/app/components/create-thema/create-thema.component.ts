@@ -19,10 +19,6 @@ export class CreateThemaComponent implements OnInit {
   constructor(private router: Router, private filterService: FilterService) { }
 
   ngOnInit(): void {
-    //if the user hasn't a valid session, he will be routed to the login page
-    if (!sessionStorage.getItem('email')){
-      this.router.navigate(['/login'])
-    }
   }
 
   createThema(userInput:string):void{

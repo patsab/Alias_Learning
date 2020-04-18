@@ -6,6 +6,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CreateThemaComponent } from './components/create-thema/create-thema.component';
 import { ThemaOverviewComponent } from './components/thema-overview/thema-overview.component';
 import { ResultComponent } from './components/result/result.component';
+import { EvaluateAnswersComponent } from './components/evaluate-answers/evaluate-answers.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'thema',component: ThemaOverviewComponent},
   {path: 'question',component: QuestionComponent},
   {path: 'result',component: ResultComponent},
+  {path: 'evaluate',component: EvaluateAnswersComponent},
   {path: '**',redirectTo:'home', pathMatch:'full'}
 ];
 

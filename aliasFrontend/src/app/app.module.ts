@@ -13,6 +13,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatSlider, MatSliderModule } from '@angular/material/slider';
 
 import { MainNavComponent } from './components/main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -24,6 +25,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { CreateThemaComponent } from './components/create-thema/create-thema.component';
 import { ThemaOverviewComponent } from './components/thema-overview/thema-overview.component';
 import { ResultComponent } from './components/result/result.component';
+import { EvaluateAnswersComponent } from './components/evaluate-answers/evaluate-answers.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { ResultComponent } from './components/result/result.component';
     DashboardComponent,
     CreateThemaComponent,
     ThemaOverviewComponent,
-    ResultComponent
+    ResultComponent,
+    EvaluateAnswersComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,8 @@ import { ResultComponent } from './components/result/result.component';
     MatInputModule,
     MatGridListModule,
     MatMenuModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSliderModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

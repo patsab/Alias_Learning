@@ -37,10 +37,6 @@ export class DashboardComponent implements OnInit {
   
   //ngOnInit is triggered after the component is opened, so basically at the creation of the component
   ngOnInit(){
-    //if the user hasn't a valid session, he will be routed to the login page
-    if (!sessionStorage.getItem('email')){
-      this.router.navigate(['/login']);
-    }
 
     //get the filters for the user to show these in the frontend
     this.filterService.getFilterfromBackend(sessionStorage.getItem('email'))

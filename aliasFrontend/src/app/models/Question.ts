@@ -16,3 +16,21 @@ export class Answer{
     question:string;
     
 }
+
+//This returns the Answer which will be evaluated
+export class AnswerForEvaluation{
+    userAnswer:string;
+    correctAnswer:string;
+    question:string;
+    answerId:string;
+}
+
+//This makes the POST if an User evaluates an answer
+export class Evaluation{
+    answerId:string;
+    given:number;
+    given_by:string;
+}
+
+
+

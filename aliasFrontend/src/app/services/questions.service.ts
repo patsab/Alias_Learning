@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Question, Answer } from '../models/Question';
+import { Question, Answer, Evaluation, AnswerForEvaluation } from '../models/Question';
 
 
 @Injectable({
@@ -25,5 +25,17 @@ export class QuestionsService {
   createAnswer(answer:Answer):Observable<number>{
     return this.http
     .post<any>('http://localhost:5000/answer',answer).pipe(map(res => res['predictedCorrectness']));
+  }
+
+  //Return an Answer to evaluate
+  getAnswerforEvaluation():Observable<AnswerForEvaluation>{
+    return this.http
+     .get<AnswerForEvaluation>('http://localhost:5000/answer/validate')
+  }
+
+  //POST an Evaluation
+  createEvaluation(evaluation:Evaluation):Observable<Evaluation>{
+    return this.http
+      .post<any>('http://localhost:5000/answer/validate',evaluation)
   }
 }

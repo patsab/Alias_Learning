@@ -130,7 +130,6 @@ def create_new_answer_and_get_result():
         dataRequest = request.get_json(force=True)
     except :
         return jsonify({'error':'Payload is not a valid json object'}),400
-    print(dataRequest)
     #enter valid field
     dataInsert = {}
     try:
@@ -157,7 +156,7 @@ def create_new_answer_and_get_result():
 
 
 #Get an answer to let the user validate
-@app.route('/answer/validate')
+@app.route('/answer/validate',methods=['GET'])
 def get_answer_to_validate():
     answer = answersCollection.aggregate([
         {"$sample":{"size":1}},
@@ -165,13 +164,40 @@ def get_answer_to_validate():
     output = {}
     for a in answer:
         if a is None:
-            return jsonify({'error':"There is no answer available"}),400
-        card = cardsCollection.find_one({'_id':ObjectId(a['cardId'])})
-        output['question']=card['question']
-        output['correctAnswer']=card['answer']
+            continue
+        output['question']=a['question']
+        output['correctAnswer']=a['correctAnswer']
         output['userAnswer']=a['userAnswer']
     return jsonify(output)
     
+#Insert a new user validation
+@app.route('/answer/validate',methods=['POST'])
+def insert_answer_evaluation():
+    #get json data from request
+    dataRequest = {}
+    try:
+        dataRequest = request.get_json(force=True)
+    except :
+        return jsonify({'error':'Payload is not valid'}),400
+    if dataRequest['given'] is None or dataRequest['given_by'] is None:
+        return jsonify({'error':'Payload does not contain all needed fields'}),400
+    #Calculate the new averageCorrectness
+    answer = answersCollection.find_one({"_id":ObjectId(dataRequest['answerId'])})
+    #count and sum all the givenAnswers and calculate average
+    #the new evaluation isn't yet integrated in the answer,so it will be added manually
+    sum_of_percent=answer['predictedCorrectness']+dataRequest['given']
+    count = 2
+    for evaluation in answer['userCorrectness']:
+        sum_of_percent += evaluation['given']
+        count += 1
+    newAvg=int(sum_of_percent/count)
+    #Add the evaluation into the object and correct the averageCorrectnes
+    answersCollection.update_one({"_id":ObjectId(dataRequest['answerId'])},
+        {"$push" : {'userCorrectness':{'given':dataRequest['given'],'given_by':dataRequest['given_by']}},
+        'averageCorrectness':newAvg})
+    
+    return jsonify({'message':'User evaluation was added and the new averageCorrectness of the Answer is {0}'.format(newAvg)})
+
 
 """
 Methods for Saving user filter for Topics
