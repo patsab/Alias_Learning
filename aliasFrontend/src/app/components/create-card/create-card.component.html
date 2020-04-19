@@ -1,0 +1,29 @@
+<div class="container">
+    <app-main-nav></app-main-nav>
+    
+        <form class="tags">
+            <mat-form-field class="tags">
+              <mat-label>Zusätzliche Tags einfügen</mat-label>
+              <input matInput #tags placeholder="Professor, Fach, ...">
+            </mat-form-field>
+        </form>
+        <form>
+            <mat-form-field class="answer">
+              <mat-label>Frage</mat-label>
+              <textarea matInput #question rows=3 placeholder="Steht hier eine Frage?"></textarea>
+            </mat-form-field>
+        </form>
+        <form>
+            <mat-form-field class="answer">
+              <mat-label>Antwort</mat-label>
+              <textarea matInput #answer rows=3 placeholder="Hier steht die Antwort"></textarea>
+            </mat-form-field>
+        </form>
+      
+        <p>
+        <button mat-raised-button (click)="createCard(answer.value,question.value,tags.value)" color="accent">
+             Karte erstellen
+        </button>
+        </p>
+    
+    </div>

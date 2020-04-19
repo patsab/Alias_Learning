@@ -11,7 +11,7 @@ import { QuestionsService } from 'src/app/services/questions.service';
 })
 export class EvaluateAnswersComponent implements OnInit {
 
-  answerForEvaluation:AnswerForEvaluation;
+  answerForEvaluation:AnswerForEvaluation={question:"",answerId:"",correctAnswer:"",userAnswer:""};
   evaluation:Evaluation;
 
   constructor(private router:Router
@@ -29,6 +29,7 @@ export class EvaluateAnswersComponent implements OnInit {
 
   //post an evaluation and get a new one
   evaluate(points:number):void{
+    console.log(this.answerForEvaluation.answerId)
     //create evaluation object
     this.evaluation={
       'answerId':this.answerForEvaluation.answerId,
@@ -36,8 +37,8 @@ export class EvaluateAnswersComponent implements OnInit {
       'given_by':sessionStorage.getItem('email'),
     }
     //post the new evaluation
-    this.questionService.createEvaluation(this.evaluation).subscribe()
-    this.nextEvaluation()
+    //after that, get a new evaluation
+    this.questionService.createEvaluation(this.evaluation).subscribe(res => this.nextEvaluation)
   }
 
 

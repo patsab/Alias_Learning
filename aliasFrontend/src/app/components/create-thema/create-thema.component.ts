@@ -35,10 +35,9 @@ export class CreateThemaComponent implements OnInit {
     };
 
     //Trigger Post Method from the filter Service
-    this.filterService.addThema(this.newThema).subscribe();
+    //after that, reroute the user to the home page
+    this.filterService.addThema(this.newThema).subscribe(res => this.router.navigate(['/home']));
 
-    //reroute the user back to the overview page
-    this.router.navigate(['/home']);
   }
 
 }

@@ -7,6 +7,7 @@ import { CreateThemaComponent } from './components/create-thema/create-thema.com
 import { ThemaOverviewComponent } from './components/thema-overview/thema-overview.component';
 import { ResultComponent } from './components/result/result.component';
 import { EvaluateAnswersComponent } from './components/evaluate-answers/evaluate-answers.component';
+import { CreateCardComponent } from './components/create-card/create-card.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'login',component: LoginComponent},
   {path: 'home', component: DashboardComponent},
   {path: 'create/thema', component: CreateThemaComponent},
+  {path: 'create/card', component:CreateCardComponent},
   {path: 'thema',component: ThemaOverviewComponent},
   {path: 'question',component: QuestionComponent},
   {path: 'result',component: ResultComponent},

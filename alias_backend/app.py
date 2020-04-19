@@ -168,6 +168,7 @@ def get_answer_to_validate():
         output['question']=a['question']
         output['correctAnswer']=a['correctAnswer']
         output['userAnswer']=a['userAnswer']
+        output['answerId']=str(a['_id'])
     return jsonify(output)
     
 #Insert a new user validation
@@ -183,6 +184,7 @@ def insert_answer_evaluation():
         return jsonify({'error':'Payload does not contain all needed fields'}),400
     #Calculate the new averageCorrectness
     answer = answersCollection.find_one({"_id":ObjectId(dataRequest['answerId'])})
+    
     #count and sum all the givenAnswers and calculate average
     #the new evaluation isn't yet integrated in the answer,so it will be added manually
     sum_of_percent=answer['predictedCorrectness']+dataRequest['given']
@@ -194,8 +196,7 @@ def insert_answer_evaluation():
     #Add the evaluation into the object and correct the averageCorrectnes
     answersCollection.update_one({"_id":ObjectId(dataRequest['answerId'])},
         {"$push" : {'userCorrectness':{'given':dataRequest['given'],'given_by':dataRequest['given_by']}},
-        'averageCorrectness':newAvg})
-    
+        "$set": {'averageCorrectness':newAvg}})
     return jsonify({'message':'User evaluation was added and the new averageCorrectness of the Answer is {0}'.format(newAvg)})
 
 

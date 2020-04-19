@@ -27,8 +27,8 @@
       </mat-grid-tile> 
 
       <mat-grid-tile colspan="1" rowspan="1">
-        <mat-card class="dashboard-card">
-            <mat-card-title class="dashboard-card-content">
+        <mat-card (click)="navigateCreateCard()" class="dashboard-card">
+            <mat-card-title  class="dashboard-card-content">
               Neue Frage erstellen
             </mat-card-title>
         </mat-card>

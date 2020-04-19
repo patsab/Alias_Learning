@@ -52,4 +52,7 @@ export class ThemaOverviewComponent implements OnInit {
     this.router.navigate(['/question'],{queryParams:{tags:this.tags}});
   }
 
+  navigateCreateCard(){
+    this.router.navigate(['/create/card'],{queryParams:{tags:this.tags}})
+  }
 }

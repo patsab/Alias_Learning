@@ -26,6 +26,7 @@ import { CreateThemaComponent } from './components/create-thema/create-thema.com
 import { ThemaOverviewComponent } from './components/thema-overview/thema-overview.component';
 import { ResultComponent } from './components/result/result.component';
 import { EvaluateAnswersComponent } from './components/evaluate-answers/evaluate-answers.component';
+import { CreateCardComponent } from './components/create-card/create-card.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { EvaluateAnswersComponent } from './components/evaluate-answers/evaluate
     ThemaOverviewComponent,
     ResultComponent,
     EvaluateAnswersComponent,
+    CreateCardComponent,
   ],
   imports: [
     BrowserModule,
