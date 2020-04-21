@@ -74,13 +74,49 @@ def create_card():
         dataInsert['createdSemester']=get_current_Semester()
         dataInsert['version']=1
         dataInsert['latest']=True
-        dataInsert['answer_count']=0
     except:
         return jsonify({'error':'Payload does not contain all necessary fields'}),400
     #Insert card and return id
     card = cardsCollection.insert_one(dataInsert)
     return jsonify({'Message':'Card "{0}" was created with id {1}'.format(dataInsert['question'],str(card.inserted_id))})
 
+#Updates a new card
+@app.route('/cards',methods=['PUT'])
+def update_card():
+    #get json data from request
+    dataRequest = {}
+    dataInsert = {}
+    try:
+        dataRequest = request.get_json(force=True)
+    except :
+        return jsonify({'error':'Payload is not a valid json object'}),400
+    
+    #get data from old card
+    oldCardId = dataRequest['cardId']
+    oldCard = cardsCollection.find_one({'_id':ObjectId(oldCardId)})
+    if oldCard is None or oldCardId is None:
+        return jsonify({'error':'The cardId is not valid'}),400
+    
+    try:
+        dataInsert['created_by']=dataRequest['email']
+        dataInsert['question']=dataRequest['question']
+        dataInsert['answer']=dataRequest['answer']
+        dataInsert['tags']=list(dataRequest['tags'])
+        #fields which are filled at Creation-Time
+        dataInsert['created']=datetime.utcnow()
+        dataInsert['createdSemester']=get_current_Semester()
+        dataInsert['version']=int(oldCard['version'])+1
+        dataInsert['latest']=True
+        dataInsert['answer_count']=0
+    except:
+        return jsonify({'error':'Payload does not contain all necessary fields'}),400
+    #Insert new card
+    cardsCollection.insert_one(dataInsert)
+    #set old card to latest=false
+    cardsCollection.update_one({'_id':ObjectId(oldCardId)},{"$set":{'latest':False}})
+    #set answers pointing to old card to set false
+    answersCollection.update_many({'cardId':oldCardId},{"$set":{'latest':False}})
+    return jsonify({'message':'new card was created and old card/answers were updated'})
 
 """
 Methods for Question and Answer Managment
@@ -264,6 +300,7 @@ def get_progress_for_user(email):
     #get data for user
     count_overall = 0
     count_correct = 0
+    sum_correctness = 0
     #if tags are provided collect all answers in the time period and check if the card which was answered has the tags
     if tags:
         temp_all_answers = answersCollection.find({'created': {'$gte': startTime},'created_by':email})
@@ -274,13 +311,13 @@ def get_progress_for_user(email):
             if cardsCollection.find({'_id':ObjectId(cardId),'tags':{'$all':[str(tag) for tag in tags]}}) is not None:
                 all_answers.append(answer)
     else:
-        all_answers = answersCollection.find({'created': {'$gte': startTime},'created_by':email})
-    
+        all_answers = answersCollection.find({'created': {'$gte': startTime},'created_by':email}) 
     for answer in all_answers:
         count_overall += 1
+        sum_correctness+=int(answer['averageCorrectness'])
         if answer['averageCorrectness'] >= 50:
             count_correct += 1
-    return jsonify({'cardsCorrect':count_correct,'cardsOverall':count_overall})
+    return jsonify({'cardsCorrect':count_correct,'cardsOverall':count_overall,'averageCorrectness':sum_correctness/count_overall})
 
 
 """

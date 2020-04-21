@@ -25,8 +25,8 @@ export class DashboardComponent implements OnInit {
   filters:Filter[];
   //initialise the statistiks with 0 values
   //it prevents errors if the design is rendered, but the request is not proceses until now
-  oneDay:Statistik = {cardsCorrect:0, cardsOverall:0};
-  sevenDays:Statistik = {cardsCorrect:0,cardsOverall:0};
+  oneDay:Statistik = {cardsCorrect:0, cardsOverall:0,averageCorrectness:0};
+  sevenDays:Statistik = {cardsCorrect:0,cardsOverall:0,averageCorrectness:0};
 
 
   //the service and other stuff is injected, so it can be used inside the class

@@ -2,4 +2,5 @@
 export class Statistik{
     cardsCorrect:number;
     cardsOverall:number;
+    averageCorrectness:number;
 }
