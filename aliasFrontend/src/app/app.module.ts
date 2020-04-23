@@ -13,7 +13,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { MatSlider, MatSliderModule } from '@angular/material/slider';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
 
 import { MainNavComponent } from './components/main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -27,6 +29,7 @@ import { ThemaOverviewComponent } from './components/thema-overview/thema-overvi
 import { ResultComponent } from './components/result/result.component';
 import { EvaluateAnswersComponent } from './components/evaluate-answers/evaluate-answers.component';
 import { CreateCardComponent } from './components/create-card/create-card.component';
+
 
 @NgModule({
   declarations: [
@@ -57,6 +60,8 @@ import { CreateCardComponent } from './components/create-card/create-card.compon
     MatMenuModule,
     HttpClientModule,
     MatSliderModule,
+    MatRadioModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

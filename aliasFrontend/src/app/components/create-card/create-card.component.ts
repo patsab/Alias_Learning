@@ -23,9 +23,6 @@ export class CreateCardComponent implements OnInit {
   }
 
   createCard(answer:string,question:string,additionalTags:string=""){
-    console.log("lmao yeah")
-    console.log(answer)
-    console.log(question)
     if (answer=="" || question=="" ){
       return
     }

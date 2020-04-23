@@ -17,7 +17,7 @@ export class QuestionComponent implements OnInit {
   //it prevents errors if the design is rendered, but the request is not proceses until now
   question:Question = {cardId:"",question:"",answer:""};
   answer:Answer;
-  predictedCorrectness:number;
+  answerId:string;
 
   constructor(private router: Router
     ,private route:ActivatedRoute
@@ -56,7 +56,11 @@ export class QuestionComponent implements OnInit {
 
     //after the POST returns a result, redirect to result page
     this.questionService.createAnswer(this.answer).subscribe(result =>
-          {this.router.navigate(['/result'],{queryParams:{tags:this.tags,predictedCorrectness:result}})});
+          {this.answerId=result['answerId'];
+          this.router.navigate(['/result'],{queryParams:{tags:this.tags,
+                correctAnswer:this.question.answer,
+                userAnswer:this.answer.userAnswer,
+                answerId:this.answerId}});});
   }
 
   //Navigate to the result page but with the query param correctAnswer

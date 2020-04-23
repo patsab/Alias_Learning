@@ -14,6 +14,10 @@ export class CardsService {
   createCard(card:Card):Observable<Card>{
     return this.http
      .post<any>('http://localhost:5000/cards',card);
+  }
 
+  updateCard(card:Card):Observable<Card>{
+    return this.http
+     .put<any>('http://localhost:5000/cards',card)
   }
 }

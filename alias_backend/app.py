@@ -20,6 +20,10 @@ cardsCollection = mongo.db.cards
 answersCollection = mongo.db.answers
 usersCollection = mongo.db.users
 
+#Id of the card "Wie gefällt die Alias"
+alias_question_id = "5e999ac501ab83ee55635a84"
+
+
 """
 Methods for Card Managment
 """
@@ -32,7 +36,6 @@ def get_all_cards():
         card['_id']=str(card['_id'])
         output.append(card)
     return jsonify({'cards':output})
-
 
 #Get all cards with filter
 #Url is something like /cards?tags=aa&tags=bb
@@ -49,7 +52,6 @@ def get_cards_with_filter():
         card['_id']=str(card['_id'])
         output.append(card)
     return jsonify({'cards':output})
-
 
 #Create a new card
 #Data gets provided via JSON in the request
@@ -138,25 +140,22 @@ def get_question():
             {"$sample":{"size":1}},
             {"$match":{'latest':True}}])
     output={}
-    #Die Id der "Wie gefällt dir ALIAS?"-Frage ist hartgecoded
-    #Sollte in Produktion nicht sein
-    #TODO
-    #Einmal am Anfanng der App suchen und dann als const speichern
-    output['cardId']="5e999ac501ab83ee55635a84"
+    #if no card was found, return a default question
+    output['cardId']=alias_question_id
     output['question']="Es gibt keine Fragen mit diesen Tags, erstell doch einfach eine neue Karte. Oder wenn du schonmal hier bist, beantworte einfach folgende Frage: Wie gefällt dir ALIAS?"
-    output['answer']="gut"
-    
+    output['answer']="gut" 
+
+    #card must be looped, because result of .aggregate is a pymongo.cursor
     for c in card:
-        if c is None:
+        if not c:
+            print("c is none")
             continue
-        else:
-            output['cardId']=str(c['_id'])
-            output['question']=c['question']
-            output['answer']=c['answer']
+        output['cardId']=str(c['_id'])
+        output['question']=c['question']
+        output['answer']=c['answer']
     
     return jsonify(output)
 
-   
 #Create a new answer and get an automatic evaluation
 @app.route('/answer',methods=['POST'])
 def create_new_answer_and_get_result():
@@ -188,19 +187,25 @@ def create_new_answer_and_get_result():
     #Insert card and return id
     answer = answersCollection.insert_one(dataInsert)
     return jsonify({'Message':'Answer "{0}" was created with id {1}'.format(dataInsert['userAnswer'],str(answer.inserted_id)),
-    'predictedCorrectness':str(dataInsert['predictedCorrectness'])})
-
+    'predictedCorrectness':str(dataInsert['predictedCorrectness']),
+    'answerId':str(answer.inserted_id)})
 
 #Get an answer to let the user validate
-@app.route('/answer/validate',methods=['GET'])
-def get_answer_to_validate():
+@app.route('/answer/validate/<email>',methods=['GET'])
+def get_answer_to_validate(email):
     answer = answersCollection.aggregate([
         {"$sample":{"size":1}},
         {"$match":{'cardLatest':True}}])
     output = {}
+    #even if its only 1 element in answer it needs to be looped with for
+    #because the result of .aggregate is a pymongo.cursor
     for a in answer:
         if a is None:
             continue
+        #if the answer was given by the user itself or the answer was to the question "wie gefällt die Alias"
+        #then a new card will be choosen
+        if a['created_by']==email or a['cardId']=="5e999ac501ab83ee55635a84":
+            return get_answer_to_validate(email)
         output['question']=a['question']
         output['correctAnswer']=a['correctAnswer']
         output['userAnswer']=a['userAnswer']
@@ -218,23 +223,31 @@ def insert_answer_evaluation():
         return jsonify({'error':'Payload is not valid'}),400
     if dataRequest['given'] is None or dataRequest['given_by'] is None:
         return jsonify({'error':'Payload does not contain all needed fields'}),400
-    #Calculate the new averageCorrectness
-    answer = answersCollection.find_one({"_id":ObjectId(dataRequest['answerId'])})
-    
-    #count and sum all the givenAnswers and calculate average
-    #the new evaluation isn't yet integrated in the answer,so it will be added manually
-    sum_of_percent=answer['predictedCorrectness']+dataRequest['given']
-    count = 2
-    for evaluation in answer['userCorrectness']:
-        sum_of_percent += evaluation['given']
-        count += 1
-    newAvg=int(sum_of_percent/count)
     #Add the evaluation into the object and correct the averageCorrectnes
     answersCollection.update_one({"_id":ObjectId(dataRequest['answerId'])},
-        {"$push" : {'userCorrectness':{'given':dataRequest['given'],'given_by':dataRequest['given_by']}},
-        "$set": {'averageCorrectness':newAvg}})
-    return jsonify({'message':'User evaluation was added and the new averageCorrectness of the Answer is {0}'.format(newAvg)})
+        {"$push" : {'userCorrectness':{'given':dataRequest['given'],'given_by':dataRequest['given_by']}}})
+    #Update the averages of the answer
+    update_answer_average(dataRequest['answerId'])
+    return jsonify({'message':'User evaluation was added'})
 
+#Insert the self correctness
+@app.route('/answer/self',methods=['POST'])
+def insert_self_correctness():
+    #get json data from request
+    dataRequest = {}
+    try:
+        dataRequest = request.get_json(force=True)
+    except :
+        return jsonify({'error':'Payload is not valid'}),400
+    if dataRequest['answerId'] is None or dataRequest['selfgivenCorrectness'] is None:
+        return jsonify({'error':'Payload does not contain all needed fields'}),400
+    #Set the selfgiven Correctness in the DB
+    answersCollection.update_one({"_id":ObjectId(dataRequest['answerId'])},
+        {"$set": {'selfgivenCorrectness':dataRequest['selfgivenCorrectness']}})
+    #Update avg of card
+    update_answer_average(dataRequest['answerId'])
+    return jsonify({'message':'selfgivenCorrectness was added'})
+    
 
 """
 Methods for Saving user filter for Topics
@@ -307,18 +320,22 @@ def get_progress_for_user(email):
         all_answers=[]
         #Check for each answer if the appropiate card contains the tags
         for answer in temp_all_answers:
-            cardId = answer['cardId']
-            if cardsCollection.find({'_id':ObjectId(cardId),'tags':{'$all':[str(tag) for tag in tags]}}) is not None:
+            card = cardsCollection.find_one({'_id':ObjectId(answer['cardId'])})
+            #check if the appropiate card contains all tags
+            if (set(tags).issubset(set(card['tags']))):
                 all_answers.append(answer)
     else:
         all_answers = answersCollection.find({'created': {'$gte': startTime},'created_by':email}) 
+    #create statistik based on cards with an avg >= 50
     for answer in all_answers:
         count_overall += 1
         sum_correctness+=int(answer['averageCorrectness'])
         if answer['averageCorrectness'] >= 50:
             count_correct += 1
-    return jsonify({'cardsCorrect':count_correct,'cardsOverall':count_overall,'averageCorrectness':sum_correctness/count_overall})
-
+    averageCorrectness=0
+    if count_overall != 0:
+        averageCorrectness=int(sum_correctness/count_overall)
+    return jsonify({'cardsCorrect':count_correct,'cardsOverall':count_overall,'averageCorrectness':averageCorrectness})
 
 """
 Helper Methods
@@ -338,6 +355,34 @@ def get_current_Semester():
     elif month == 3 and int(time.strftime("%d"))<15 :
         return "WS {0}".format(year-1)
     return "SS {0}".format(year)
+
+#Updates the averageUserCorrection and the total averageCorrectness
+def update_answer_average(answerId):
+    #search for the answer
+    answer = answersCollection.find_one({'_id':ObjectId(answerId)})
+    sum_of_percent=0
+    count=0
+    newUserAvg=0
+    newTotalAvg=0
+    #get all user evaluation
+    for evaluation in answer['userCorrectness']:
+        sum_of_percent += int(evaluation['given'])
+        count += 1
+    if count > 0:
+        newUserAvg= int(sum_of_percent/count)
+    #get selfgiven Correctness
+    if('selfgivenCorrectness' in answer):
+        sum_of_percent += int(answer['selfgivenCorrectness'])
+        count += 1
+    #get predicted Correctness
+    if('predictedCorrectness' in answer):
+        sum_of_percent += int(answer['predictedCorrectness'])
+        count += 1
+    if count > 0:
+        newTotalAvg=int(sum_of_percent/count)
+    #update in DB
+    answersCollection.update_one({"_id":ObjectId(answerId)},
+        {"$set": {'averageCorrectness':newTotalAvg,'averageUserCorrectness':newUserAvg}})
 
 
 """

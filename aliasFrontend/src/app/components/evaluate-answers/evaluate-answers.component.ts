@@ -38,7 +38,7 @@ export class EvaluateAnswersComponent implements OnInit {
     }
     //post the new evaluation
     //after that, get a new evaluation
-    this.questionService.createEvaluation(this.evaluation).subscribe(res => this.nextEvaluation)
+    this.questionService.createEvaluation(this.evaluation).subscribe(res => this.nextEvaluation())
   }
 
 

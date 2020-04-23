@@ -2,11 +2,33 @@
     <app-main-nav></app-main-nav>
     
         <h1>
-          {{ stringToShow }} 
+          Die richtige Antwort wäre gewesen: "{{ correctAnswer }}" 
         </h1>
 
+        <h1 *ngIf="this.hasAnswered">
+          Deine Antwort war "{{ userAnswer }}"
+        </h1>
+        <br/>
+
+        <mat-form-field class="eigenbewertungContainer">
+          <mat-label>Eigenbewertung</mat-label>
+          <mat-select #bewertung>
+            <mat-option value=100>Sehr gut</mat-option>
+            <mat-option value=80>gut</mat-option>
+            <mat-option value=60>ausreichend</mat-option>
+            <mat-option value=40>mangelhaft</mat-option>
+            <mat-option value=20>ungenügend</mat-option>
+            <mat-option value=0>falsch</mat-option>
+          </mat-select>
+        </mat-form-field>
+        
+        <br/>
         <p>
-          <button mat-raised-button (click)="nextQuestion()" color="primary">Nächste Frage</button>
+          <button mat-raised-button (click)="evaluateOwnAnswer(bewertung.value)" color="primary">Eigene Antwort bewerten</button>
+        </p>
+        <br/>
+        <p>
+          <button mat-raised-button (click)="nextQuestion()" color="accent">Nächste Frage</button>
         </p>
     
 </div>

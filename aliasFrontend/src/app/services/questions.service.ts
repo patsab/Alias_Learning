@@ -24,13 +24,13 @@ export class QuestionsService {
   //POST an answer and return the predictedCorrectness 
   createAnswer(answer:Answer):Observable<number>{
     return this.http
-    .post<any>('http://localhost:5000/answer',answer).pipe(map(res => res['predictedCorrectness']));
+    .post<any>('http://localhost:5000/answer',answer);
   }
 
   //Return an Answer to evaluate
   getAnswerforEvaluation():Observable<AnswerForEvaluation>{
     return this.http
-     .get<AnswerForEvaluation>('http://localhost:5000/answer/validate')
+     .get<AnswerForEvaluation>('http://localhost:5000/answer/validate/'+sessionStorage.getItem('email'))
   }
 
   //POST an Evaluation
@@ -38,4 +38,11 @@ export class QuestionsService {
     return this.http
       .post<any>('http://localhost:5000/answer/validate',evaluation)
   }
+
+  //Post the selfgivenCorrectness for an answer
+  createEvaluuationOwnAnswer(answerId:string,evaluation:number):Observable<any>{
+    return this.http
+      .post<any>('http://localhost:5000/answer/self',{'answerId':answerId,'selfgivenCorrectness':evaluation})
+  }
+
 }
