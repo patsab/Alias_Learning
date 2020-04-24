@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
-import { Statistik } from '../models/Statistik'
+import { Statistik } from 'src/app/models/Statistik';
+import { FilterWithStatistiks } from 'src/app/models/Filter';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,6 @@ export class StatistikService {
     return this.http
       .get<Statistik>('http://localhost:5000/users/'+email+'/progress',
           { params:{'days':days.toString(),'tags':tags}})
-      
   }
+
 }

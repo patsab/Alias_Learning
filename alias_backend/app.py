@@ -264,7 +264,6 @@ def get_filters_for_user(email):
         output.append({'title':', '.join(filters),'tags':filters})   
     return jsonify({'filters':output})
 
-
 #create/add a new filter for user
 @app.route('/users/filters',methods =['POST','PUT'])
 def create_new_filter():
@@ -293,6 +292,25 @@ def create_new_filter():
         usersCollection.insert_one(dataInsert)
         return jsonify({'message':'Filter with tags {0} was added for user {1}'.format(dataInsert['filter'],dataInsert['email'])})
 
+#get the filters for a user with progess included
+@app.route('/users/<email>/filterProgress',methods=['GET'])
+def get_filters_with_progress_for_user(email):
+    #get all filters for a user
+    user = usersCollection.find_one({"email":email})
+    if user is None:
+        return jsonify({})
+    userfilters=[]
+    for filters in user['filter']:
+        userfilters.append({'title':', '.join(filters),'tags':filters})
+    output=[]
+    #for each filter get the progress
+    for filter in userfilters:
+        oneDay = progress_for_user(email,1,filter['tags'])
+        sevenDays = progress_for_user(email,7,filter['tags'])
+        tempFilter = {'filter':filter,'statistikOneDay':oneDay,'statistikSevenDays':sevenDays}
+        output.append(tempFilter)
+    return jsonify(output)
+
 
 """
 Methods for getting learning advance for user 
@@ -308,34 +326,7 @@ def get_progress_for_user(email):
         day = int(request.args['days'])
     except:
         day = 1
-    #get relevant period
-    startTime = datetime.utcnow() - timedelta(days=day)
-    #get data for user
-    count_overall = 0
-    count_correct = 0
-    sum_correctness = 0
-    #if tags are provided collect all answers in the time period and check if the card which was answered has the tags
-    if tags:
-        temp_all_answers = answersCollection.find({'created': {'$gte': startTime},'created_by':email})
-        all_answers=[]
-        #Check for each answer if the appropiate card contains the tags
-        for answer in temp_all_answers:
-            card = cardsCollection.find_one({'_id':ObjectId(answer['cardId'])})
-            #check if the appropiate card contains all tags
-            if (set(tags).issubset(set(card['tags']))):
-                all_answers.append(answer)
-    else:
-        all_answers = answersCollection.find({'created': {'$gte': startTime},'created_by':email}) 
-    #create statistik based on cards with an avg >= 50
-    for answer in all_answers:
-        count_overall += 1
-        sum_correctness+=int(answer['averageCorrectness'])
-        if answer['averageCorrectness'] >= 50:
-            count_correct += 1
-    averageCorrectness=0
-    if count_overall != 0:
-        averageCorrectness=int(sum_correctness/count_overall)
-    return jsonify({'cardsCorrect':count_correct,'cardsOverall':count_overall,'averageCorrectness':averageCorrectness})
+    return progress_for_user(email,day,tags)
 
 """
 Helper Methods
@@ -384,6 +375,36 @@ def update_answer_average(answerId):
     answersCollection.update_one({"_id":ObjectId(answerId)},
         {"$set": {'averageCorrectness':newTotalAvg,'averageUserCorrectness':newUserAvg}})
 
+#get the progress for user
+def progress_for_user(email,dayPeriod=1,tags=[]):
+    #get relevant period
+    startTime = datetime.utcnow() - timedelta(days=dayPeriod)
+    #get data for user
+    count_overall = 0
+    count_correct = 0
+    sum_correctness = 0
+    #if tags are provided collect all answers in the time period and check if the card which was answered has the tags
+    if tags:
+        temp_all_answers = answersCollection.find({'created': {'$gte': startTime},'created_by':email})
+        all_answers=[]
+        #Check for each answer if the appropiate card contains the tags
+        for answer in temp_all_answers:
+            card = cardsCollection.find_one({'_id':ObjectId(answer['cardId'])})
+            #check if the appropiate card contains all tags
+            if (set(tags).issubset(set(card['tags']))):
+                all_answers.append(answer)
+    else:
+        all_answers = answersCollection.find({'created': {'$gte': startTime},'created_by':email}) 
+    #create statistik based on cards with an avg >= 50
+    for answer in all_answers:
+        count_overall += 1
+        sum_correctness+=int(answer['averageCorrectness'])
+        if answer['averageCorrectness'] >= 50:
+            count_correct += 1
+    averageCorrectness=0
+    if count_overall != 0:
+        averageCorrectness=int(sum_correctness/count_overall)
+    return {'cardsCorrect':count_correct,'cardsOverall':count_overall,'averageCorrectness':averageCorrectness}
 
 """
 Route to test the correctness module

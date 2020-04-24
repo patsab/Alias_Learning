@@ -4,11 +4,11 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
 //import the classes to know about the data structure
-import { Filter,Thema } from '../../models/Filter';
-import { Statistik } from '../../models/Statistik';
+import { Filter, FilterWithStatistiks } from 'src/app/models/Filter';
+import { Statistik } from 'src/app/models/Statistik';
 
 //the Service is imported and injected, so the data can be retrieved from it
-import { FilterService } from  '../../services/filter.service'
+import { FilterService } from  'src/app/services/filter.service'
 import { StatistikService } from 'src/app/services/statistik.service';
 import { Router } from '@angular/router';
 
@@ -21,32 +21,22 @@ import { Router } from '@angular/router';
 
 export class DashboardComponent implements OnInit {
   
-  //Data of the class
-  filters:Filter[];
-  //initialise the statistiks with 0 values
-  //it prevents errors if the design is rendered, but the request is not proceses until now
-  oneDay:Statistik = {cardsCorrect:0, cardsOverall:0,averageCorrectness:0};
-  sevenDays:Statistik = {cardsCorrect:0,cardsOverall:0,averageCorrectness:0};
+  filters:FilterWithStatistiks[];
 
 
   //the service and other stuff is injected, so it can be used inside the class
   constructor(private breakpointObserver: BreakpointObserver
     ,private filterService: FilterService
-    ,private statistikService: StatistikService
-    ,private router: Router) {}
+    ,private router: Router) {
+      
+    }
   
   //ngOnInit is triggered after the component is opened, so basically at the creation of the component
   ngOnInit(){
-
-    //get the filters for the user to show these in the frontend
-    this.filterService.getFilterfromBackend(sessionStorage.getItem('email'))
-        .subscribe(filters => {this.filters=filters});
-
-    //get the statistiks of one day and 7 days
-    this.statistikService.getStatisticsfromBackend(sessionStorage.getItem('email'),1)
-        .subscribe(res => {this.oneDay=res});
-    this.statistikService.getStatisticsfromBackend(sessionStorage.getItem('email'),7)
-        .subscribe(res => {this.sevenDays=res});
+    //get the filters for the user with progress
+    this.filterService.getFilterwithStats(sessionStorage.getItem('email'))
+        .subscribe(result => {this.filters = result;});
+  
   }
 
   //function is used to navigate to the Theme overview
