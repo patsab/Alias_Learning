@@ -10,12 +10,20 @@
         Die Antwort auf der Karte war: {{ answerForEvaluation.correctAnswer }}
         </h1>
     
-        <form class="answer-field">
-          <mat-slider #points color="primary" max="10" min="0" step="1" thumbLabel="true"></mat-slider>
-        </form>
-      
+        <mat-form-field class="bewertungContainer">
+          <mat-label>Bewertung</mat-label>
+          <mat-select #bewertung>
+            <mat-option value=100>Sehr gut</mat-option>
+            <mat-option value=80>gut</mat-option>
+            <mat-option value=60>ausreichend</mat-option>
+            <mat-option value=40>mangelhaft</mat-option>
+            <mat-option value=20>ungenügend</mat-option>
+            <mat-option value=0>falsch</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br/>
         <p>
-          <button mat-raised-button (click)="evaluate( points.value *10)" color="primary">Antwort bewerten</button>
+          <button mat-raised-button (click)="evaluate( bewertung.value )" color="primary">Antwort bewerten</button>
         </p>
         <br/>
         <p>

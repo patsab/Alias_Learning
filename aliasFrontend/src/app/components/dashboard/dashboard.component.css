@@ -4,13 +4,7 @@
   left: 15px;
   right: 15px;
   bottom: 5px;
-  text-align:unset;
+  text-align:center;
 }
 
-.dashboard-card-content {
-  margin: 0;
-  position: absolute;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%) 
-}
+

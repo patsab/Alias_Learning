@@ -14,14 +14,15 @@ h1{
     margin-bottom: 80px;
   }
   
-  .mat-slider{
-    width: 350px;
-    margin-top: 20px;
-    position: sticky;
+  .eigenbewertungContainer {
+    margin-top: 30px;
+    width: 320px;
+    position: relative;
+    bottom:10%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%) 
-  }
+}
 
   p{
     display: inline-block;

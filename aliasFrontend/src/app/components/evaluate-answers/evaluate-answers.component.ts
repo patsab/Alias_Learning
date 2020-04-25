@@ -24,12 +24,14 @@ export class EvaluateAnswersComponent implements OnInit {
 
   //get a new answer for evaluation
   nextEvaluation():void{
-    this.questionService.getAnswerforEvaluation().subscribe(result => this.answerForEvaluation = result)
+    this.questionService.getAnswerforEvaluation().subscribe(result => {this.answerForEvaluation = result;});
   }
 
   //post an evaluation and get a new one
   evaluate(points:number):void{
-    console.log(this.answerForEvaluation.answerId)
+    if (!points){
+      return this.nextEvaluation()
+    }
     //create evaluation object
     this.evaluation={
       'answerId':this.answerForEvaluation.answerId,

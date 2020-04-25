@@ -19,9 +19,12 @@ mongo = PyMongo(app)
 cardsCollection = mongo.db.cards
 answersCollection = mongo.db.answers
 usersCollection = mongo.db.users
+tagsCollection = mongo.db.tags
 
 #Id of the card "Wie gefällt die Alias"
-alias_question_id = "5e999ac501ab83ee55635a84"
+alias_question_id = ""
+#Id of the tags-Item
+tags_item_id = ""
 
 
 """
@@ -80,6 +83,9 @@ def create_card():
         return jsonify({'error':'Payload does not contain all necessary fields'}),400
     #Insert card and return id
     card = cardsCollection.insert_one(dataInsert)
+    #add Tags to the DB for the overall view
+    for tag in dataInsert['tags']:
+        add_tag_to_list(tag)
     return jsonify({'Message':'Card "{0}" was created with id {1}'.format(dataInsert['question'],str(card.inserted_id))})
 
 #Updates a new card
@@ -134,10 +140,12 @@ def get_question():
         card = cardsCollection.aggregate([
             {"$sample":{'size':1}},
             {"$match":{"tags":{"$all":[str(tag) for tag in tags]}}},
+            {"$match":{"cardId":{"$not":alias_question_id}}},
             {"$match":{'latest':True}}])
     else:
         card = cardsCollection.aggregate([
             {"$sample":{"size":1}},
+            {"$match":{"cardId":{"$not":alias_question_id}}},
             {"$match":{'latest':True}}])
     output={}
     #if no card was found, return a default question
@@ -147,9 +155,6 @@ def get_question():
 
     #card must be looped, because result of .aggregate is a pymongo.cursor
     for c in card:
-        if not c:
-            print("c is none")
-            continue
         output['cardId']=str(c['_id'])
         output['question']=c['question']
         output['answer']=c['answer']
@@ -193,24 +198,11 @@ def create_new_answer_and_get_result():
 #Get an answer to let the user validate
 @app.route('/answer/validate/<email>',methods=['GET'])
 def get_answer_to_validate(email):
-    answer = answersCollection.aggregate([
-        {"$sample":{"size":1}},
-        {"$match":{'cardLatest':True}}])
-    output = {}
-    #even if its only 1 element in answer it needs to be looped with for
-    #because the result of .aggregate is a pymongo.cursor
-    for a in answer:
-        if a is None:
-            continue
-        #if the answer was given by the user itself or the answer was to the question "wie gefällt die Alias"
-        #then a new card will be choosen
-        if a['created_by']==email or a['cardId']=="5e999ac501ab83ee55635a84":
-            return get_answer_to_validate(email)
-        output['question']=a['question']
-        output['correctAnswer']=a['correctAnswer']
-        output['userAnswer']=a['userAnswer']
-        output['answerId']=str(a['_id'])
-    return jsonify(output)
+    tags = request.args.getlist('tags')
+    if tags:
+        return jsonify(answer_for_evaluation(email,tags))
+    else:
+        return jsonify(answer_for_evaluation(email))
     
 #Insert a new user validation
 @app.route('/answer/validate',methods=['POST'])
@@ -275,7 +267,9 @@ def create_new_filter():
             return jsonify({'error':'Request does not contain all needed data'}),400
     except :
         return jsonify({'error':'Payload is not a valid json object'}),400
-    print(dataRequest)
+    #Add the tags in filter to the list of all tags
+    for tag in dataRequest['filter']:
+        add_tag_to_list(tag)
     #check if user already has some filters
     if usersCollection.find_one({"email":dataRequest['email']}) is not None:
         try:
@@ -311,6 +305,11 @@ def get_filters_with_progress_for_user(email):
         output.append(tempFilter)
     return jsonify(output)
 
+#get all tags as an array
+@app.route('/tags/all',methods=['GET'])
+def get_all_tags():
+    tag = tagsCollection.find_one({'_id':ObjectId(tags_item_id)})
+    return jsonify({'tags': tag['tags']})
 
 """
 Methods for getting learning advance for user 
@@ -406,6 +405,42 @@ def progress_for_user(email,dayPeriod=1,tags=[]):
         averageCorrectness=int(sum_correctness/count_overall)
     return {'cardsCorrect':count_correct,'cardsOverall':count_overall,'averageCorrectness':averageCorrectness}
 
+#add a new tag to the tags object in the db
+def add_tag_to_list(tag):
+    tagsCollection.update_one({'_id':tags_item_id},{{"$addToSet":{'tags':tag}}})
+
+#get a question for evaluation
+def answer_for_evaluation(email,tags=[]):
+    #if tags are provided, get an answer to a question with these tags
+    if tags:
+        #get all cards which match the tags
+        cardIDs =[]
+        cards = cardsCollection.find({"$match":{"tags":{"$all":[str(tag) for tag in tags]}}})
+        for card in cards:
+            cardIDs.append(str(card['tags']))
+        #get an answer where the cardID is one of these 
+        answer = answersCollection.aggregate([
+            {"$sample":{"size":1}},
+            {"$match":{"cardId":{"$in":cardIDs}}},
+            {"$match":{"created_by":{"$ne":email}}},
+            {"$match":{'cardLatest':True}}])
+    #get an answer where tags does not matter
+    else:
+        answer = answersCollection.aggregate([
+            {"$sample":{"size":1}},
+            {"$match":{'cardLatest':True}},
+            {"$match":{'cardId':{"$ne":alias_question_id}}},
+            {"$match":{"created_by":{"$ne":email}}}])
+    output = {}
+    #even if its only 1 element in answer it needs to be looped with for
+    #because the result of .aggregate is a pymongo.cursor
+    for a in answer:
+        output['question']=a['question']
+        output['correctAnswer']=a['correctAnswer']
+        output['userAnswer']=a['userAnswer']
+        output['answerId']=str(a['_id'])
+        return output
+
 """
 Route to test the correctness module
 """
@@ -413,5 +448,43 @@ Route to test the correctness module
 def compare_strings(str1,str2):
     return jsonify({'result':compare(str1,str2)})
 
+
+"""
+This method is used to init default values like tags item id ...
+"""
+def init_db():
+    #set the id of the tag list
+    count = tagsCollection.count_documents({}) 
+    global tags_item_id
+    if count == 0:
+        tag = tagsCollection.insert_one({'tags':[]})
+        tags_item_id = str(tag.inserted_id)
+    else:
+        tag = tagsCollection.find_one({})
+        tags_item_id = str(tag['_id'])
+    #add the "wie gefällt die ALIAS" question
+    count = cardsCollection.count_documents({'question':"Wie gefällt dir ALIAS?"})
+    global alias_question_id
+    if count == 0:
+        #create data Type of the question
+        dataInsert={}
+        dataInsert['created_by']="Admin"
+        dataInsert['question']="Wie gefällt die ALIAS?"
+        dataInsert['answer']="gut"
+        dataInsert['tags']=[]
+        #fields which are filled at Creation-Time
+        dataInsert['created']=datetime.utcnow()
+        dataInsert['createdSemester']=get_current_Semester()
+        dataInsert['version']=1
+        dataInsert['latest']=True
+        #insert into db and save the id
+        card = cardsCollection.insert_one(dataInsert)
+        alias_question_id = str(card.inserted_id)
+    else:
+        card = cardsCollection.find_one({'question':"Wie gefällt dir ALIAS?"})
+        alias_question_id = str(card['_id'])
+
+
 if __name__ == "__main__":
+    init_db()
     app.run(debug=True)

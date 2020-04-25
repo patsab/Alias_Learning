@@ -8,7 +8,9 @@
 <form class="email-login">
     <mat-form-field class="email">
       <mat-label>Email</mat-label>
-      <input matInput (keydown.enter)="login((email.value))" #email type="email" placeholder="Mail99@th-nuernberg.de">
+      <input matInput (keydown.enter)="login((email.value))" 
+             #email type="email" placeholder="Mail99@th-nuernberg.de"
+             autocomplete="off">
       <mat-hint>Die Adresse muss auf @th-nuernberg.de enden</mat-hint>
     </mat-form-field>
 </form>
