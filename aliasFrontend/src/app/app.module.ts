@@ -16,6 +16,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from  '@angular/material/autocomplete';
 
 import { MainNavComponent } from './components/main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -29,7 +30,7 @@ import { ThemaOverviewComponent } from './components/thema-overview/thema-overvi
 import { ResultComponent } from './components/result/result.component';
 import { EvaluateAnswersComponent } from './components/evaluate-answers/evaluate-answers.component';
 import { CreateCardComponent } from './components/create-card/create-card.component';
-
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,9 @@ import { CreateCardComponent } from './components/create-card/create-card.compon
     MatSliderModule,
     MatRadioModule,
     MatSelectModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

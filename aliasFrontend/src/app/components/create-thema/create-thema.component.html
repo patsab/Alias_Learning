@@ -8,12 +8,25 @@
         <form class="tags">
             <mat-form-field class="tags">
               <mat-label>Tags/Filter einfügen</mat-label>
-              <input matInput #userInput (keydown.enter)="createThema((userInput.value))" placeholder="Professor, Fach, ...">
+              <input matInput #userInput (keydown.enter)="addTag(userInput.value)" 
+              [formControl]="myControl" [matAutocomplete]="auto"  placeholder="Professor, Fach, ...">
             </mat-form-field>
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of options" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
         </form>
+
+        <mat-nav-list>
+          <mat-list-item *ngFor="let tag of tags">
+            <h2>{{ tag }}</h2><br/>
+            <mat-icon color="accent" matListIcon>close</mat-icon>
+          </mat-list-item>
+        </mat-nav-list>
       
         <p>
-          <button mat-raised-button (click)="createThema((userInput.value))" color="accent">Thema erstellen</button>
+          <button mat-raised-button (click)="createThema()" color="accent">Thema erstellen</button>
         </p>
     
     </div>

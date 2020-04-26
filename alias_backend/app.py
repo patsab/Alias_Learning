@@ -40,6 +40,7 @@ def get_all_cards():
         output.append(card)
     return jsonify({'cards':output})
 
+
 #Get all cards with filter
 #Url is something like /cards?tags=aa&tags=bb
 @app.route('/cards',methods=['GET'])
@@ -55,6 +56,7 @@ def get_cards_with_filter():
         card['_id']=str(card['_id'])
         output.append(card)
     return jsonify({'cards':output})
+
 
 #Create a new card
 #Data gets provided via JSON in the request
@@ -87,6 +89,7 @@ def create_card():
     for tag in dataInsert['tags']:
         add_tag_to_list(tag)
     return jsonify({'Message':'Card "{0}" was created with id {1}'.format(dataInsert['question'],str(card.inserted_id))})
+
 
 #Updates a new card
 @app.route('/cards',methods=['PUT'])
@@ -140,12 +143,12 @@ def get_question():
         card = cardsCollection.aggregate([
             {"$sample":{'size':1}},
             {"$match":{"tags":{"$all":[str(tag) for tag in tags]}}},
-            {"$match":{"cardId":{"$not":alias_question_id}}},
+            {"$match":{"cardId":{"$ne":alias_question_id}}},
             {"$match":{'latest':True}}])
     else:
         card = cardsCollection.aggregate([
             {"$sample":{"size":1}},
-            {"$match":{"cardId":{"$not":alias_question_id}}},
+            {"$match":{"cardId":{"$ne":alias_question_id}}},
             {"$match":{'latest':True}}])
     output={}
     #if no card was found, return a default question
@@ -160,6 +163,7 @@ def get_question():
         output['answer']=c['answer']
     
     return jsonify(output)
+
 
 #Create a new answer and get an automatic evaluation
 @app.route('/answer',methods=['POST'])
@@ -195,6 +199,7 @@ def create_new_answer_and_get_result():
     'predictedCorrectness':str(dataInsert['predictedCorrectness']),
     'answerId':str(answer.inserted_id)})
 
+
 #Get an answer to let the user validate
 @app.route('/answer/validate/<email>',methods=['GET'])
 def get_answer_to_validate(email):
@@ -203,7 +208,8 @@ def get_answer_to_validate(email):
         return jsonify(answer_for_evaluation(email,tags))
     else:
         return jsonify(answer_for_evaluation(email))
-    
+
+
 #Insert a new user validation
 @app.route('/answer/validate',methods=['POST'])
 def insert_answer_evaluation():
@@ -221,6 +227,7 @@ def insert_answer_evaluation():
     #Update the averages of the answer
     update_answer_average(dataRequest['answerId'])
     return jsonify({'message':'User evaluation was added'})
+
 
 #Insert the self correctness
 @app.route('/answer/self',methods=['POST'])
@@ -240,7 +247,6 @@ def insert_self_correctness():
     update_answer_average(dataRequest['answerId'])
     return jsonify({'message':'selfgivenCorrectness was added'})
     
-
 """
 Methods for Saving user filter for Topics
 """
@@ -255,6 +261,7 @@ def get_filters_for_user(email):
     for filters in user['filter']:
         output.append({'title':', '.join(filters),'tags':filters})   
     return jsonify({'filters':output})
+
 
 #create/add a new filter for user
 @app.route('/users/filters',methods =['POST','PUT'])
@@ -286,6 +293,7 @@ def create_new_filter():
         usersCollection.insert_one(dataInsert)
         return jsonify({'message':'Filter with tags {0} was added for user {1}'.format(dataInsert['filter'],dataInsert['email'])})
 
+
 #get the filters for a user with progess included
 @app.route('/users/<email>/filterProgress',methods=['GET'])
 def get_filters_with_progress_for_user(email):
@@ -304,6 +312,7 @@ def get_filters_with_progress_for_user(email):
         tempFilter = {'filter':filter,'statistikOneDay':oneDay,'statistikSevenDays':sevenDays}
         output.append(tempFilter)
     return jsonify(output)
+
 
 #get all tags as an array
 @app.route('/tags/all',methods=['GET'])
@@ -346,6 +355,7 @@ def get_current_Semester():
         return "WS {0}".format(year-1)
     return "SS {0}".format(year)
 
+
 #Updates the averageUserCorrection and the total averageCorrectness
 def update_answer_average(answerId):
     #search for the answer
@@ -373,6 +383,7 @@ def update_answer_average(answerId):
     #update in DB
     answersCollection.update_one({"_id":ObjectId(answerId)},
         {"$set": {'averageCorrectness':newTotalAvg,'averageUserCorrectness':newUserAvg}})
+
 
 #get the progress for user
 def progress_for_user(email,dayPeriod=1,tags=[]):
@@ -405,9 +416,11 @@ def progress_for_user(email,dayPeriod=1,tags=[]):
         averageCorrectness=int(sum_correctness/count_overall)
     return {'cardsCorrect':count_correct,'cardsOverall':count_overall,'averageCorrectness':averageCorrectness}
 
+
 #add a new tag to the tags object in the db
 def add_tag_to_list(tag):
-    tagsCollection.update_one({'_id':tags_item_id},{{"$addToSet":{'tags':tag}}})
+    tagsCollection.update_one({'_id':ObjectId(tags_item_id)},{"$addToSet":{'tags':tag}})
+
 
 #get a question for evaluation
 def answer_for_evaluation(email,tags=[]):
@@ -440,6 +453,7 @@ def answer_for_evaluation(email,tags=[]):
         output['userAnswer']=a['userAnswer']
         output['answerId']=str(a['_id'])
         return output
+
 
 """
 Route to test the correctness module

@@ -5,14 +5,14 @@
           Die richtige Antwort wäre gewesen: "{{ correctAnswer }}" 
         </h1>
 
-        <h1 *ngIf="this.hasAnswered">
+        <h1 *ngIf="this.hasAnswered===true">
           Deine Antwort war "{{ userAnswer }}"
         </h1>
         <br/>
 
-        <mat-form-field class="eigenbewertungContainer">
+        <mat-form-field *ngIf="this.hasAnswered===true" class="eigenbewertungContainer">
           <mat-label>Eigenbewertung</mat-label>
-          <mat-select #bewertung>
+          <mat-select [(value)]="bewertung">
             <mat-option value=100>Sehr gut</mat-option>
             <mat-option value=80>gut</mat-option>
             <mat-option value=60>ausreichend</mat-option>
@@ -24,7 +24,7 @@
         
         <br/>
         <p>
-          <button mat-raised-button (click)="evaluateOwnAnswer(bewertung.value)" color="primary">Eigene Antwort bewerten</button>
+          <button *ngIf="this.hasAnswered===true" mat-raised-button (click)="evaluateOwnAnswer()" color="primary">Eigene Antwort bewerten</button>
         </p>
         <br/>
         <p>

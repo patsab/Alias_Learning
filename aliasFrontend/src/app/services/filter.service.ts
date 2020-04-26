@@ -34,5 +34,11 @@ export class FilterService {
   addThema(thema:Thema):Observable<Thema>{
     return this.http.post<any>('http://localhost:5000/users/filters',thema);
   }
+
+  //get an array with all tags which are used in cards or filter 
+  getAvailableTags():Observable<String[]>{
+    return this.http.get<String[]>('http://localhost:5000/tags/all')
+          .pipe(map(res => res['tags']));
+  }
   
 }
