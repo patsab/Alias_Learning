@@ -36,7 +36,7 @@ export class FilterService {
   }
 
   //get an array with all tags which are used in cards or filter 
-  getAvailableTags():Observable<String[]>{
+  getAvailableTags():Observable<string[]>{
     return this.http.get<String[]>('http://localhost:5000/tags/all')
           .pipe(map(res => res['tags']));
   }

@@ -10,31 +10,34 @@ h1{
     position: relative;
     left: 50%;
     margin-right: -50%;
-    transform: translate(-50%, -50%) 
+    transform: translate(-50%, -50%) ;
 }
 
-.mat-nav-list{
+.mat-list{   
     margin-top: 0;
-    position: sticky;
-    justify-content: center;
-    text-align: center;
+    margin-bottom: 20px;
+    justify-content: flex-end;
 }
 
-.mat-nav-list h2{
-    text-align: center;
-    position: relative;
+.mat-list-item{
+    width: 400px;
+    justify-self: center;
     left: 50%;
     margin-right: -50%;
-    transform: translate(-50%, -50%) 
+    transform: translate(-50%, -50%) ;
 }
 
+/* this removes width value of the mat-list preset*/
+.mat-list-base .mat-list-item, .mat-list-base .mat-list-option{
+    width: 400px;
+}
 
 button{
     width: 200px;
-    margin-top: 100px;
+    margin-top: 30px;
     position: relative;
     left: 50%;
     margin-right: -50%;
-    transform: translate(-50%, -50%) 
+    transform: translate(-50%, -50%) ;
 }
   

@@ -1,11 +1,13 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map,startWith } from 'rxjs/operators';
 
 //import the classes to know about the data structure
-import { Filter,Thema } from '../../models/Filter';
+import { Filter,Thema } from 'src/app/models/Filter';
 
 //the Service is imported and injected, so the data can be retrieved from it
-import { FilterService } from  '../../services/filter.service'
+import { FilterService } from  'src/app/services/filter.service'
 import { Router } from '@angular/router';
 
 
@@ -19,18 +21,37 @@ export class CreateThemaComponent implements OnInit {
   @ViewChild('userInput') userInput:ElementRef;
 
   newThema:Thema;
-  tags:string[]=["Fach1","Fach2"];
+  tags:string[]=[];
+
+  //these properties are used for autocomplete
   myControl = new FormControl();
-  options:String[];
+  options:string[]=[];
+  filteredOptions: Observable<string[]>;
 
   constructor(private router: Router, private filterService: FilterService) { }
 
   ngOnInit(): void {
+    //get all tags from db
     this.getAvailableTags();
+
+    //create an option, so the autocompletion adapts to the user input
+    this.filteredOptions = this.myControl.valueChanges
+        .pipe(
+          startWith(''),
+          map(value => this._filter(value))
+        )
+  }
+
+  private _filter(tag: string): string[] {
+    const filterValue = tag.toLowerCase();
+    return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
 
   createThema():void{
-  
+    
+    if (this.userInput.nativeElement.value != ''){
+      this.addTag(this.userInput.nativeElement.value)
+    }
 
     //create a new Thema, which will be inserted in the DB
     this.newThema={
@@ -55,12 +76,23 @@ export class CreateThemaComponent implements OnInit {
     if(tag.includes(',')){
       let newTags= tag.split(",");
       for(let tag of newTags){
-        this.tags.push(tag.trim());}
+        if (!this.tags.includes(tag)){
+          this.tags.push(tag.trim());}
+        }
     }else{
-      this.tags.push(tag.trim());
+      if (!this.tags.includes(tag)){
+        this.tags.push(tag.trim());
+      }
     }
 
     this.userInput.nativeElement.value='';
-
   }
+
+  deleteTag(tagToDel:string):void{
+    this.tags = this.tags.filter(tag => tag !== tagToDel);
+  }
+
+
+
+
 }

@@ -2,11 +2,11 @@
     <app-main-nav></app-main-nav>
     
         <h1>
-          Die richtige Antwort wäre gewesen: "{{ correctAnswer }}" 
+          Die richtige Antwort wäre gewesen:<br/>"{{ correctAnswer }}" 
         </h1>
 
         <h1 *ngIf="this.hasAnswered===true">
-          Deine Antwort war "{{ userAnswer }}"
+          Deine Antwort war:<br/>"{{ userAnswer }}"
         </h1>
         <br/>
 

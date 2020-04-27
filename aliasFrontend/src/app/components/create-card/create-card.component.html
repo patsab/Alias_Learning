@@ -1,12 +1,8 @@
 <div class="container">
     <app-main-nav></app-main-nav>
     
-        <form class="tags">
-            <mat-form-field class="tags">
-              <mat-label>Zusätzliche Tags einfügen</mat-label>
-              <input matInput #tags placeholder="Professor, Fach, ...">
-            </mat-form-field>
-        </form>
+        <h1>Neue Karte erstellen</h1>
+
         <form>
             <mat-form-field class="answer">
               <mat-label>Frage</mat-label>
@@ -19,9 +15,30 @@
               <textarea matInput #answer rows=3 placeholder="Hier steht die Antwort"></textarea>
             </mat-form-field>
         </form>
+  
       
+      <form class="tags">
+        <mat-form-field class="tags">
+          <mat-label>Zusätzliche Tags einfügen</mat-label>
+          <input matInput #userInput type="text" (keydown.enter)="addTag(userInput.value)" 
+          [formControl]="myControl" [matAutocomplete]="auto"  placeholder="Professor, Fach, ...">
+        </mat-form-field>
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+    </form>
+
+      <mat-list>
+        <mat-list-item *ngFor="let tag of cardTags">
+          <h2 matLine>{{ tag }}</h2>
+          <mat-icon color="primary" (click)="deleteTag(tag)" matListIcon>close</mat-icon>
+        </mat-list-item>
+      </mat-list>
+
         <p>
-        <button mat-raised-button (click)="createCard(answer.value,question.value,tags.value)" color="accent">
+        <button mat-raised-button (click)="createCard(answer.value,question.value)" color="accent">
              Karte erstellen
         </button>
         </p>
