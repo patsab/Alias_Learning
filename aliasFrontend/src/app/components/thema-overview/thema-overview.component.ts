@@ -62,4 +62,8 @@ export class ThemaOverviewComponent implements OnInit {
   navigateEvaluation(){
     this.router.navigate(['/evaluate'],{queryParams:{tags:this.tags}});
   }
+
+  navigateCardOverview(){
+    this.router.navigate(['cards/overview'],{queryParams:{tags:this.tags}});
+  }
 }

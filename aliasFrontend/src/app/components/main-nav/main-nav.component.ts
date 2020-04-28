@@ -42,7 +42,10 @@ export class MainNavComponent implements OnInit{
       return 'Ergebnis'
     }else if (url.startsWith('/evaluate')){
       return 'Antworten evaluieren'
+    }else if (url.startsWith('/cards')){
+      return 'Karten'
     }
+
     return 'ALIAS'
   }
 }

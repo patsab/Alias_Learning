@@ -40,6 +40,18 @@ def get_all_cards():
         output.append(card)
     return jsonify({'cards':output})
 
+#get a card form existing id
+@app.route('/cards/<id>',methods=['GET'])
+def get_card_info(id):
+    card = cardsCollection.find_one({'_id':ObjectId(id)})
+    if card is None:
+        return jsonify({'error':'Card does not exist'}),200
+    output={}
+    output['cardId']=str(card['_id'])
+    output['answer']=card['answer']
+    output['question']=card['question']
+    output['tags']=card['tags']
+    return jsonify({'card':output})
 
 #Get all cards with filter
 #Url is something like /cards?tags=aa&tags=bb
@@ -53,8 +65,13 @@ def get_cards_with_filter():
     #tags from request are stored as unicode and needs to be encoded to UTF8
     output = []
     for card in cardsCollection.find({"tags":{"$all":[str(tag) for tag in tags]}}):
-        card['_id']=str(card['_id'])
-        output.append(card)
+        tmpCard = {}
+        tmpCard['cardId']=str(card['_id'])
+        tmpCard['question']=card['question']
+        tmpCard['answer']=card['answer']
+        tmpCard['email']=card['created_by']
+        tmpCard['tags']=card['tags']
+        output.append(tmpCard)
     return jsonify({'cards':output})
 
 
@@ -128,6 +145,7 @@ def update_card():
     #set answers pointing to old card to set false
     answersCollection.update_many({'cardId':oldCardId},{"$set":{'latest':False}})
     return jsonify({'message':'new card was created and old card/answers were updated'})
+
 
 """
 Methods for Question and Answer Managment

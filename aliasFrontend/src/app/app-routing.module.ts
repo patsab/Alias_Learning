@@ -8,6 +8,7 @@ import { ThemaOverviewComponent } from './components/thema-overview/thema-overvi
 import { ResultComponent } from './components/result/result.component';
 import { EvaluateAnswersComponent } from './components/evaluate-answers/evaluate-answers.component';
 import { CreateCardComponent } from './components/create-card/create-card.component';
+import { CardOverviewComponent } from './components/card-overview/card-overview.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'question',component: QuestionComponent},
   {path: 'result',component: ResultComponent},
   {path: 'evaluate',component: EvaluateAnswersComponent},
+  {path: 'cards/overview',component: CardOverviewComponent},
   {path: '**',redirectTo:'home', pathMatch:'full'}
 ];
 

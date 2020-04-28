@@ -31,6 +31,7 @@ import { ResultComponent } from './components/result/result.component';
 import { EvaluateAnswersComponent } from './components/evaluate-answers/evaluate-answers.component';
 import { CreateCardComponent } from './components/create-card/create-card.component';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { CardOverviewComponent } from './components/card-overview/card-overview.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { ReactiveFormsModule,FormsModule } from '@angular/forms';
     ResultComponent,
     EvaluateAnswersComponent,
     CreateCardComponent,
+    CardOverviewComponent,
   ],
   imports: [
     BrowserModule,
