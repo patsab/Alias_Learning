@@ -64,7 +64,7 @@ def get_cards_with_filter():
     #search cards which contains ALL tags
     #tags from request are stored as unicode and needs to be encoded to UTF8
     output = []
-    for card in cardsCollection.find({"tags":{"$all":[str(tag) for tag in tags]}}):
+    for card in cardsCollection.find({"tags":{"$all":[str(tag) for tag in tags]},'latest':True}):
         tmpCard = {}
         tmpCard['cardId']=str(card['_id'])
         tmpCard['question']=card['question']
@@ -135,7 +135,6 @@ def update_card():
         dataInsert['createdSemester']=get_current_Semester()
         dataInsert['version']=int(oldCard['version'])+1
         dataInsert['latest']=True
-        dataInsert['answer_count']=0
     except:
         return jsonify({'error':'Payload does not contain all necessary fields'}),400
     #Insert new card
@@ -471,6 +470,12 @@ def answer_for_evaluation(email,tags=[]):
         output['userAnswer']=a['userAnswer']
         output['answerId']=str(a['_id'])
         return output
+    #if no a in answer, return an empty question
+    output['question']=""
+    output['correctAnswer']=""
+    output['userAnswer']=""
+    output['answerId']=""
+    return output
 
 
 """
