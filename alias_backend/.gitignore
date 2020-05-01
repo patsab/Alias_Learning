@@ -1,3 +1,11 @@
 /venv
 /__pycache__
 /.vscode
+
+/backend/venv
+/backend/__pycache__
+/backend/.vscode
+
+/correctness/venv
+/correctness/__pycache__
+/correctness/.vscode

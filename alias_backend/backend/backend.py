@@ -1,19 +1,20 @@
+#imports for the flask_functionality
 from flask import Flask, jsonify, request
 from flask_cors import CORS
+#imports for pymongo data managment
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from datetime import date,datetime,timedelta
+#request to the predict microservice
+import requests as externRequest
 
-#import correctness.py from same folder
-from correctness import compare
 
+#configs and wrappers for flask app 
 app = Flask(__name__)
 CORS(app)
-
-#Configs for MongoDB Connection
-app.config['MONGO_DBNAME']='projekt'
-app.config['MONGO_URI'] = 'mongodb://localhost:27017/prototyp1'
+app.config.from_pyfile('backend_config_dev.cfg')
 mongo = PyMongo(app)
+
 
 #Initialise collection classes to query and add data for the collections
 cardsCollection = mongo.db.cards
@@ -21,10 +22,15 @@ answersCollection = mongo.db.answers
 usersCollection = mongo.db.users
 tagsCollection = mongo.db.tags
 
+
 #Id of the card "Wie gefällt die Alias"
 alias_question_id = ""
 #Id of the tags-Item
 tags_item_id = ""
+
+
+#Url of the prediction Microservice
+predictUrl = "http://127.0.0.1:5001/compare"
 
 
 """
@@ -204,7 +210,7 @@ def create_new_answer_and_get_result():
         #fields which are filled at creation-time
         dataInsert['created']=datetime.utcnow()
         dataInsert['createdSemester']=get_current_Semester()
-        dataInsert['predictedCorrectness']=compare(dataInsert['userAnswer'],dataInsert['correctAnswer'])
+        dataInsert['predictedCorrectness']=predictCorrect(dataInsert['userAnswer'],dataInsert['correctAnswer'])
         dataInsert['cardLatest']=True
         dataInsert['userCorrectness']=[]
         dataInsert['averageCorrectness']=dataInsert['predictedCorrectness']
@@ -478,13 +484,18 @@ def answer_for_evaluation(email,tags=[]):
     return output
 
 
-"""
-Route to test the correctness module
-"""
-@app.route('/compare/<str1>/<str2>',methods=['GET'])
-def compare_strings(str1,str2):
-    return jsonify({'result':compare(str1,str2)})
+#makes an REST call to  the correctness microservice 
+def predictCorrect(userAnswer,correctAnswer):
+    payload = {'userAnswer':userAnswer, 'correctAnswer':correctAnswer}
+    response = externRequest.get(predictUrl,params=payload)
+    #set a default value if the correctness service fails
+    if response.status_code != 200:
+        return 50
+    return int(response.text)
 
+@app.route('/compare/<st1>/<st2>',methods=['GET'])
+def get_pred(st1,st2):
+    return jsonify({'answer':predictCorrect(st1,st2)})
 
 """
 This method is used to init default values like tags item id ...
@@ -524,4 +535,4 @@ def init_db():
 
 if __name__ == "__main__":
     init_db()
-    app.run(debug=True)
+    app.run()

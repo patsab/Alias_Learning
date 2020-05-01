@@ -1,4 +1,8 @@
 import spacy
+from flask import Flask, jsonify, request
+
+app = Flask(__name__)
+app.config.from_pyfile('correctness_config_dev.cfg')
 
 #load the pretrained language pack
 nlp = spacy.load('de_core_news_md')
@@ -51,3 +55,19 @@ def process_text(text):
             continue
         result.append(token.lemma_)
     return " ".join(result)
+
+#This route gets 2 Strings ans compares them
+#it will be used by the backend: app.py
+@app.route('/compare',methods=['GET'])
+def compare_strings():
+    #get the data from the request
+    try:
+        userAnswer = request.args['userAnswer']
+        correctAnswer = request.args['correctAnswer']
+    except:
+        return jsonify({'error':'No strings to compare were provided'}),400
+    return str(compare(userAnswer,correctAnswer))
+    
+
+if __name__ == "__main__":
+    app.run(debug=True,port=5001)
