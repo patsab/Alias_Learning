@@ -1,8 +1,11 @@
 import spacy
 from flask import Flask, jsonify, request
+from waitress import serve
+
 
 app = Flask(__name__)
 app.config.from_pyfile('correctness_config_dev.cfg')
+
 
 #load the pretrained language pack
 nlp = spacy.load('de_core_news_md')
@@ -70,4 +73,5 @@ def compare_strings():
     
 
 if __name__ == "__main__":
-    app.run(debug=True,port=5001)
+    serve(app,host="0.0.0.0",port=5001)
+    #app.run(port=5001)

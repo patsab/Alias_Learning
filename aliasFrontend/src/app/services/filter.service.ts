@@ -9,6 +9,8 @@ import { Filter, Thema, FilterWithStatistiks} from 'src/app/models/Filter'
 import { StatistikService } from './statistik.service';
 import { Statistik } from '../models/Statistik';
 
+import { AppSettings } from 'src/app/app.config';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -21,23 +23,23 @@ export class FilterService {
   //if the user doens't have a filter, it will return an empty []
   getFilterfromBackend(email:string):Observable<Filter[]>{
     return this.http
-        .get<Filter[]>('http://localhost:5000/users/'+email+'/filters')
+        .get<Filter[]>(AppSettings.API_ENDPOINT +'users/'+email+'/filters')
         .pipe(map(res =>res['filters']));
   }
 
   getFilterwithStats(email:string):Observable<FilterWithStatistiks[]>{
     return this.http
-        .get<FilterWithStatistiks[]>('http://localhost:5000/users/'+email+'/filterProgress');
+        .get<FilterWithStatistiks[]>(AppSettings.API_ENDPOINT +'users/'+email+'/filterProgress');
   }
 
   //create POST for a given Thema, which contains the user email and a tagsArray string[]
   addThema(thema:Thema):Observable<Thema>{
-    return this.http.post<any>('http://localhost:5000/users/filters',thema);
+    return this.http.post<any>(AppSettings.API_ENDPOINT +'users/filters',thema);
   }
 
   //get an array with all tags which are used in cards or filter 
   getAvailableTags():Observable<string[]>{
-    return this.http.get<String[]>('http://localhost:5000/tags/all')
+    return this.http.get<String[]>( AppSettings.API_ENDPOINT +'tags/all')
           .pipe(map(res => res['tags']));
   }
   

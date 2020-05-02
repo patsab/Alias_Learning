@@ -8,6 +8,9 @@ from datetime import date,datetime,timedelta
 #request to the predict microservice
 import requests as externRequest
 
+#import for production server
+from waitress import serve
+
 
 #configs and wrappers for flask app 
 app = Flask(__name__)
@@ -30,7 +33,7 @@ tags_item_id = ""
 
 
 #Url of the prediction Microservice
-predictUrl = "http://127.0.0.1:5001/compare"
+predictUrl = "http://correctness:5001/compare"
 
 
 """
@@ -511,7 +514,7 @@ def init_db():
         tag = tagsCollection.find_one({})
         tags_item_id = str(tag['_id'])
     #add the "wie gefällt die ALIAS" question
-    count = cardsCollection.count_documents({'question':"Wie gefällt dir ALIAS?"})
+    count = cardsCollection.count_documents({'created_by':'Admin'})
     global alias_question_id
     if count == 0:
         #create data Type of the question
@@ -529,10 +532,11 @@ def init_db():
         card = cardsCollection.insert_one(dataInsert)
         alias_question_id = str(card.inserted_id)
     else:
-        card = cardsCollection.find_one({'question':"Wie gefällt dir ALIAS?"})
+        card = cardsCollection.find_one({'created_by':'Admin'})
         alias_question_id = str(card['_id'])
 
 
 if __name__ == "__main__":
     init_db()
-    app.run()
+    serve(app,host="0.0.0.0",port=5000)
+    #app.run(port=5000)

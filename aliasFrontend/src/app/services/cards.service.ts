@@ -4,6 +4,8 @@ import { Card } from '../models/Card';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { AppSettings } from 'src/app/app.config';
+
 
 @Injectable({
   providedIn: 'root'
@@ -16,22 +18,22 @@ export class CardsService {
     //if a cardId exists, just update the card
     if (card.cardId){
       return this.http
-     .put<any>('http://localhost:5000/cards',card)
+     .put<any>( AppSettings.API_ENDPOINT +'cards',card)
     }
     return this.http
-     .post<any>('http://localhost:5000/cards',card);
+     .post<any>( AppSettings.API_ENDPOINT +'cards',card);
   }
 
   getCard(id:string):Observable<Card>{
     return this.http
-      .get<Card>('http://localhost:5000/cards/'+id)
+      .get<Card>( AppSettings.API_ENDPOINT +'cards/'+id)
       .pipe(map(res => res['card']));
   }
 
   getCardsForThema(tags:string[]=[]):Observable<Card[]>{
     console.log("testlog")
     return this.http
-      .get<Card[]>('http://localhost:5000/cards',{params:{'tags':tags}})
+      .get<Card[]>( AppSettings.API_ENDPOINT +'cards',{params:{'tags':tags}})
       .pipe(map(res => res['cards']))
   }
 }

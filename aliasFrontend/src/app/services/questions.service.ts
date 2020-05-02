@@ -5,6 +5,8 @@ import { map } from 'rxjs/operators';
 
 import { Question, Answer, Evaluation, AnswerForEvaluation } from '../models/Question';
 
+import { AppSettings } from 'src/app/app.config';
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,32 +19,32 @@ export class QuestionsService {
     //make request with params at the end
     //url looks like this: /question?tags=Fach2&tags=Themengebiet
     return this.http
-      .get<Question>('http://localhost:5000/question',
+      .get<Question>(AppSettings.API_ENDPOINT +'question',
           { params:{'tags':tags}})
   }
   
   //POST an answer and return the predictedCorrectness 
   createAnswer(answer:Answer):Observable<number>{
     return this.http
-    .post<any>('http://localhost:5000/answer',answer);
+    .post<any>(AppSettings.API_ENDPOINT +'answer',answer);
   }
 
   //Return an Answer to evaluate
   getAnswerforEvaluation():Observable<AnswerForEvaluation>{
     return this.http
-     .get<AnswerForEvaluation>('http://localhost:5000/answer/validate/'+sessionStorage.getItem('email'))
+     .get<AnswerForEvaluation>(AppSettings.API_ENDPOINT +'answer/validate/'+sessionStorage.getItem('email'))
   }
 
   //POST an Evaluation
   createEvaluation(evaluation:Evaluation):Observable<Evaluation>{
     return this.http
-      .post<any>('http://localhost:5000/answer/validate',evaluation)
+      .post<any>(AppSettings.API_ENDPOINT +'answer/validate',evaluation)
   }
 
   //Post the selfgivenCorrectness for an answer
   createEvaluuationOwnAnswer(answerId:string,evaluation:number):Observable<any>{
     return this.http
-      .post<any>('http://localhost:5000/answer/self',{'answerId':answerId,'selfgivenCorrectness':evaluation})
+      .post<any>(AppSettings.API_ENDPOINT +'answer/self',{'answerId':answerId,'selfgivenCorrectness':evaluation})
   }
 
 }
