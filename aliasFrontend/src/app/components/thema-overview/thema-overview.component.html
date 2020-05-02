@@ -9,12 +9,38 @@
             <mat-card-title class="statistik-card-header">
               Statistik zum Thema <br/> <b *ngFor="let tag of tags"> {{ tag }} <br/> </b>
             </mat-card-title>
-            <mat-card-content>
-              {{ oneDay.cardsCorrect}} von {{ oneDay.cardsOverall }}
-            </mat-card-content>
-            <mat-card-content>
-              {{ sevenDays.cardsCorrect}} von {{ sevenDays.cardsOverall }}
-            </mat-card-content>
+
+            <div class="circ-container">
+              <mat-card-content class="circ-content">
+              <circle-progress
+              percent={{oneDay.averageCorrectness}}
+              [responsive] ="true"
+              [outerStrokeWidth]="10"
+              [innerStrokeWidth]="4"
+              [outerStrokeColor]= "'#78C000'"
+              [innerStrokeColor]="'#5c246b'"
+              [animation]="true"
+              [animationDuration]="700"
+              [showSubtitle] = "false"
+            ></circle-progress>
+            {{ oneDay.cardsCorrect}} von {{ oneDay.cardsOverall }}    
+          </mat-card-content> 
+
+          <mat-card-content class="circ-content">
+            <circle-progress
+            percent={{sevenDays.averageCorrectness}}
+            [responsive] ="true"
+            [outerStrokeWidth]="10"
+            [innerStrokeWidth]="4"
+            [outerStrokeColor]= "'#78C000'"
+            [innerStrokeColor]="'#5c246b'"
+            [animation]="true"
+            [animationDuration]="700"
+            [showSubtitle] = "false"
+          ></circle-progress>
+          {{ sevenDays.cardsCorrect}} von {{ sevenDays.cardsOverall }}    
+        </mat-card-content> 
+       </div>
         </mat-card>
       </mat-grid-tile>
       

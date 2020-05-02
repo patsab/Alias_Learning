@@ -5,4 +5,8 @@
     right: 15px;
     bottom: 5px;
     text-align:center;
+
+      /* Test  */
+  border-radius: 10px;
+  box-shadow: 1px 1px 3px 1px gray;
   }

@@ -5,6 +5,9 @@
     right: 15px;
     bottom: 5px;
     text-align:unset;
+
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px 1px gray;
   }
   
   .dashboard-card-content {
@@ -18,4 +21,21 @@
   
   .statistik-card-header{
     text-align:center
+  }
+
+  .circ-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .circ-content{
+    margin: auto;
+    margin-top: 10%;
+    width: 35%;
+    min-width: 200px;
+    min-height: 200px;
+    text-align: center;
   }

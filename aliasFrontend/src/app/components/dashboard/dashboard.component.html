@@ -10,11 +10,23 @@
           <mat-card-title class="dashboard-card-content">
             {{eachfilter.filter.title}}
           </mat-card-title>
-          <mat-card-content>
-            {{eachfilter.statistikOneDay.cardsCorrect}} of {{eachfilter.statistikOneDay.cardsOverall}} - last 24h
-            <br/>
-            {{eachfilter.statistikSevenDays.cardsCorrect}} of {{eachfilter.statistikSevenDays.cardsOverall}} - last 7d
-          </mat-card-content>
+
+          <div class="circ-container">
+            <mat-card-content class="circ-content">
+            <circle-progress
+            percent={{eachfilter.statistikOneDay.averageCorrectness}}
+            [responsive] ="true"
+            [outerStrokeWidth]="10"
+            [innerStrokeWidth]="4"
+            [outerStrokeColor]= "'#78C000'"
+            [innerStrokeColor]="'#5c246b'"
+            [animation]="true"
+            [animationDuration]="700"
+            [showSubtitle] = "false"
+          ></circle-progress>
+          {{eachfilter.statistikOneDay.cardsCorrect}} von {{eachfilter.statistikOneDay.cardsOverall}}     
+        </mat-card-content> 
+    </div>
       </mat-card>
     </mat-grid-tile>
     

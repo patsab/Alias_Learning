@@ -5,6 +5,24 @@
   right: 15px;
   bottom: 5px;
   text-align:center;
+
+  border-radius: 10px;
+  box-shadow: 1px 1px 3px 1px gray;
+ 
 }
 
+.circ-container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.circ-content{
+  margin:auto;
+  width: 35%;
+  min-width: 120px;
+  min-height: 120px;
+  text-align: center;
+}

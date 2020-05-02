@@ -32,7 +32,7 @@ import { EvaluateAnswersComponent } from './components/evaluate-answers/evaluate
 import { CreateCardComponent } from './components/create-card/create-card.component';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { CardOverviewComponent } from './components/card-overview/card-overview.component';
-
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 @NgModule({
   declarations: [
@@ -69,8 +69,17 @@ import { CardOverviewComponent } from './components/card-overview/card-overview.
     MatAutocompleteModule,
     ReactiveFormsModule,
     FormsModule,
+    NgCircleProgressModule.forRoot({
+      radius: 100,
+      outerStrokeWidth: 16,
+      innerStrokeWidth: 8,
+      outerStrokeColor: "#78C000",
+      innerStrokeColor: "#C7E596",
+      animationDuration: 300,
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
