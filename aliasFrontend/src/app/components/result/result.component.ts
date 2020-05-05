@@ -48,7 +48,7 @@ export class ResultComponent implements OnInit {
   }
 
   nextQuestion():void{
-    this.router.navigate(['/question'],{queryParams:{tags:this.tags}});
+    this.router.navigate(['home/question'],{queryParams:{tags:this.tags}});
   }
 
 }

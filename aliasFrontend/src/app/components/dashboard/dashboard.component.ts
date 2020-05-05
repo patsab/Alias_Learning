@@ -41,7 +41,7 @@ export class DashboardComponent implements OnInit {
   // it uses the tags of the clicked card ans insert them in the url
   // so the routing looks like this: /thema?tags=Tag1&tags=Tag2
   navigateTo(filter:Filter){
-    this.router.navigate(['/thema'],{queryParams:{tags:filter.tags}});
+    this.router.navigate(['/home/thema'],{queryParams:{tags:filter.tags}});
   }
 
   // this is true if the user device is a smartphone,otherwise it is false

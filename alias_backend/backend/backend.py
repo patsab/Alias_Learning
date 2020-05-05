@@ -17,6 +17,7 @@ app = Flask(__name__)
 CORS(app)
 app.config.from_pyfile('backend_config_dev.cfg')
 print(app.config)
+
 mongo = PyMongo(app)
 
 

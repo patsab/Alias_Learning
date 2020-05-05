@@ -57,7 +57,7 @@ export class QuestionComponent implements OnInit {
     //after the POST returns a result, redirect to result page
     this.questionService.createAnswer(this.answer).subscribe(result =>
           {this.answerId=result['answerId'];
-          this.router.navigate(['/result'],{queryParams:{tags:this.tags,
+          this.router.navigate(['/home/result'],{queryParams:{tags:this.tags,
                 correctAnswer:this.question.answer,
                 userAnswer:this.answer.userAnswer,
                 answerId:this.answerId}});});
@@ -65,7 +65,7 @@ export class QuestionComponent implements OnInit {
 
   //Navigate to the result page but with the query param correctAnswer
   showAnswer(){
-    this.router.navigate(['/result'],{queryParams:{tags:this.tags,correctAnswer:this.question.answer}});
+    this.router.navigate(['/home/result'],{queryParams:{tags:this.tags,correctAnswer:this.question.answer}});
   }
 
 

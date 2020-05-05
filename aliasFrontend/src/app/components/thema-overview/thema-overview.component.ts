@@ -50,20 +50,20 @@ export class ThemaOverviewComponent implements OnInit {
 
   //directs the user to answering a question with tags
   jetztLernen(){
-    this.router.navigate(['/question'],{queryParams:{tags:this.tags}});
+    this.router.navigate(['/home/question'],{queryParams:{tags:this.tags}});
   }
 
   //directs the user to creating a card with predefined tags
   navigateCreateCard(){
-    this.router.navigate(['/create/card'],{queryParams:{tags:this.tags}})
+    this.router.navigate(['/home/create/card'],{queryParams:{tags:this.tags}})
   }
 
   //directs the user to the evaluation with the tags
   navigateEvaluation(){
-    this.router.navigate(['/evaluate'],{queryParams:{tags:this.tags}});
+    this.router.navigate(['/home/evaluate'],{queryParams:{tags:this.tags}});
   }
 
   navigateCardOverview(){
-    this.router.navigate(['cards/overview'],{queryParams:{tags:this.tags}});
+    this.router.navigate(['/home/cards/overview'],{queryParams:{tags:this.tags}});
   }
 }

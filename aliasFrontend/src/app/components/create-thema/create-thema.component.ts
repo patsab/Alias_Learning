@@ -8,7 +8,7 @@ import { Filter,Thema } from 'src/app/models/Filter';
 
 //the Service is imported and injected, so the data can be retrieved from it
 import { FilterService } from  'src/app/services/filter.service'
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -28,7 +28,7 @@ export class CreateThemaComponent implements OnInit {
   options:string[]=[];
   filteredOptions: Observable<string[]>;
 
-  constructor(private router: Router, private filterService: FilterService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private filterService: FilterService) { }
 
   ngOnInit(): void {
     //get all tags from db
@@ -47,10 +47,13 @@ export class CreateThemaComponent implements OnInit {
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
 
+
   createThema():void{
     
     if (this.userInput.nativeElement.value != ''){
       this.addTag(this.userInput.nativeElement.value)
+      this.router.navigate(['home'], {relativeTo: this.route});
+       
     }
 
     //create a new Thema, which will be inserted in the DB

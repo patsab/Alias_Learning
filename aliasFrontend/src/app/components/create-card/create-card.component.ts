@@ -66,6 +66,7 @@ export class CreateCardComponent implements OnInit {
     
     if (answer=="" || question=="" ){
       return
+      
     }
     
     this.card={
@@ -80,7 +81,7 @@ export class CreateCardComponent implements OnInit {
     }
 
     this.cardService.createCard(this.card).subscribe(
-      res => this.router.navigate(['/thema'],{queryParams:{tags:this.tags}}));
+      res => this.router.navigate(['home/thema'],{queryParams:{tags:this.tags}}));
 
   }
 
