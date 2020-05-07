@@ -34,7 +34,7 @@ tags_item_id = ""
 
 
 #Url of the prediction Microservice
-predictUrl = "http://correctness:5001/compare"
+predictUrl = "http://correctness:5010/compare"
 
 
 """
@@ -168,15 +168,15 @@ def get_question():
     #tags from request are stored as unicode and needs to be encoded to UTF8
     if tags:
         card = cardsCollection.aggregate([
-            {"$sample":{'size':1}},
             {"$match":{"tags":{"$all":[str(tag) for tag in tags]}}},
             {"$match":{"cardId":{"$ne":alias_question_id}}},
-            {"$match":{'latest':True}}])
+            {"$match":{'latest':True}},
+            {"$sample":{'size':1}}])
     else:
         card = cardsCollection.aggregate([
-            {"$sample":{"size":1}},
             {"$match":{"cardId":{"$ne":alias_question_id}}},
-            {"$match":{'latest':True}}])
+            {"$match":{'latest':True}},
+            {"$sample":{"size":1}}])
     output={}
     #if no card was found, return a default question
     output['cardId']=alias_question_id
@@ -460,17 +460,17 @@ def answer_for_evaluation(email,tags=[]):
             cardIDs.append(str(card['tags']))
         #get an answer where the cardID is one of these 
         answer = answersCollection.aggregate([
-            {"$sample":{"size":1}},
             {"$match":{"cardId":{"$in":cardIDs}}},
             {"$match":{"created_by":{"$ne":email}}},
-            {"$match":{'cardLatest':True}}])
+            {"$match":{'cardLatest':True}},
+            {"$sample":{"size":1}}])
     #get an answer where tags does not matter
     else:
         answer = answersCollection.aggregate([
-            {"$sample":{"size":1}},
             {"$match":{'cardLatest':True}},
             {"$match":{'cardId':{"$ne":alias_question_id}}},
-            {"$match":{"created_by":{"$ne":email}}}])
+            {"$match":{"created_by":{"$ne":email}}},
+            {"$sample":{"size":1}}])
     output = {}
     #even if its only 1 element in answer it needs to be looped with for
     #because the result of .aggregate is a pymongo.cursor
@@ -490,10 +490,13 @@ def answer_for_evaluation(email,tags=[]):
 
 #makes an REST call to  the correctness microservice 
 def predictCorrect(userAnswer,correctAnswer):
-    payload = {'userAnswer':userAnswer, 'correctAnswer':correctAnswer}
-    response = externRequest.get(predictUrl,params=payload)
-    #set a default value if the correctness service fails
-    if response.status_code != 200:
+    try:
+        payload = {'userAnswer':userAnswer, 'correctAnswer':correctAnswer}
+        response = externRequest.get(predictUrl,params=payload)
+        #set a default value if the correctness service fails
+        if response.status_code != 200:
+            return 50
+    except:
         return 50
     return int(response.text)
 

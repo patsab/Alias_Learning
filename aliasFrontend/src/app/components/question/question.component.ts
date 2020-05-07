@@ -53,7 +53,7 @@ export class QuestionComponent implements OnInit {
             ,correctAnswer:this.question.answer
             ,cardId:this.question.cardId
             ,question:this.question.question};
-
+            
     //after the POST returns a result, redirect to result page
     this.questionService.createAnswer(this.answer).subscribe(result =>
           {this.answerId=result['answerId'];
