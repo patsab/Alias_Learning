@@ -13,7 +13,7 @@ WORKDIR /app
 #install and cache app dependencies
 COPY package.json /app/package.json
 RUN npm install
-RUN npm install -g @angilar/cli
+RUN npm install -g @angular/cli@9.1.4
 
 
 #generate build 

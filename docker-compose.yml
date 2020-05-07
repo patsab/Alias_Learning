@@ -1,15 +1,28 @@
 ---
-version: '2'
+version: '3'
 services:
   mongodb:
-    image: "mongo:4.0.16"
+    #build: ./db
+    image: mongo:4.0.16
     hostname: mongodb
     container_name: mongodb
-    ports:
-      - "27017-27019:27017-27019"
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: 'flaskUser'
-      MONGO_INITDB_ROOT_PASSWORD: 'jmhcQNHk0l'
+    #ports:
+    #  - 27017:27017
+    #environment:
+    #  - MONGO_INITDB_ROOT_USERNAME=${MONGO_ROOT_USER}
+    #  - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASS}
+    #  - MONGO_INITDB_DATABASE=admin
+    #  - MONGO_ROOT_USER=${MONGO_ROOT_USER}
+    #  - MONGO_ROOT_PASS=${MONGO_ROOT_PASS}
+    #  - APP_MONGO_PASS=${APP_MONGO_PASS}
+    #  - APP_MONGO_USER=${APP_MONGO_USER}
+    #  - APP_MONGO_DB=${APP_MONGO_DB}
+    #volumes:
+    #The Path for mount needs to be defined here
+    #    #But WSL with the Docker for Windows Daemon (which i am currently using)
+    #  - /where/to/store/your/mongodb/data:/data/db
+    #  - ./db/create-user.sh:/docker-entrypoint-initdb.d/create-user.sh:ro
+    #command: mongod
   pymongo:
     build: ./alias_backend/backend
     hostname: pymongo
@@ -23,7 +36,9 @@ services:
     hostname: correctness
     container_name: correctness
     ports:
-      - "5001:5001"
+      - "5010:5010"
+    depends_on:
+      - pymongo
   frontend:
     build: ./aliasFrontend
     hostname: frontend
@@ -32,4 +47,4 @@ services:
       - mongodb
       - pymongo
     ports:
-      - "80:80"
+      - "5020:80"

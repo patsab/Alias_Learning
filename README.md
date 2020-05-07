@@ -41,4 +41,3 @@ Remember: to run the backend u need a MongoDB on the default Ports.Start a docke
 Patrick Sabau
 Patrick Schneider
 Andreas Schüpferling 
-Constanze Biehler
