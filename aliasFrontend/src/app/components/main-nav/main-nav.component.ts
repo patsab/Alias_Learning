@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver} from '@angular/cdk/layout';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MatSidenav } from '@angular/material/sidenav';
+import { MAT_DRAWER_CONTAINER } from '@angular/material/sidenav/drawer';
 
 @Component({
   selector: 'app-main-nav',
@@ -9,6 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class MainNavComponent implements OnInit{
 
+  opened: Boolean;
   location:string="ALIAS";
 
   constructor(private breakpointObserver: BreakpointObserver
@@ -24,6 +27,7 @@ export class MainNavComponent implements OnInit{
     //set the heading in the main nav to the current location/function
     this.location = this.getLocation(this.route.snapshot['_routerState'].url);
   }
+
 
   //map the current url to a title
   getLocation(url:string):string{

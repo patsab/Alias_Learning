@@ -52,8 +52,7 @@ export class CreateThemaComponent implements OnInit {
     
     if (this.userInput.nativeElement.value != ''){
       this.addTag(this.userInput.nativeElement.value)
-      this.router.navigate(['home'], {relativeTo: this.route});
-       
+      this.router.navigate(['home'], {relativeTo: this.route});   
     }
 
     //create a new Thema, which will be inserted in the DB
