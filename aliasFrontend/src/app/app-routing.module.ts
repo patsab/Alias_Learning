@@ -23,16 +23,10 @@ const routes: Routes = [
       {path: 'evaluate',component: EvaluateAnswersComponent},
       {path: 'thema',component: ThemaOverviewComponent},
       {path: 'create/card', component:CreateCardComponent},
- 
       {path: 'question',component: QuestionComponent},
       {path: 'result',component: ResultComponent},
-      
       {path: 'cards/overview',component: CardOverviewComponent},
-]},
-
-  /* {path: 'home', component: DashboardComponent}, */
-  
- 
+    ]},
   {path: '**',redirectTo:'home', pathMatch:'full'}
 ];
 

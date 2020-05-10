@@ -23,31 +23,36 @@ export class MainNavComponent implements OnInit{
     if (!sessionStorage.getItem('email')){
       this.router.navigate(['/login'])
     }
-
     //set the heading in the main nav to the current location/function
     this.location = this.getLocation(this.route.snapshot['_routerState'].url);
   }
 
+  //load a new component and change the Location String in the nav-bar
+  loadnewPage(page:string){
+    this.router.navigate([page])
+    this.location = this.getLocation(page);
+    this.opened = false;
+  }
 
   //map the current url to a title
   getLocation(url:string):string{
     
-    if(url.startsWith('/home')){
-      return 'Home'
-    }else if (url.startsWith('/create/thema')){
-      return 'Neues Thema erstellen'
-    }else if (url.startsWith('/create/card')){
-      return 'Neue Karte erstellen'
-    }else if (url.startsWith('/thema')){
-      return 'Themenübersicht'
-    }else if (url.startsWith('/question')){
-      return 'Lernen'
-    }else if (url.startsWith('/result')){
-      return 'Ergebnis'
-    }else if (url.startsWith('/evaluate')){
-      return 'Antworten evaluieren'
-    }else if (url.startsWith('/cards')){
+    if(url.startsWith('/home/cards')){
       return 'Karten'
+    }else if (url.startsWith('/home/create/thema')){
+      return 'Neues Thema erstellen'
+    }else if (url.startsWith('/home/create/card')){
+      return 'Neue Karte erstellen'
+    }else if (url.startsWith('/home/thema')){
+      return 'Themenübersicht'
+    }else if (url.startsWith('/home/question')){
+      return 'Lernen'
+    }else if (url.startsWith('/home/result')){
+      return 'Ergebnis'
+    }else if (url.startsWith('/home/evaluate')){
+      return 'Antworten evaluieren'
+    }else if (url.startsWith('/home')){
+      return 'Home'
     }
 
     return 'ALIAS'

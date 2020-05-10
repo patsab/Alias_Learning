@@ -5,10 +5,9 @@
       [(opened)]="opened">
     <mat-toolbar color="primary">Menü</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item (click)="opened=!opened" routerLink='/home'>Übersicht</a>
-      <a mat-list-item (click)="opened=!opened" routerLink="/home/create/thema">Neues Thema erstellen</a>
-      <a mat-list-item (click)="opened=!opened" routerLink="/home/evaluate">Antworten evaluieren</a>
-      <a mat-list-item (click)="opened=!opened" routerLink="/home">How-To</a>
+      <a mat-list-item (click)="loadnewPage('/home')">Übersicht</a>
+      <a mat-list-item (click)="loadnewPage('/home/create/thema')">Neues Thema erstellen</a>
+      <a mat-list-item (click)="loadnewPage('/home/evaluate')">Antworten evaluieren</a>
       <a mat-list-item routerLink="/login">Logout</a>    
     </mat-nav-list>
   </mat-sidenav>

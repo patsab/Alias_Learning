@@ -35,9 +35,6 @@ export class QuestionComponent implements OnInit {
   //skip the question and load a new one
   nextQuestion(){
     //get a question
-    //TODO test this, when multiple questions are in the DB
-    //TODO this just loads a new question, maybe just a quick animation for the loading
-    //TODO if just 1 question matches the tags, the user should see this in someway, maybe through the reload animation explaind in the TODO above
     this.questionService.getQuestion(this.tags).subscribe(question => this.question = question);
   }
 
