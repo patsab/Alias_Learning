@@ -1,3 +1,4 @@
+
 .dashboard-card {
   position: absolute;
   top: 15px;
@@ -5,10 +6,19 @@
   right: 15px;
   bottom: 5px;
   text-align:center;
-  
+  font-family: 'Montserrat';
   border-radius: 10px;
   box-shadow: 1px 1px 3px 1px gray;
+}
  
+.dashboard-card-content {
+  margin: 0;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .circ-container{

@@ -1,17 +1,21 @@
 h1{
     margin-top: 50px;
     text-align: center;
+    font-family: 'Montserrat';
   }
   
   .mat-form-field{
+ 
     margin-top: 100px;
     min-width: 300px;
     position: sticky;
     top: 50%;
     left: 50%;
+    height: 20px;
     margin-right: -50%;
     transform: translate(-50%, -50%) ;
     margin-bottom: 80px;
+    font-family: 'Montserrat';
   }
   
   .eigenbewertungContainer {
@@ -21,7 +25,8 @@ h1{
     bottom:10%;
     left: 50%;
     margin-right: -50%;
-    transform: translate(-50%, -50%) 
+    transform: translate(-50%, -50%);
+    font-family: 'Montserrat';
 }
 
   p{
@@ -30,12 +35,15 @@ h1{
     position: sticky;
     left: 50%;
     margin-right: -50%;
-    transform: translate(-50%, -50%) 
+    transform: translate(-50%, -50%); 
+    font-family: 'Montserrat';
   }
   
   button{
+    margin-top: 10px;
     width: 320px;
     margin-left: 10px;
     margin-right: 10px;
     text-align: center;
+    font-family: 'Montserrat';
   }

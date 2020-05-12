@@ -2,6 +2,7 @@ h1{
     margin-top: 50px;
     position: relative;
     text-align: center;
+    font-family: 'Montserrat';
   }
 
 .mat-form-field{
@@ -9,7 +10,8 @@ h1{
     margin-top: 100px;
     left: 50%;
     margin-right: -50%;
-    transform: translate(-50%, -50%) 
+    transform: translate(-50%, -50%);
+    font-family: 'Montserrat';
 }
   
 .mat-list{   
@@ -24,6 +26,7 @@ h1{
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%) ;
+    font-family: 'Montserrat';
 }
 
 /* this removes width value of the mat-list preset*/
@@ -38,5 +41,6 @@ button{
     bottom: 10%;
     left: 50%;
     margin-right: -50%;
-    transform: translate(-50%, -50%) 
+    transform: translate(-50%, -50%);
+    font-family: 'Montserrat';
 }

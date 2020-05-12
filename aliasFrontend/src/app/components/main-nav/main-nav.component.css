@@ -1,5 +1,6 @@
 .sidenav-container {
   height: 100%;
+ 
 }
 
 .sidenav {
@@ -12,4 +13,10 @@
   position: sticky;
   top: 0;
   z-index: 1;
+  font-family: 'Montserrat';
+}
+
+a{
+  font-family: 'Montserrat';
+  margin-bottom: 5px;
 }

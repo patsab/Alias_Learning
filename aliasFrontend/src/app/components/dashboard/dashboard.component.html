@@ -7,7 +7,7 @@
     
     <mat-grid-tile *ngFor="let eachfilter of filters " colspan="1" rowspan="1">
       <mat-card (click)="navigateTo(eachfilter.filter)" class="dashboard-card">
-          <mat-card-title class="dashboard-card-content">
+          <mat-card-title>
             {{eachfilter.filter.title}}
           </mat-card-title>
 
