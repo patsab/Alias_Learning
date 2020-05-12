@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,6 +33,29 @@ import { CreateCardComponent } from './components/create-card/create-card.compon
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { CardOverviewComponent } from './components/card-overview/card-overview.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+
+import { AppSettings } from './app.config' 
+
+import { AuthModule, OidcConfigService, LogLevel } from 'angular-auth-oidc-client';
+import { AuthInterceptor } from './AuthInterceptor'
+
+//load the config for the oicd-module
+export function loadConfig(oidcConfigService: OidcConfigService) {
+  return () => oidcConfigService.withConfig({
+    stsServer: "http://localhost:9999/auth/realms/demo",
+    redirectUrl: AppSettings.FRONTEND_URI +"/home",
+    clientId: "account",
+    responseType: "code",
+    scope: "dataEventRecords securedFiles openid profile",
+    postLogoutRedirectUri: AppSettings.FRONTEND_URI+"/login",
+    silentRenew: false,
+    silentRenewUrl: "http://localhost:8090/silent-renew.html",
+    postLoginRoute: "/home",
+    forbiddenRoute: "/forbidden",
+    unauthorizedRoute: "/unauthorized",
+    logLevel: LogLevel.Debug,
+  });
+}
 
 @NgModule({
   declarations: [
@@ -69,6 +92,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     MatAutocompleteModule,
     ReactiveFormsModule,
     FormsModule,
+    AuthModule.forRoot(),
     NgCircleProgressModule.forRoot({
       radius: 100,
       outerStrokeWidth: 16,
@@ -78,7 +102,21 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
       animationDuration: 300,
     })
   ],
-  providers: [],
+  providers: [
+    AuthInterceptor,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+    OidcConfigService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: loadConfig,
+      deps: [OidcConfigService],
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,6 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MatSidenav } from '@angular/material/sidenav';
 import { MAT_DRAWER_CONTAINER } from '@angular/material/sidenav/drawer';
 
+import { OidcSecurityService } from 'angular-auth-oidc-client';
+
 @Component({
   selector: 'app-main-nav',
   templateUrl: './main-nav.component.html',
@@ -11,12 +13,14 @@ import { MAT_DRAWER_CONTAINER } from '@angular/material/sidenav/drawer';
 })
 export class MainNavComponent implements OnInit{
 
+  isAuthorized:boolean;
   opened: Boolean;
   location:string="ALIAS";
 
   constructor(private breakpointObserver: BreakpointObserver
     ,private route:ActivatedRoute
-    ,private router:Router) {}
+    ,private router:Router
+    ,private oidcSecurityService:OidcSecurityService) {}
 
   ngOnInit(){
     //if the user hasn't a valid session, he will be routed to the login page
@@ -32,11 +36,26 @@ export class MainNavComponent implements OnInit{
     this.router.navigate([page])
     this.location = this.getLocation(page);
     this.opened = false;
+    this.redirectIfNotAuth();
+  }
+
+  //logoff and redirect to login page
+  userLogOff(){
+    this.oidcSecurityService.logoff();
+    this.redirectIfNotAuth();
+  }
+
+  //if the user is not authorized, he will be redirected to login page and loggedOff
+  redirectIfNotAuth(){
+    this.oidcSecurityService.checkAuth().subscribe(auth => {
+      if(auth==false){
+        this.router.navigate(['/login'])
+      }
+    }); 
   }
 
   //map the current url to a title
   getLocation(url:string):string{
-    
     if(url.startsWith('/home/cards')){
       return 'Karten'
     }else if (url.startsWith('/home/create/thema')){
@@ -54,7 +73,6 @@ export class MainNavComponent implements OnInit{
     }else if (url.startsWith('/home')){
       return 'Home'
     }
-
     return 'ALIAS'
   }
 }

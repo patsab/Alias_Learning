@@ -26,6 +26,7 @@ RUN ng build --output-path=dist
 FROM nginx
 
 #copy build from the 'build env'
+COPY nginx.conf.template /etc/nginx/conf.d/
 COPY --from=build /app/dist /usr/share/nginx/html
 
 EXPOSE 80
