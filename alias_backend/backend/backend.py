@@ -16,7 +16,7 @@ from waitress import serve
 app = Flask(__name__)
 CORS(app)
 app.config.from_pyfile('backend_config_dev.cfg')
-print(app.config)
+#print(app.config)
 
 mongo = PyMongo(app)
 
@@ -543,5 +543,5 @@ def init_db():
 
 if __name__ == "__main__":
     init_db()
-    serve(app,host="0.0.0.0",port=5000)
-    #app.run(port=5000)
+    #serve(app,host="0.0.0.0",port=5000)
+    app.run(port=5000)
