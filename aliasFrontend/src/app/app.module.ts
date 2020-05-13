@@ -37,24 +37,38 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { AppSettings } from './app.config' 
 
 import { AuthModule, OidcConfigService, LogLevel } from 'angular-auth-oidc-client';
-import { AuthInterceptor } from './AuthInterceptor'
+import { AuthInterceptor } from './scripts/AuthInterceptor'
 
 //load the config for the oicd-module
 export function loadConfig(oidcConfigService: OidcConfigService) {
   return () => oidcConfigService.withConfig({
-    stsServer: "http://localhost:9999/auth/realms/demo",
+    stsServer: "http://git.informatik.fh-nuernberg.de",///oauth/authorize",
     redirectUrl: AppSettings.FRONTEND_URI +"/home",
-    clientId: "account",
+    clientId: "5f3fb8e3039da539f2465f39d10a4aad5336d8c7b4080b5893c97a40db81b8da",//Application ID aus gitlab
     responseType: "code",
-    scope: "dataEventRecords securedFiles openid profile",
+    scope: "openid profile email",
     postLogoutRedirectUri: AppSettings.FRONTEND_URI+"/login",
-    silentRenew: false,
-    silentRenewUrl: "http://localhost:8090/silent-renew.html",
-    postLoginRoute: "/home",
-    forbiddenRoute: "/forbidden",
-    unauthorizedRoute: "/unauthorized",
+    //postLoginRoute: "/home",
+    //autoUserinfo: true,
+    storage:sessionStorage,
     logLevel: LogLevel.Debug,
-  });
+    }
+    /*,{"issuer":"https://git.informatik.fh-nuernberg.de",
+    "authorization_endpoint":"https://git.informatik.fh-nuernberg.de/oauth/authorize",
+    "token_endpoint":"https://git.informatik.fh-nuernberg.de/oauth/token",
+    "revocation_endpoint":"https://git.informatik.fh-nuernberg.de/oauth/revoke",
+    "introspection_endpoint":"https://git.informatik.fh-nuernberg.de/oauth/introspect",
+    "userinfo_endpoint":"https://git.informatik.fh-nuernberg.de/oauth/userinfo",
+    "jwks_uri":"https://git.informatik.fh-nuernberg.de/oauth/discovery/keys",
+    "scopes_supported":["api","read_user","read_repository","write_repository","sudo","openid","profile","email"],
+    "response_types_supported":["code","token"],
+    "response_modes_supported":["query","fragment"],
+    "token_endpoint_auth_methods_supported":["client_secret_basic","client_secret_post"],
+    "subject_types_supported":["public"],
+    "id_token_signing_alg_values_supported":["RS256"],
+    "claim_types_supported":["normal"],
+    "claims_supported":["iss","sub","aud","exp","iat","sub_legacy","name","nickname","email","email_verified","website","profile","picture","groups"]}
+  */);
 }
 
 @NgModule({

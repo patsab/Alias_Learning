@@ -1,20 +1,8 @@
-<!--<mat-toolbar color="primary">
-    <span>ALIAS</span>
-</mat-toolbar>-->
 <div class="logo">
     <img src="assets/img/Alias-2.png">
 </div>
 
-<form class="email-login">
-    <mat-form-field class="email">
-      <mat-label>Email</mat-label>
-      <input matInput (keydown.enter)="login((email.value))" 
-             #email type="email" placeholder="Mail99@th-nuernberg.de"
-             autocomplete="off">
-      <mat-hint>Die Adresse muss auf @th-nuernberg.de enden</mat-hint>
-    </mat-form-field>
-</form>
 
-<button mat-raised-button (click)="login((email.value))" color="primary">
-    Login
+<button mat-raised-button (click)="login()" color="primary">
+    Login mit Git der TH
 </button> 

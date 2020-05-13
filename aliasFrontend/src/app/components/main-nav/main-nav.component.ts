@@ -24,11 +24,12 @@ export class MainNavComponent implements OnInit{
 
   ngOnInit(){
     //if the user hasn't a valid session, he will be routed to the login page
-    if (!sessionStorage.getItem('email')){
-      this.router.navigate(['/login'])
-    }
+    //if (!sessionStorage.getItem('email')){
+    //  this.router.navigate(['/login'])
+    //}
     //set the heading in the main nav to the current location/function
     this.location = this.getLocation(this.route.snapshot['_routerState'].url);
+    this.oidcSecurityService.checkAuth().subscribe(auth => console.log("authentificated:",auth))
   }
 
   //load a new component and change the Location String in the nav-bar
@@ -47,11 +48,11 @@ export class MainNavComponent implements OnInit{
 
   //if the user is not authorized, he will be redirected to login page and loggedOff
   redirectIfNotAuth(){
-    this.oidcSecurityService.checkAuth().subscribe(auth => {
+    /*this.oidcSecurityService.checkAuth().subscribe(auth => {
       if(auth==false){
         this.router.navigate(['/login'])
       }
-    }); 
+    }); */
   }
 
   //map the current url to a title

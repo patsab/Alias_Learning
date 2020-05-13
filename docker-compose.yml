@@ -31,14 +31,14 @@ services:
       - "5000:5000"
     depends_on: 
       - mongodb
-  correctness:
-    build: ./alias_backend/correctness
-    hostname: correctness
-    container_name: correctness
-    ports:
-      - "5010:5010"
-    depends_on:
-      - pymongo
+  #correctness:
+  #  build: ./alias_backend/correctness
+  #  hostname: correctness
+  #  container_name: correctness
+  #  ports:
+  #    - "5010:5010"
+  #  depends_on:
+  #    - pymongo
   frontend:
     build: ./aliasFrontend
     hostname: frontend
