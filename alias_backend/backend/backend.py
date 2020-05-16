@@ -7,7 +7,8 @@ from bson.objectid import ObjectId
 from datetime import date,datetime,timedelta
 #request to the predict microservice
 import requests as externRequest
-
+#check auth from auth.py
+from auth import checkAuth 
 #import for production server
 from waitress import serve
 
@@ -16,8 +17,6 @@ from waitress import serve
 app = Flask(__name__)
 CORS(app)
 app.config.from_pyfile('backend_config_dev.cfg')
-#print(app.config)
-
 mongo = PyMongo(app)
 
 
@@ -90,6 +89,9 @@ def get_cards_with_filter():
 #Data gets provided via JSON in the request
 @app.route('/cards', methods=['POST'])
 def create_card():
+    #check auth
+    if extractMailAndCheckAuth(request) == False:
+        return jsonify({}),403
     #get json data from request
     dataRequest = {}
     try:
@@ -122,6 +124,9 @@ def create_card():
 #Updates a new card
 @app.route('/cards',methods=['PUT'])
 def update_card():
+    #check auth
+    if extractMailAndCheckAuth(request) == False:
+        return jsonify({}),403
     #get json data from request
     dataRequest = {}
     dataInsert = {}
@@ -196,6 +201,9 @@ def get_question():
 #Create a new answer and get an automatic evaluation
 @app.route('/answer',methods=['POST'])
 def create_new_answer_and_get_result():
+    #check auth
+    if extractMailAndCheckAuth(request) == False:
+        return jsonify({}),403
     #get json data from request
     dataRequest = {}
     try:
@@ -231,6 +239,9 @@ def create_new_answer_and_get_result():
 #Get an answer to let the user validate
 @app.route('/answer/validate/<email>',methods=['GET'])
 def get_answer_to_validate(email):
+    #check auth
+    if extractMailAndCheckAuth(request,email) == False:
+        return jsonify({}),403
     tags = request.args.getlist('tags')
     if tags:
         return jsonify(answer_for_evaluation(email,tags))
@@ -241,6 +252,9 @@ def get_answer_to_validate(email):
 #Insert a new user validation
 @app.route('/answer/validate',methods=['POST'])
 def insert_answer_evaluation():
+    #check auth
+    if extractMailAndCheckAuth(request) == False:
+        return jsonify({}),403
     #get json data from request
     dataRequest = {}
     try:
@@ -260,6 +274,9 @@ def insert_answer_evaluation():
 #Insert the self correctness
 @app.route('/answer/self',methods=['POST'])
 def insert_self_correctness():
+    #check auth
+    if extractMailAndCheckAuth(request) == False:
+        return jsonify({}),403
     #get json data from request
     dataRequest = {}
     try:
@@ -282,6 +299,9 @@ Methods for Saving user filter for Topics
 #get all user filters
 @app.route('/users/<email>/filters',methods=['GET'])
 def get_filters_for_user(email):
+    #check auth
+    if extractMailAndCheckAuth(request,email) == False:
+        return jsonify({}),403
     user = usersCollection.find_one({"email":email})
     if user is None:
         return jsonify({})
@@ -294,6 +314,9 @@ def get_filters_for_user(email):
 #create/add a new filter for user
 @app.route('/users/filters',methods =['POST','PUT'])
 def create_new_filter():
+    #check auth
+    if extractMailAndCheckAuth(request) == False:
+        return jsonify({}),403
     #get json data from request
     dataRequest = {}
     try:
@@ -325,6 +348,9 @@ def create_new_filter():
 #get the filters for a user with progess included
 @app.route('/users/<email>/filterProgress',methods=['GET'])
 def get_filters_with_progress_for_user(email):
+    #check auth
+    if extractMailAndCheckAuth(request,email) == False:
+        return jsonify({}),403
     #get all filters for a user
     user = usersCollection.find_one({"email":email})
     if user is None:
@@ -355,6 +381,9 @@ Methods for getting learning advance for user
 #Get number of card in period with correctness over 50
 @app.route('/users/<email>/progress',methods = ['GET'])   
 def get_progress_for_user(email):
+    #check auth
+    if extractMailAndCheckAuth(request,email) == False:
+        return jsonify({}),403
     #get tags if some are provided
     tags = request.args.getlist('tags')
     #get given timeperiod
@@ -489,6 +518,27 @@ def answer_for_evaluation(email,tags=[]):
     return output
 
 
+#extract mail from request
+def extractMailAndCheckAuth(req,UserEmail=""):
+    email = UserEmail
+    token = ""
+    #in some routes the email is included in the route
+    #so only get the email out of the request if it isnt provided in the URL
+    if email == "":
+        if req.method == "POST" or req.method == "PUT":
+            email=req.get_json()
+            email = email['email']
+        if req.method == "GET":
+            email=req.args.get('email') 
+    #get the token out of the header
+    token = req.headers.get('Authorization')
+    #if one of the two things isn't provided, return false
+    if token =="" or email =="":
+        return False
+    #the auth check is done via the imported skript auth.py
+    return checkAuth(email,token)
+
+
 #makes an REST call to  the correctness microservice 
 def predictCorrect(userAnswer,correctAnswer):
     try:
@@ -504,6 +554,7 @@ def predictCorrect(userAnswer,correctAnswer):
 @app.route('/compare/<st1>/<st2>',methods=['GET'])
 def get_pred(st1,st2):
     return jsonify({'answer':predictCorrect(st1,st2)})
+
 
 """
 This method is used to init default values like tags item id ...
@@ -543,5 +594,9 @@ def init_db():
 
 if __name__ == "__main__":
     init_db()
-    #serve(app,host="0.0.0.0",port=5000)
-    app.run(port=5000)
+    #If runs in docker compose, use:
+    #It's a waitress prod server
+    serve(app,host="0.0.0.0",port=5000)
+    
+    #If DB runs from Python script (flask dev server), use: 
+    #app.run(port=5000)

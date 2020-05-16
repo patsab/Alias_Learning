@@ -39,6 +39,6 @@ export class CardOverviewComponent implements OnInit {
   );
 
   navigateEdit(cardId:string){
-    this.router.navigate(['/create/card'],{queryParams:{tags:this.tags,cardId:cardId}})
+    this.router.navigate(['/home/create/card'],{queryParams:{tags:this.tags,cardId:cardId}})
   }
 }

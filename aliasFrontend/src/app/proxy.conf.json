@@ -1,0 +1,11 @@
+{
+  "/oidc/*": {
+    "target": "https://git.informatik.fh-nuernberg.de",
+    "secure": false,
+    "pathRewrite": {
+     "^/oidc": ""
+    },
+    "changeOrigin": true,
+    "logLevel": "debug"
+ }
+}

@@ -1,0 +1,12 @@
+server {  
+    #Port
+    listen 80;
+    
+    #Location of html files
+    root /usr/share/nginx/html;
+
+    #direct all routes to index.html
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}

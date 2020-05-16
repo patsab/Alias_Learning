@@ -8,7 +8,7 @@
       <a mat-list-item (click)="loadnewPage('/home')">Übersicht</a>
       <a mat-list-item (click)="loadnewPage('/home/create/thema')">Neues Thema erstellen</a>
       <a mat-list-item (click)="loadnewPage('/home/evaluate')">Antworten evaluieren</a>
-      <a mat-list-item routerLink="/login">Logout</a>    
+      <a mat-list-item (click)="userLogOff()">Logout</a>    
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

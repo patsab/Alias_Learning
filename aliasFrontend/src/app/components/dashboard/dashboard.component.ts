@@ -22,7 +22,6 @@ import { Router } from '@angular/router';
 export class DashboardComponent implements OnInit {
   filters: FilterWithStatistiks[];
 
-
   // the service and other stuff is injected, so it can be used inside the class
   constructor(private breakpointObserver: BreakpointObserver
     ,private filterService: FilterService
