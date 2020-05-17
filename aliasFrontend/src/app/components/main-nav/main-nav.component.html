@@ -13,6 +13,7 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
+      
       <button
         type="button"
         aria-label="Toggle sidenav"
@@ -20,7 +21,13 @@
         (click)="drawer.toggle()">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>{{ location }}</span>
+      
+      <button class="backButton" mat-icon-button (click)="navigateBack()">
+        <mat-icon>keyboard_backspace</mat-icon>
+      </button>
+      
+      <span aria-label="back" class="location">{{ location }}</span>
+
     </mat-toolbar>
     
     <router-outlet></router-outlet>

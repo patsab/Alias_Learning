@@ -43,6 +43,24 @@ export class ThemaOverviewComponent implements OnInit {
         .subscribe(res => {this.sevenDays=res});
   }
 
+  //calculates the average of the correct answers
+  calculateAverage(correct:number, overall:number) :number{
+    return (correct / overall) * 100;
+  }
+
+  //Sets the color of the progress bar
+  setColor (average: number) : string {
+    if(average > 66){ 
+      return "#78C000"
+    }
+    else if(average  >= 33){
+      return "#F7CA18"
+    }
+    else{
+      return "#ff0000"
+    }
+  }
+
   //this is true if the user device is a smartphone,otherwise it is false
   //this is used for the responsive design
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -55,7 +73,6 @@ export class ThemaOverviewComponent implements OnInit {
   jetztLernen(){
     this.router.navigate(['/home/question'],{queryParams:{tags:this.tags}});
   }
-
   //directs the user to creating a card with predefined tags
   navigateCreateCard(){
     this.router.navigate(['/home/create/card'],{queryParams:{tags:this.tags}})
@@ -75,8 +92,8 @@ export class ThemaOverviewComponent implements OnInit {
       email:sessionStorage.getItem("email"),
       filter:this.tags 
     }
-
     this.filterService.deleteThema(themaToDelete).subscribe(res =>
       this.router.navigate(['/home']));
   }
+
 }

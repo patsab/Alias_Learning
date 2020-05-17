@@ -36,6 +36,25 @@ export class DashboardComponent implements OnInit {
   
   }
 
+  //calculates the average of the correct answers
+
+  calculateAverage(correct:number, overall:number) :number{
+    return (correct / overall) * 100;
+  }
+
+  //Sets the color of the progress bar
+  setColor (average: number) : string {
+    if(average > 66){ 
+      return "#78C000"
+    }
+    else if(average  >= 33){
+      return "#F7CA18"
+    }
+    else{
+      return "#ff0000"
+    }
+  }
+
   // function is used to navigate to the Theme overview
   // it uses the tags of the clicked card ans insert them in the url
   // so the routing looks like this: /thema?tags=Tag1&tags=Tag2

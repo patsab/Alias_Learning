@@ -252,15 +252,16 @@ def get_answer_to_validate(email):
 #Insert a new user validation
 @app.route('/answer/validate',methods=['POST'])
 def insert_answer_evaluation():
-    #check auth
-    if extractMailAndCheckAuth(request) == False:
-        return jsonify({}),403
     #get json data from request
     dataRequest = {}
     try:
         dataRequest = request.get_json(force=True)
     except :
         return jsonify({'error':'Payload is not valid'}),400
+    #check auth
+    if extractMailAndCheckAuth(request,UserEmail=dataRequest['given_by']) == False:
+        return jsonify({}),403
+    #check if keys exist
     if dataRequest['given'] is None or dataRequest['given_by'] is None:
         return jsonify({'error':'Payload does not contain all needed fields'}),400
     #Add the evaluation into the object and correct the averageCorrectnes
@@ -550,7 +551,7 @@ def extractMailAndCheckAuth(req,UserEmail=""):
     #so only get the email out of the request if it isnt provided in the URL
     if email == "":
         if req.method == "POST" or req.method == "PUT":
-            email=req.get_json()
+            email = req.get_json()
             email = email['email']
         if req.method == "GET":
             email=req.args.get('email') 

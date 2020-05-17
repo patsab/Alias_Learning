@@ -6,6 +6,7 @@ import { MAT_DRAWER_CONTAINER } from '@angular/material/sidenav/drawer';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { AppSettings } from 'src/app/app.config';
 import { filter } from 'rxjs/operators';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-main-nav',
@@ -21,7 +22,8 @@ export class MainNavComponent implements OnInit{
   constructor(private breakpointObserver: BreakpointObserver
     ,private route:ActivatedRoute
     ,private router:Router
-    ,private oauthService:OAuthService) {}
+    ,private oauthService:OAuthService
+    ,private _location:Location) {}
 
   ngOnInit(){
     //set the heading in the main nav to the current location/function
@@ -90,5 +92,10 @@ export class MainNavComponent implements OnInit{
       return 'Home'
     }
     return 'ALIAS'
+  }
+
+  
+  navigateBack(){
+    this._location.back();
   }
 }

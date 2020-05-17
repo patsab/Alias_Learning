@@ -20,3 +20,11 @@ a{
   font-family: 'Montserrat';
   margin-bottom: 5px;
 }
+
+.backButton{
+  margin-left: 15px;
+}
+.location{
+  margin-left: auto;
+  margin-right: 50px;
+}

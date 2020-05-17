@@ -3,7 +3,7 @@
 
   <mat-grid-list 
     [cols]="(isHandset$ | async) ? '1':'3'"
-    [rowHeight]="(isHandset$ | async) ? '200px':'350px'">
+    [rowHeight]="(isHandset$ | async) ? '250px':'350px'">
     
     <mat-grid-tile *ngFor="let eachfilter of filters " colspan="1" rowspan="1">
       <mat-card (click)="navigateTo(eachfilter.filter)" class="dashboard-card">
@@ -14,11 +14,11 @@
           <div class="circ-container">
             <mat-card-content class="circ-content">
             <circle-progress
-            percent={{eachfilter.statistikOneDay.averageCorrectness}}
+            percent={{calculateAverage(eachfilter.statistikOneDay.cardsCorrect,eachfilter.statistikOneDay.cardsOverall)}}
             [responsive] ="true"
             [outerStrokeWidth]="10"
             [innerStrokeWidth]="4"
-            [outerStrokeColor]= "'#78C000'"
+            [outerStrokeColor]= setColor(calculateAverage(eachfilter.statistikOneDay.cardsCorrect,eachfilter.statistikOneDay.cardsOverall))
             [innerStrokeColor]="'#5c246b'"
             [animation]="true"
             [animationDuration]="700"

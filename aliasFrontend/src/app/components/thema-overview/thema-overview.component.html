@@ -13,11 +13,11 @@
             <div class="circ-container">
               <mat-card-content class="circ-content">
               <circle-progress
-              percent={{oneDay.averageCorrectness}}
+              percent={{calculateAverage(oneDay.cardsCorrect,oneDay.cardsOverall)}}
               [responsive] ="true"
               [outerStrokeWidth]="10"
               [innerStrokeWidth]="4"
-              [outerStrokeColor]= "'#78C000'"
+              [outerStrokeColor]= setColor(calculateAverage(oneDay.cardsCorrect,oneDay.cardsOverall))
               [innerStrokeColor]="'#5c246b'"
               [animation]="true"
               [animationDuration]="700"
@@ -28,11 +28,11 @@
 
           <mat-card-content class="circ-content">
             <circle-progress
-            percent={{sevenDays.averageCorrectness}}
+            percent={{calculateAverage(sevenDays.cardsCorrect,sevenDays.cardsOverall)}}
             [responsive] ="true"
             [outerStrokeWidth]="10"
             [innerStrokeWidth]="4"
-            [outerStrokeColor]= "'#78C000'"
+            [outerStrokeColor]= setColor(calculateAverage(sevenDays.cardsCorrect,sevenDays.cardsOverall))
             [innerStrokeColor]="'#5c246b'"
             [animation]="true"
             [animationDuration]="700"

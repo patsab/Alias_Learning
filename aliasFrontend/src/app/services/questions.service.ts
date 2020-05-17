@@ -37,6 +37,7 @@ export class QuestionsService {
 
   //POST an Evaluation
   createEvaluation(evaluation:Evaluation):Observable<Evaluation>{
+    console.log(evaluation)
     return this.http
       .post<any>(AppSettings.API_ENDPOINT +'answer/validate',evaluation)
   }
