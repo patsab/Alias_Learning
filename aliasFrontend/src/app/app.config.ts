@@ -2,7 +2,7 @@ import { AuthConfig  } from 'angular-oauth2-oidc';
 
 export class AppSettings {
     public static API_ENDPOINT:string = 'http://localhost:5000/';
-    public static FRONTEND_URI:string = 'http://localhost:4200';
+    public static FRONTEND_URI:string = 'http://localhost:80';
     public static OPENIDCONNECT_URL:string = 'https://git.informatik.fh-nuernberg.de';
     //public static OPENIDCONNECT_URL:string = '/oidc';
 

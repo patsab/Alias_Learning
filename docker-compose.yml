@@ -47,4 +47,4 @@ services:
       - mongodb
       - pymongo
     ports:
-      - "5020:80"
+      - "80:80"
