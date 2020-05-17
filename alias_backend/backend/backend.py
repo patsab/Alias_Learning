@@ -15,8 +15,8 @@ from waitress import serve
 
 #configs and wrappers for flask app 
 app = Flask(__name__)
-CORS(app)
 app.config.from_pyfile('backend_config_dev.cfg')
+CORS(app)
 mongo = PyMongo(app)
 
 
@@ -344,7 +344,31 @@ def create_new_filter():
         usersCollection.insert_one(dataInsert)
         return jsonify({'message':'Filter with tags {0} was added for user {1}'.format(dataInsert['filter'],dataInsert['email'])})
 
+#delete a filter for user
+@app.route('/users/delete/filters',methods=['POST'])
+def delete_user_filter():
+    #check auth
+    if extractMailAndCheckAuth(request) == False:
+        return jsonify({}),403
+    #get json data from request
+    dataRequest = {}
+    try:
+        dataRequest = request.get_json(force=True)
+        if not dataRequest['email'] or not dataRequest['filter']:
+            return jsonify({'error':'Request does not contain all needed data'}),400
+    except :
+        return jsonify({'error':'Payload is not a valid json object'}),400
+    #check if user already has some filters
+    if usersCollection.find_one({"email":dataRequest['email']}) is not None:
+        try:
+            usersCollection.update_one({"email":dataRequest['email']},{"$pull":{'filter':list(dataRequest['filter'])}})
+        except:
+            return jsonify({'error':'filter could not be updated'}),400
+        return jsonify({'message':'Filter with tags {0} was removed for user {1}'.format(dataRequest['filter'],dataRequest['email'])})
+    else:
+        return jsonify({'error':"User doesn't exist"}),400
 
+    
 #get the filters for a user with progess included
 @app.route('/users/<email>/filterProgress',methods=['GET'])
 def get_filters_with_progress_for_user(email):

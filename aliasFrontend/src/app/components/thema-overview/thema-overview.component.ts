@@ -8,6 +8,8 @@ import { Statistik } from '../../models/Statistik';
 
 //the Service is imported and injected, so the data can be retrieved from it
 import { StatistikService } from  '../../services/statistik.service'
+import { Thema } from 'src/app/models/Filter';
+import { FilterService } from 'src/app/services/filter.service';
 
 @Component({
   selector: 'app-thema-overview',
@@ -26,6 +28,7 @@ export class ThemaOverviewComponent implements OnInit {
   constructor(private router:Router,
     private route:ActivatedRoute,
     private breakpointObserver: BreakpointObserver,
+    private filterService: FilterService,
     private statistikService:StatistikService) { }
 
   ngOnInit(): void {
@@ -65,5 +68,15 @@ export class ThemaOverviewComponent implements OnInit {
 
   navigateCardOverview(){
     this.router.navigate(['/home/cards/overview'],{queryParams:{tags:this.tags}});
+  }
+
+  deleteThema(){
+    let themaToDelete:Thema = {
+      email:sessionStorage.getItem("email"),
+      filter:this.tags 
+    }
+
+    this.filterService.deleteThema(themaToDelete).subscribe(res =>
+      this.router.navigate(['/home']));
   }
 }

@@ -42,5 +42,10 @@ export class FilterService {
     return this.http.get<String[]>( AppSettings.API_ENDPOINT +'tags/all')
           .pipe(map(res => res['tags']));
   }
+
+  //delete a thema if the user doesn't need it anymore
+  deleteThema(thema:Thema):Observable<Thema>{
+    return this.http.post<any>(AppSettings.API_ENDPOINT +'users/delete/filters',thema)
+  }
   
 }
