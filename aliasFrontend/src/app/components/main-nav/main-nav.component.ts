@@ -54,7 +54,6 @@ export class MainNavComponent implements OnInit{
   loadnewPage(page:string){
     this.redirectIfNotAuth();
     this.router.navigate([page])
-    this.location = this.getLocation(page);
     this.opened = false;
   }
 
@@ -88,12 +87,19 @@ export class MainNavComponent implements OnInit{
       return 'Ergebnis'
     }else if (url.startsWith('/home/evaluate')){
       return 'Antworten evaluieren'
+    }else if (url.startsWith('/home/feedback')){
+      return 'Feedback'
     }else if (url.startsWith('/home')){
       return 'Home'
     }
+
     return 'ALIAS'
   }
 
+  changeOfRoutes(){
+    this.redirectIfNotAuth();
+    this.location = this.getLocation(this.route.snapshot['_routerState'].url);
+  }
   
   navigateBack(){
     this._location.back();

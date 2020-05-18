@@ -36,6 +36,8 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { AppSettings } from './app.config' 
 import { OAuthModule , OAuthService } from 'angular-oauth2-oidc';
 import { CorsAuthInterceptor } from 'src/app/scripts/CorsAuthInterceptor';
+import { FeedbackComponent } from './components/feedback/feedback.component';
+import { FeedbackthxComponent } from './components/feedbackthx/feedbackthx.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,8 @@ import { CorsAuthInterceptor } from 'src/app/scripts/CorsAuthInterceptor';
     EvaluateAnswersComponent,
     CreateCardComponent,
     CardOverviewComponent,
+    FeedbackComponent,
+    FeedbackthxComponent,
   ],
   imports: [
     BrowserModule,

@@ -3,7 +3,7 @@
 
   <mat-grid-list 
     [cols]="(isHandset$ | async) ? '1':'3'"
-    [rowHeight]="(isHandset$ | async) ? '250px':'350px'">
+    [rowHeight]="(isHandset$ | async) ? '220px':'350px'">
     
     <mat-grid-tile *ngFor="let eachfilter of filters " colspan="1" rowspan="1">
       <mat-card (click)="navigateTo(eachfilter.filter)" class="dashboard-card">
@@ -24,7 +24,7 @@
             [animationDuration]="700"
             [showSubtitle] = "false"
           ></circle-progress>
-          {{eachfilter.statistikOneDay.cardsCorrect}} von {{eachfilter.statistikOneDay.cardsOverall}}     
+          <p>{{eachfilter.statistikOneDay.cardsCorrect}} von {{eachfilter.statistikOneDay.cardsOverall}}</p>   
         </mat-card-content> 
     </div>
       </mat-card>
@@ -34,7 +34,7 @@
     <mat-grid-tile colspan="1" rowspan="1">
       <mat-card routerLink='/home/create/thema' class="dashboard-card">
           <mat-card-title class="dashboard-card-content">
-            Neues Thema anlegen
+            Neues Thema anlegen <br/> <br/>  <mat-icon color="primary">create_new_folder</mat-icon>
           </mat-card-title>
       </mat-card>
     </mat-grid-tile>
@@ -42,10 +42,19 @@
     <mat-grid-tile colspan="1" rowspan="1">
       <mat-card routerLink='/home/evaluate' class="dashboard-card">
           <mat-card-title class="dashboard-card-content">
-            Antworten evaluieren
+            Antworten evaluieren <br/> <br/>  <mat-icon color="primary">question_answer</mat-icon> 
           </mat-card-title>
       </mat-card>
     </mat-grid-tile>
+
+    <mat-grid-tile colspan="1" rowspan="1">
+      <mat-card routerLink='/home/feedback' class="dashboard-card">
+          <mat-card-title class="dashboard-card-content">
+            Feedback abgeben <br/> <br/>   <mat-icon color="primary">feedback</mat-icon>
+          </mat-card-title>
+      </mat-card>
+    </mat-grid-tile>
+
 
   </mat-grid-list>
 </div>

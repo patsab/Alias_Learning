@@ -2,7 +2,7 @@
    
     <mat-grid-list 
     [cols]="(isHandset$ | async) ? '1':'2'"
-    [rowHeight]="(isHandset$ | async) ? '200px':'350px'">
+    [rowHeight]="(isHandset$ | async) ? '220px':'350px'">
       
       <mat-grid-tile  colspan="1" rowspan="2">
         <mat-card class="dashboard-card">
@@ -47,7 +47,7 @@
       <mat-grid-tile colspan="1" rowspan="1">
         <mat-card (click)="jetztLernen()" class="dashboard-card">
             <mat-card-title class="dashboard-card-content">
-              Jetzt lernen
+              Jetzt lernen <br/> <br/> <mat-icon color="primary">class</mat-icon>
             </mat-card-title>
         </mat-card>
       </mat-grid-tile> 
@@ -55,7 +55,7 @@
       <mat-grid-tile colspan="1" rowspan="1">
         <mat-card (click)="navigateCreateCard()" class="dashboard-card">
             <mat-card-title  class="dashboard-card-content">
-              Neue Frage erstellen
+              Neue Frage erstellen <br/> <br/> <mat-icon color="primary">rate_review</mat-icon> 
             </mat-card-title>
         </mat-card>
       </mat-grid-tile> 
@@ -63,7 +63,7 @@
       <mat-grid-tile colspan="1" rowspan="1">
         <mat-card (click)="navigateEvaluation()" class="dashboard-card">
             <mat-card-title class="dashboard-card-content">
-              Antworten zu diesem Thema evaluieren
+              Antworten zu diesem Thema evaluieren <br/> <br/>  <mat-icon color="primary">question_answer</mat-icon>
             </mat-card-title>
         </mat-card>
       </mat-grid-tile>
@@ -71,7 +71,7 @@
       <mat-grid-tile colspan="1" rowspan="1">
         <mat-card (click)="navigateCardOverview()" class="dashboard-card">
             <mat-card-title class="dashboard-card-content">
-              Alle Karten zu diesem Thema anzeigen
+              Alle Karten zu diesem Thema anzeigen <br/> <br/>  <mat-icon color="primary">open_in_new</mat-icon>
             </mat-card-title>
         </mat-card>
       </mat-grid-tile>
@@ -79,7 +79,7 @@
       <mat-grid-tile colspan="1" rowspan="1">
         <mat-card (click)="deleteThema()" class="dashboard-card">
             <mat-card-title class="dashboard-card-content">
-              Thema löschen
+              Thema löschen <br/> <br/> <mat-icon color="primary">delete</mat-icon> 
             </mat-card-title>
         </mat-card>
       </mat-grid-tile>

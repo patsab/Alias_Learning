@@ -25,6 +25,7 @@ cardsCollection = mongo.db.cards
 answersCollection = mongo.db.answers
 usersCollection = mongo.db.users
 tagsCollection = mongo.db.tags
+feedbackCollection = mongo.db.feedback
 
 
 #Id of the card "Wie gefällt die Alias"
@@ -275,15 +276,15 @@ def insert_answer_evaluation():
 #Insert the self correctness
 @app.route('/answer/self',methods=['POST'])
 def insert_self_correctness():
-    #check auth
-    if extractMailAndCheckAuth(request) == False:
-        return jsonify({}),403
     #get json data from request
     dataRequest = {}
     try:
         dataRequest = request.get_json(force=True)
     except :
         return jsonify({'error':'Payload is not valid'}),400
+    #check auth
+    if extractMailAndCheckAuth(request) == False:
+        return jsonify({}),403
     if dataRequest['answerId'] is None or dataRequest['selfgivenCorrectness'] is None:
         return jsonify({'error':'Payload does not contain all needed fields'}),400
     #Set the selfgiven Correctness in the DB
@@ -417,6 +418,26 @@ def get_progress_for_user(email):
     except:
         day = 1
     return progress_for_user(email,day,tags)
+
+
+"""
+Method for collection User Feedback
+"""
+@app.route('/feedback',methods = ['POST'])
+def post_new_feedback():
+    dataRequest = {}
+    dataInsert = {}
+    try:
+        dataRequest = request.get_json(force=True)
+        dataInsert['email']=dataRequest['email']
+        dataInsert['design']=dataRequest['design']
+        dataInsert['usability']=dataRequest['usability']
+        dataInsert['functionality']=dataRequest['functionality']
+    except:
+        return jsonify({})
+    feedbackCollection.insert_one(dataInsert)
+    return jsonify({'message':'Thank you for the feedback'})
+
 
 """
 Helper Methods
@@ -576,6 +597,7 @@ def predictCorrect(userAnswer,correctAnswer):
         return 50
     return int(response.text)
 
+#Method to check if the compare-Rest call works
 @app.route('/compare/<st1>/<st2>',methods=['GET'])
 def get_pred(st1,st2):
     return jsonify({'answer':predictCorrect(st1,st2)})

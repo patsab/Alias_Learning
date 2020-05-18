@@ -30,9 +30,16 @@
 }
 
 .circ-content{
+  margin-top: 0;
   margin:auto;
-  width: 35%;
+  width: 40%;
   min-width: 120px;
   min-height: 120px;
   text-align: center;
+}
+
+@media(max-width:420px){
+  p{
+    display: none;
+  }
 }

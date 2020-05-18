@@ -45,7 +45,9 @@ export class QuestionsService {
   //Post the selfgivenCorrectness for an answer
   createEvaluuationOwnAnswer(answerId:string,evaluation:number):Observable<any>{
     return this.http
-      .post<any>(AppSettings.API_ENDPOINT +'answer/self',{'answerId':answerId,'selfgivenCorrectness':evaluation})
+      .post<any>(AppSettings.API_ENDPOINT +'answer/self',{'answerId':answerId,
+                                'selfgivenCorrectness':evaluation,
+                                'email':sessionStorage.getItem("email")})
   }
 
 }

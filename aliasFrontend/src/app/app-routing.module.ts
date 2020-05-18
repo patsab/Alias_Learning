@@ -11,6 +11,8 @@ import { CreateCardComponent } from './components/create-card/create-card.compon
 import { CardOverviewComponent } from './components/card-overview/card-overview.component';
 import { MainNavComponent } from './components/main-nav/main-nav.component';
 import { dashCaseToCamelCase } from '@angular/compiler/src/util';
+import { FeedbackComponent } from './components/feedback/feedback.component';
+import { FeedbackthxComponent } from './components/feedbackthx/feedbackthx.component';
 
 
 const routes: Routes = [
@@ -26,6 +28,8 @@ const routes: Routes = [
       {path: 'question',component: QuestionComponent},
       {path: 'result',component: ResultComponent},
       {path: 'cards/overview',component: CardOverviewComponent},
+      {path: 'feedback',component:FeedbackComponent},
+      {path: 'feedbackthx',component:FeedbackthxComponent},
     ]},
   {path: '**',redirectTo:'home', pathMatch:'full'}
 ];

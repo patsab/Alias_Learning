@@ -44,10 +44,10 @@ export class DashboardComponent implements OnInit {
 
   //Sets the color of the progress bar
   setColor (average: number) : string {
-    if(average > 66){ 
+    if(average > 75){ 
       return "#78C000"
     }
-    else if(average  >= 33){
+    else if(average  >= 40){
       return "#F7CA18"
     }
     else{
