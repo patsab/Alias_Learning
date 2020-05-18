@@ -41,12 +41,12 @@ Docker uses the container names for communication. If u don't want to use docker
 --> run with 'python3 correctness.py'
 ```
 
-*Remember: to run the backend u need a MongoDB on the default Ports.Start a dockerized Version with:
+Remember: to run the backend u need a MongoDB on the default Ports.Start a dockerized Version with:
 ```
 docker run --name mongodb -d -p 27017-27019:27019-27019 mongo:4.0.16
 ```
 
 ### Authors:
-*Patrick Sabau
-*Patrick Schneider
-*Andreas Schüpferling 
+* Patrick Sabau
+* Patrick Schneider
+* Andreas Schüpferling 
