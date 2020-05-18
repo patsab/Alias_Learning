@@ -1,0 +1,66 @@
+<div class="grid-container">
+  
+    <mat-grid-list 
+      [cols]="(isHandset$ | async) ? '1':'2'"
+      [rowHeight]="(isHandset$ | async) ? '300px':'350px'">
+
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-card  class="dashboard-card">
+            <mat-card-title class="dashboard-card-content">
+              Wie findest du die Usability der App? Kommst du intuitiv zurecht? Was fehlt dir noch?
+            </mat-card-title>
+            <mat-card-content>
+                <form>
+                    <mat-form-field class="answer">
+                      <mat-label>Feedback zum Design</mat-label>
+                      <textarea matInput #usability rows=3 placeholder="Folgendes kann man noch verbessern ..."></textarea>
+                    </mat-form-field>
+                </form>
+            </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+  
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-card class="dashboard-card">
+            <mat-card-title class="dashboard-card-content">
+              Wie findest du den Funktionsumfang? Hilft dir die App beim lernen? Was können wir noch hinzufügen?
+            </mat-card-title>
+            <mat-card-content>
+                <form>
+                    <mat-form-field class="answer">
+                      <mat-label>Feedback zur Funktionalität</mat-label>
+                      <textarea matInput #functionality rows=3 placeholder="Folgendes kann man noch verbessern ..."></textarea>
+                    </mat-form-field>
+                </form>
+            </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+  
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-card class="dashboard-card">
+            <mat-card-title class="dashboard-card-content">
+              Wie findest du das Design der App ? Welche Aspekte gefallen dir garnicht, und welche sehr gut?
+            </mat-card-title>
+            <mat-card-content>
+                <form>
+                    <mat-form-field class="answer">
+                      <mat-label>Feedback zum Design</mat-label>
+                      <textarea matInput #design rows=3 placeholder="Folgendes kann man noch verbessern ..."></textarea>
+                    </mat-form-field>
+                </form>
+            </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+
+
+    </mat-grid-list>
+
+    <p>
+        <button mat-raised-button class="answerButton" (click)="feedbackAbgeben()" color="primary">Feedback abgeben</button>
+    </p>
+    <br/>
+    <p>
+       <button mat-raised-button color="accent">Zurück</button>
+    </p>
+  
+  </div>

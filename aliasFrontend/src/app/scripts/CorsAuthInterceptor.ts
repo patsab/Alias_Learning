@@ -17,7 +17,6 @@ export class CorsAuthInterceptor implements HttpInterceptor {
 
         //add token in request to the backend-api 
         if (url.startsWith(AppSettings.API_ENDPOINT)){
-            console.log("Connecting to" ,url)
             // if a token exists, add it as a header
             let token = this.authStorage.getItem('access_token');
             if (token && token != ''){
@@ -27,10 +26,8 @@ export class CorsAuthInterceptor implements HttpInterceptor {
         }
         //request to the OpenID-Connect need the CORS Header in the response
         if (url.startsWith(AppSettings.OPENIDCONNECT_URL)){
-            console.log("Changeing Url from ",url,"to", "/oidc")
             let newUrl = url.replace("https://git.informatik.fh-nuernberg.de","/oidc");
             requestToForward = req.clone({url : newUrl});
-            console.log("Connecting to" ,url)
         }
 
         // add the cors header to the response

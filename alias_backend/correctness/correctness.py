@@ -9,7 +9,7 @@ app.config.from_pyfile('correctness_config_dev.cfg')
 
 #load the pretrained language pack
 nlp = spacy.load('de_core_news_md')
-#nlp2 = spacy.load('de_trf_bertbasecased_lg')
+nlp2 = spacy.load('de_trf_bertbasecased_lg')
 
 #stop words are words without relevant meaning, but still there are some words which are usefull
 #These words will be removed from the stop word list, because they sould not be filteres out in the strings

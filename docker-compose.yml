@@ -2,12 +2,14 @@
 version: '3'
 services:
   mongodb:
+    #Build and environment if u want to use a DB-User
     #build: ./db
     image: mongo:4.0.16
     hostname: mongodb
     container_name: mongodb
-    ports:
-      - 27017:27017
+    #The Mongo-DB-Ports just need to be opened, when you run the pymongo app on localhost instead inside docker network
+    #ports:
+    #  - 27017:27017
     #environment:
     #  - MONGO_INITDB_ROOT_USERNAME=${MONGO_ROOT_USER}
     #  - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASS}
@@ -17,12 +19,9 @@ services:
     #  - APP_MONGO_PASS=${APP_MONGO_PASS}
     #  - APP_MONGO_USER=${APP_MONGO_USER}
     #  - APP_MONGO_DB=${APP_MONGO_DB}
+    #Define the Path to mount the Data of Database
     #volumes:
-    #The Path for mount needs to be defined here
-    #    #But WSL with the Docker for Windows Daemon (which i am currently using)
     #  - /where/to/store/your/mongodb/data:/data/db
-    #  - ./db/create-user.sh:/docker-entrypoint-initdb.d/create-user.sh:ro
-    #command: mongod
   pymongo:
     build: ./alias_backend/backend
     hostname: pymongo
@@ -31,14 +30,14 @@ services:
       - "5000:5000"
     depends_on: 
       - mongodb
-  #correctness:
-  #  build: ./alias_backend/correctness
-  #  hostname: correctness
-  #  container_name: correctness
-  #  ports:
-  #    - "5010:5010"
-  #  depends_on:
-  #    - pymongo
+  correctness:
+    build: ./alias_backend/correctness
+    hostname: correctness
+    container_name: correctness
+    ports:
+      - "5010:5010"
+    depends_on:
+      - pymongo
   frontend:
     build: ./aliasFrontend
     hostname: frontend

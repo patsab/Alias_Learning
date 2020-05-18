@@ -1,0 +1,42 @@
+.dashboard-card {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 5px;
+    font-family: 'Montserrat';
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px 1px gray;
+}
+
+.mat-form-field{
+    margin-top: 100px;
+    min-width: 300px;
+    height: 50px;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) ;
+    font-family: 'Montserrat';
+  }
+
+p{
+    display: inline-block;
+    margin-top: 20px;
+    position: sticky;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) 
+}
+  
+button{
+    width: 300px;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    font-family: 'Montserrat';
+}
+
+.answerButton{
+      margin-top: 15px;
+}
+  

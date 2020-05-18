@@ -1,0 +1,25 @@
+.grid-container{
+    justify-content: center;
+}
+
+h1{
+    min-width: 200px;
+    margin: 0;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Montserrat';
+}
+
+button{
+    width: 300px;
+    margin: 0;
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%); 
+    font-family: 'Montserrat';
+}
