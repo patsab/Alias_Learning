@@ -97,7 +97,7 @@ export class MainNavComponent implements OnInit{
   }
 
   changeOfRoutes(){
-    this.redirectIfNotAuth();
+    //this.redirectIfNotAuth();
     this.location = this.getLocation(this.route.snapshot['_routerState'].url);
   }
   
