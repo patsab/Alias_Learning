@@ -31,7 +31,7 @@ const routes: Routes = [
       {path: 'feedback',component:FeedbackComponent},
       {path: 'feedbackthx',component:FeedbackthxComponent},
     ]},
-  {path: '**',redirectTo:'home', pathMatch:'full'}
+  {path: '**',redirectTo:'login', pathMatch:'full'}
 ];
 
 

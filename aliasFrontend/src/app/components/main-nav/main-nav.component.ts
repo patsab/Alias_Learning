@@ -29,25 +29,7 @@ export class MainNavComponent implements OnInit{
     //set the heading in the main nav to the current location/function
     this.location = this.getLocation(this.route.snapshot['_routerState'].url);
     //if the route contains ?code=... then do the login process
-    this.route.queryParamMap.subscribe(params =>
-      {if(params.get('code')){
-        this.oauthService.configure(AppSettings.oauthConfig);
-        this.oauthService.setupAutomaticSilentRefresh();
-        this.oauthService.loadDiscoveryDocumentAndLogin();
-        // get the user data after the token is received
-        // the request of the data is handles by loadUserProfile()
-        this.oauthService.events
-          .pipe(filter(e => e.type === 'token_received'))
-          .subscribe(async _ =>{
-          sessionStorage.setItem('email',await this.oauthService.loadUserProfile().then(result => result.email));
-          //after setting the email, reload the page, so the data from the backend is with the correct email
-          window.location.reload();
-        });
-      }
-      //if the user doesn't arrive with code, check if he is logged in 
-      else{
-        this.redirectIfNotAuth();
-      }})
+    this.redirectIfNotAuth();
   }
 
   //load a new component and change the Location String in the nav-bar
@@ -65,7 +47,6 @@ export class MainNavComponent implements OnInit{
 
   //if the user is not authorized, he will be redirected to login page and loggedOff
   redirectIfNotAuth(){
-    console.log(sessionStorage.getItem('email'));
     if (!sessionStorage.getItem('email')){
       this.router.navigate(['/login']);
     }   
@@ -97,7 +78,7 @@ export class MainNavComponent implements OnInit{
   }
 
   changeOfRoutes(){
-    //this.redirectIfNotAuth();
+    this.redirectIfNotAuth();
     this.location = this.getLocation(this.route.snapshot['_routerState'].url);
   }
   

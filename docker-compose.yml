@@ -21,7 +21,7 @@ services:
     #  - APP_MONGO_DB=${APP_MONGO_DB}
     #Define the Path to mount the Data of Database
     #volumes:
-    #  - /where/to/store/your/mongodb/data:/data/db
+    #  - /data/mongodb:/data/db
   pymongo:
     build: ./alias_backend/backend
     hostname: pymongo
@@ -34,8 +34,8 @@ services:
     build: ./alias_backend/correctness
     hostname: correctness
     container_name: correctness
-    ports:
-      - "5010:5010"
+    #ports:
+    #  - "5010:5010"
     depends_on:
       - pymongo
   frontend:
