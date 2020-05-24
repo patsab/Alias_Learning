@@ -134,5 +134,89 @@ Was versteht man unter Wirtschaftlichkeit?;Die Relation bewerteter output/ bewer
 Wie ist die allgemeine Rentabilitätskennziffer definiert?;(Gewinn/Kapitaleinsatz)*100;
 Wie ist die Betriebsmittelrentabilität definiert?;(Gewinn/eingesetztes Kapital)*100;
 Wie ist die Renturn of Investment ROI definiert?;(Gewinn/Umsatz)*(Umsatz/Kapitaleinsatz)*100 = Umsatzrentabilität * Kapitalumschlaghäufigkeit*100;
-
-
+Nenne sieben Fehlmengenkosten;- Lehrkosten bei Maschinen und Beschäftigten
+- Eventuell Überstundenzuschläge
+- Preisaufschläge bei Noteindeckung
+- Eventuell Konventionalstrafen
+- Gewinneinbuße
+- Good-Will-Einbuße (Imageverlust)
+- Marktanteilsverlust;
+Nenne vier Probleme der Lagerhaltung;- Lagerkosten
+- Kapitalbindung
+- Handlings-Aufwand
+- Steigende Durchlaufzeit;
+Was setzen sich Lagerkosten zusammen?;- Equipment
+- Personal
+- Unterhalt
+- Versicherungen
+- Schwund
+- Verderb/Überalterung
+- Zinskosten;
+Was bedeutet Kapitalbindung;- Kapital durch Kauf der Waren gebunden
+- Kapital durch Lagerung der Ware weg;
+was ist Handlings-Aufwand?;- Wareneingangskontrolle
+- Einlagerung
+- Kommissionierung
+- Bestandsführung;
+Nenne fünf Vorteile der Einzelbeschaffung;- Niedrige Kapitalbindung
+- Niedrige Lagerkosten
+- Keine Ladenhüter
+- Übersichtliches Lager
+- Niedriger Verwaltungsaufwand;
+Nenne sechs Nachteile der Einzelbeschaffung;- Hohe Bestellkosten pro Stück
+- Keine Mengenrabatte (Mindermengenzuschlag)
+- Hohe Marktabhängigkeit (Fristen, Preise, Verfügbarkeit)
+- Hohe Lieferantenabhängigkeit (Qualität)
+- Gefahr von Fehlmengenkosten
+- Unter Umständen lange Lieferzeit;
+Nenne sechs Vorteile der fertigungssynchronen Beschaffung;- Niedrige Kapitalbindung
+- Niedrige Lagerkosten
+- Niedrige Einstandspreise
+- Niedrige Bestellkosten/Stück
+- Keine Ladenhüter
+- Kurze Durchlaufzeit;
+Nenne drei Nachteile der fertigungssynchronen Beschaffung;- Hohe Lieferantenabhängigkeit (terminlich und qualitativ)
+- Volkswirtschaftlich: Ökologie (Lagerung auf der Straße)
+- Hohe Streikanfälligkeit;
+Nenne fünf Abhilfemaßnahmen gegen Qualitätsprobleme in der fertigungssynchronen Beschaffung;- Wareneingangskontrolle beim Lieferanten
+- Aufkauf des Lieferanten (=Diversifikation)
+- Konventionalstrafen
+- Sicherheitsbestand
+- Zertifizierte Lieferanten auswählen (EFQM oder ISO)
+Nenne fünf Abhilfemaßnahmen gegen Fehlmengenkosten in der fertigungssynchronen Beschaffung;- Sicherheitsbestand und Meldebestand anlegen
+- Konventionalstrafen
+- Aufkauf des Lieferanten
+- Zweitlieferanten einschalten: Bedarfssplitting
+- Standortoptimierung (Lieferanten in der Nähe);
+Nenne die Vorgehensweise des Qualitäts-Management-System (ISO - EFQM);- Festlegung der relevanten Kriterien in einzelnen Bereichen
+- Erhebung IST-Zustand
+- Festlegung der Q-Standards
+- Maßnahmen zur Q-Verbesserung
+- Erstellung Q-Handbuch
+- Audit
+- Zertifizierung;
+Nenne fünf Vorteile des Qualitäts-Management-System (ISO - EFQM);- durch Prozessoptimierung
+- Produktivitätssteigerung
+- Q-Steigerung
+- Verbesserung Q-Bewusstsein
+- Wettbewerbsargument;
+Nenne fünf Probleme des Qualitäts-Management-System (ISO - EFQM);- eher Prozess- als Produktoptimierung
+- Aufwand
+- Inflexibilität
+- Kosten
+- Teilweise Eigendefinition der Kriterien;
+Was ist das Prinzip der ABC-Analyse?;In vielen unternehmerischen Situationen sind einige wenige Elemente dominierend;
+Was ist die ABC-Analyse?;Die ABC-Analyse ist ein Analyse-Instrument um Prioritäten zu setzen in verschiedenen Unternehmensbereichen wie etwa:
+Materialwirtschaft (Material-, Lieferantenanalyse), Absatzbereich (Produkt-, Kundenanalyse), Organisation (Fehlerhandling, Wertanalyse) usw.;
+Nenne die ABC-Klassifizierung in der Materialwirtschaft;- Ca. 20% der Materialmenge haben einen Anteil am Materialwert von ca. 70% = A-Material
+- Ca. 50% der Materialmenge haben einen Anteil am Materialwert von ca. 10% = C-Material
+- Der Rest ist B-Material;
+Was ist durch die ABC-Analyse die Konsequenz auf das Handling von A-Material?;intensives Handling, öfter, kleinere Mengen bestellen;
+Was ist durch die ABC-Analyse die Konsequenz auf das Handling von C-Material?;einfaches Handling, seltener, große Mengen bestellen;
+Wie ist Wertanalyse definiert?;Wertanalyse ist eine Methode um systematisch nach DIN Produktfunktionen durch ein Team bezüglich Kosten zum Wert zu optimieren;
+Was ist Brainstorming?Zur allgemeinen Ideenfindung. 8 Personen. Dauer ab 15 bis 90 Minuten. Heterogene, hierarchiefreie Gruppenzusammensetzung. Keine Kritik in der Ideenfindungsphase.;
+Was ist die Methode 635?;Bei einfachen Problemen, z.B. Namensfindung. 6 Personen, 3 Ideen in jeweils 5 Minuten, anschließender Wechsel. Maximal 108 Vorschläge in 30 Minuten;
+Was ist Synektik?;Systematische Verfremdung eines Problems durch Analogien aus anderen Bereichen, z.B. Naturwissenschaften.;
+Was ist die Osborn-Methode?;Anders verwenden, Adaptieren, Modifizieren, Vergrößern/Verkleinern, Ersetzen, Umkehren, Neu Anordnen, Kombinieren usw.;
+Was ist die Morphologische-Methode?;Logisch-systematisches Verfahren. Analytische Problemzerlegung und anschließende kreative Synthese.;
+Was ist Design Thinking?;Versucht innovative Lösungen eines Problems vor allem aus Sicht des Anwenders/Nutzers durch ganzheitliche Sichtweise zu finden;

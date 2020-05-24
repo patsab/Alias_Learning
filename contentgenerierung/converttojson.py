@@ -8,12 +8,18 @@ regDevider = r'([\s\S]*?);([\s\S]*?);\n'
 
 quests = list()
 
-inFile = open("out.txt", "r")
-outFile = open("out.json", "w")
+tags = '"english 3/4 definitions"'
+filename = 'english_3_4_definitions'
+
+inFile = open(filename + ".txt", "r")
+outFile = open(filename + ".json", "w")
 test = []
 
 quests = re.findall(regDevider, inFile.read())
-print(quests[0])
+#print(quests[0])
+#print("\nAnzahl Fragen: ")
+#print(len(quests))
+
 
 
 def writeJson():
@@ -35,7 +41,7 @@ def writeJson():
         test.append('"created_by": "schneiderpa77403@th-nuernberg.de",')
         test.append('"latest": "true",')
         test.append('"question": ' + json.dumps(x[0]) + ',')
-        test.append('"tags": ["Englisch"],')
+        test.append('"tags": [' + tags + '],')
         test.append('"version": 1')
         test.append('},')
 ##        outFile.write('{')
