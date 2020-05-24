@@ -1,0 +1,30 @@
+Hallo
+
+du willst einfacher Lernen? hier kommt unsere Lösung :)
+
+Wir, dh. Patrick, Andi und Patrick, sind Informatikstudenten und bestreiten dieses Semester unser IT-Projekt.
+
+
+Mit unserem Lerndienst ALIAS kannst du dich einfach zu einem Thema abfragen lassen und bekommst automatisch eine Bewertung deiner Antworten.
+
+
+Ziel unserer Forschung ist es die automatische Bewertung durch Machine-Learning zu verbessern und die Unterschiede zwischen menschlicher Bewertung und einem tranierten System zu evaluieren.
+
+Um euch beim Lernen helfen zu können brauchen wir zuerst eure Hilfe, deshalb bitten wir euch folgende Sachen auszuprobieren:
+
+
+-	neue Themengebiete anlegen und mit Fragen füllen
+-	aktiv mit ALIAS zu lernen
+-	die Antworten von anderen Kommilitonen zu bewerten
+-	einen kurzen Fragebogen auszufüllen
+
+
+Wir freuen uns auf deine Teilnahme!
+
+
+(Link zur App)
+(Link zur Evaluation)
+
+
+Viele Grüße,
+Patrick, Andi und Patrick

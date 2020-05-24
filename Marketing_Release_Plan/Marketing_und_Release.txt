@@ -1,0 +1,57 @@
+Möglichkeiten Kommilitonen zu erreichen:
+-	FSI (warte noch auf Antwort)
+-	Rundmail über Sekreteriat
+-	Jahrgangs-WhatsApp-Gruppen / -Facebook-Gruppen
+-	persönliche Kontakte
+
+Zugriff auf die App:
+-	nur über VPN
+-	Login nur über GIT
+
+
+Variante 1:
+-	Email oder eine de anderen Varianten (s.o.) mit Beschreibung und Link zur Landingpage
+-	Landingpage mit Links zur App und zur Umfrage (Evaluation)
+
+Variante 2:
+-	Kontaktaufnahme entweder über Email oder über oben genannte Kontaktmöglichkeiten mit anschließender Email an die Testkandidaten
+-	Email mit Beschreibung der App und Bitte zum Test der App und anschließender Evaluation
+	(Beide Links in der Email)
+	
+	
+Inhalt Landingpage oder Email:
+-	kurze Beschreibung der App
+	-	Karteikartenlernen
+	-	Bewertung durch KI
+	-	Bewertung der Antworten über Nutzer möglich
+	-	Ziel des Projekts ist es den Unterschied der Bewertungen durch Menschen und einen Computer zu evaluieren + Die KI zu trainieren
+-	Link zur App
+-	Link zur Evaluation
+
+
+Feedback über Umfrage Tool:
+-	gibts von der TH schon ein Tool?
+-	externes Tool? zB google Formulare
+
+Umfrage Inhalt s. Umfrage_bei_Feldtest.txt
+
+
+
+Releasevarianten:
+1.)
+- 	direkt am 18.5. über oben genannte Wege
+
+2.)
+-	vom 18.5. - ca. 24.5. Usability Test durch 5 - 10 Benutzer
+- 	bis 31.5. Ergebnisse des Tests evaluieren und umsetzen
+-	Release zum 1.6. über oben genannte Wege
+
+
+
+Content der noch für einen Release gebraucht wird:
+- 	Karteikarten
+- 	How-To Seite
+
+Inhalt der Karteikarten? (Was ist für den Anfang leichter?):
+- 	eher etwas einfaches wie z.B. Vokabeln für Englisch 1/2
+-	Fragen mit längeren Freitextantworten
