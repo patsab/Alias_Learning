@@ -1,1 +1,414 @@
-{"cards": [{"_id": "","answer": "In computing an application is a piece of software designed to carry out a particular task","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does application mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "programs and other operating information used by a computer, also the instructions that control, what a computer does","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does software mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "symbol or picture, that represents a certain function on the computer, click on it to activate it","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does icon mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "the (semi permanent) software, that is already installed on the device before using it, needed to do the basic work of the device like booting, shutdown, etc.","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does firmware mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "software which is offered and distributed to all people for free of charge, people are encouraged to share copies, sometimes the free version is time-limited","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does shareware mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "type of software utility with more reduced functionality than the full and paid version and is freely distributed to end users, allows software developers and independent software vendors to try the lite version for free before purchasing the actual software","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does liteware mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "software completely free of charging, you can download and use it for no cost, no need to pay anytime, common class of small application is mostly available","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does freeware mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "additional unwanted software that was installed on the device before, may include major security vulnerabilities","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does crapware mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "software for which the original source code is made freely available and maybe redistributed and modified","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does open-source mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "the state of belonging or being available to the public as a whole, especially through not being subject to coyright or other legal restrictions","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does public domain mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "the protection law for the software owners, they have the rights to decide, who can use the work of them, people have to pay licenses to them","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does copyright mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "set of instructions, can be translated to machine language instructions by a compiler, to be executed by hardware later","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does programming language mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "analog signals are signals that show a continous measurement, they're translated to electric impulses to be transmitted later","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does analog (signals) mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "digital signals are signals that show an approximation of the signal with the most possible accuracy, they're translated to binary format to be transmitted later","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does digital (signals) mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "the rate at which samples of an analog signal are taken in order to be converted into digital form, typically expressed in samples per seconds or hertz/Hz","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does sampling/ sampling rate mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "large system of connected computers around the world that allows people to share information and communication with each other","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does internet mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "information system on the internet, allows documents to be connected to other documents by hypertext links, enabling the user to search for information by moving from one docoment to another one","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does WWW mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "regularly updated journal or diary on the internet published by one or many people mostly written in informal, conversational style","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does blog mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "contract between provider and customer, provider offers internet to customer for a fixed fee","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does flat rate mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "a standardised system for tagging text files to achieve font color graphic and hypertext effects on www pages","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does HTML mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "combined device for modulation and demodulation between digital data of the computer and the analog signal of the telephone, allows the computer to gain access to the internet","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does modem mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "set of related webpages located on a single domain on the internet, about one or many topics","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does website mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "purchasing or selling goods, services via electronic channels, for example the internet","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does e-commerce mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "traditional street side store where business offers products/services to customers face to face (e.g. bank, grocery stores)","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does brick-and-mortar mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "crime in which a computer is the object of the crime or is used as a tool to commit an offense, computer technology/internet are used to access personal information, business secrets, other malicious purposes","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does cybercrime mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "people hacking accounts of other people without their knowledge in order to gain personal information or steal money from bank accounts","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does identity theft mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "the fraudulent practice of sending emails purporting to be from reputable companies in order to urge individuals to reveal personal information such as passworts or credit card numbers","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does phishing mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "somebody using a computer trying to gain access to somebody else's account illegally in order to steal information","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does hacker mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "a secret number which is used to login to a personal account","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does PIN mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "a number sent to you to confirm your identity for a transaction, can only be used once","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does TAN mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "a person performing any fraudulent business or scheme that takes money or other goods from an unsuspecting person","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does scammer mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "a software that was designed for gaining access to another computer in order to damage it, is able to replicate itself","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does computer virus mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "software that was deliberately designed to destroy a system or steal information","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does Trojan horse mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "honor for the person who creates the most malicious computer virus","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does bragging rights mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "unwanted content sent to you as an email or shown to you in other ways, mostly with advertisement","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does spam mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "a spamming mail, you haven't asked for or don't want, mostly advertising","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does junk mail mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "an electronic letter sent from one computer to another one via internet","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does e-mail mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "additional content, mostly files, you add to an e-mail before sending it away","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does attachment mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "ordinary postal system, sending letters or other packages away in contrast to e-mail","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does snail mail mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "a way to send e-mails to more people than them who are actually meant to receive it just for information purposes, not to necessarily receive an answer from","created": "Sun, 24 May 2020 21:42:52 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does CC mean?","tags": ["english 3/4 definitions"],"version": 1},{"_id": "","answer": "a little symbol, which was just a facial expression to convey an emotion in the beginning, now it can be other symbols too","created": "Thu, 21 May 2020 18:46:00 GMT","createdSemester": "SS 20","created_by": "schneiderpa77403@th-nuernberg.de","latest": "true","question": "Definition - What does emoticon mean?","tags": ["Englisch"],"version": 1}]}
+{
+    "cards": [{
+            "_id": "",
+            "answer": "In computing an application is a piece of software designed to carry out a particular task",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does application mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "programs and other operating information used by a computer, also the instructions that control, what a computer does",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does software mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "symbol or picture, that represents a certain function on the computer, click on it to activate it",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does icon mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "the (semi permanent) software, that is already installed on the device before using it, needed to do the basic work of the device like booting, shutdown, etc.",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does firmware mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "software which is offered and distributed to all people for free of charge, people are encouraged to share copies, sometimes the free version is time-limited",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does shareware mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "type of software utility with more reduced functionality than the full and paid version and is freely distributed to end users, allows software developers and independent software vendors to try the lite version for free before purchasing the actual software",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does liteware mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "software completely free of charging, you can download and use it for no cost, no need to pay anytime, common class of small application is mostly available",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does freeware mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "additional unwanted software that was installed on the device before, may include major security vulnerabilities",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does crapware mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "software for which the original source code is made freely available and maybe redistributed and modified",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does open-source mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "the state of belonging or being available to the public as a whole, especially through not being subject to coyright or other legal restrictions",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does public domain mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "the protection law for the software owners, they have the rights to decide, who can use the work of them, people have to pay licenses to them",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does copyright mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "set of instructions, can be translated to machine language instructions by a compiler, to be executed by hardware later",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does programming language mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "analog signals are signals that show a continous measurement, they're translated to electric impulses to be transmitted later",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does analog (signals) mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "digital signals are signals that show an approximation of the signal with the most possible accuracy, they're translated to binary format to be transmitted later",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does digital (signals) mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "the rate at which samples of an analog signal are taken in order to be converted into digital form, typically expressed in samples per seconds or hertz/Hz",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does sampling/ sampling rate mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "large system of connected computers around the world that allows people to share information and communication with each other",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does internet mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "information system on the internet, allows documents to be connected to other documents by hypertext links, enabling the user to search for information by moving from one docoment to another one",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does WWW mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "regularly updated journal or diary on the internet published by one or many people mostly written in informal, conversational style",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does blog mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "contract between provider and customer, provider offers internet to customer for a fixed fee",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does flat rate mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "a standardised system for tagging text files to achieve font color graphic and hypertext effects on www pages",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does HTML mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "combined device for modulation and demodulation between digital data of the computer and the analog signal of the telephone, allows the computer to gain access to the internet",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does modem mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "set of related webpages located on a single domain on the internet, about one or many topics",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does website mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "purchasing or selling goods, services via electronic channels, for example the internet",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does e-commerce mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "traditional street side store where business offers products/services to customers face to face (e.g. bank, grocery stores)",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does brick-and-mortar mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "crime in which a computer is the object of the crime or is used as a tool to commit an offense, computer technology/internet are used to access personal information, business secrets, other malicious purposes",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does cybercrime mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "people hacking accounts of other people without their knowledge in order to gain personal information or steal money from bank accounts",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does identity theft mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "the fraudulent practice of sending emails purporting to be from reputable companies in order to urge individuals to reveal personal information such as passworts or credit card numbers",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does phishing mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "somebody using a computer trying to gain access to somebody else's account illegally in order to steal information",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does hacker mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "a secret number which is used to login to a personal account",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does PIN mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "a number sent to you to confirm your identity for a transaction, can only be used once",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does TAN mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "a person performing any fraudulent business or scheme that takes money or other goods from an unsuspecting person",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does scammer mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "a software that was designed for gaining access to another computer in order to damage it, is able to replicate itself",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does computer virus mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "software that was deliberately designed to destroy a system or steal information",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does Trojan horse mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "honor for the person who creates the most malicious computer virus",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does bragging rights mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "unwanted content sent to you as an email or shown to you in other ways, mostly with advertisement",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does spam mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "a spamming mail, you haven't asked for or don't want, mostly advertising",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does junk mail mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "an electronic letter sent from one computer to another one via internet",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does e-mail mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "additional content, mostly files, you add to an e-mail before sending it away",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does attachment mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "ordinary postal system, sending letters or other packages away in contrast to e-mail",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does snail mail mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "a way to send e-mails to more people than them who are actually meant to receive it just for information purposes, not to necessarily receive an answer from",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does CC mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }, {
+            "_id": "",
+            "answer": "a little symbol, which was just a facial expression to convey an emotion in the beginning, now it can be other symbols too",
+            "created": "Sun, 24 May 2020 21:42:52 GMT",
+            "createdSemester": "SS 20",
+            "created_by": "schneiderpa77403@th-nuernberg.de",
+            "latest": "true",
+            "question": "Definition - What does emoticon mean?",
+            "tags": ["english 3/4 definitions"],
+            "version": 1
+        }
+    ]
+}
