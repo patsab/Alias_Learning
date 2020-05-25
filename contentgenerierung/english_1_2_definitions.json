@@ -1,494 +1,492 @@
-{
-    "cards": [{
-            "_id": "",
+[{
+            
             "answer": "also known as Hollerith-/IBM cards, paper cards containing several punched or perforated holes by\nhand or machine to represent data, allowed companies to store and access information by inserting the card into the computer",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does punch cards mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "a tester tries to find out who's the computer and who are the human beings, if he's wrong, the computer can keep up with human beings in intelligence",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does Turing test mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "a science which makes it possible for machines to have some of the qualities that the human mind possesses, such as the ability to understand language, recognize pictures, solve problems and learn",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does Artificial Intelligence mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "aperson that grows up in the digital age, in contrast to acquiring familiarity as an adult",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does digital native mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "a person becoming familiar with devices like smartphones or tablets as an adult in contrast to growing up with them",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does digital immigrant mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "coming from an protest organization in the early 19th century, the term Luddite describes a person which opposes or fears many forms of modern technology",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does Luddite mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "a device which is mainly used to call or communicate with other people not in your area, you can do it anywhere in contrast to a regular telephone",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does mobile phone/cellphone mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "mobile device with a mobile operating system, a touchscreen display and a rechargable battery, can do what other computers do, just doesn't contain some input/output abilities, similar to smartphones, only larger and incompatible with cellular networks",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does tablet mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "a computer that isn't bound on a special place, works with a rechargable battery instead of power supply",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does laptop/notebook mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "multi-purpose computer, mostly used by normal people instead of technicians or experts, practical due to its size, capabilities and price",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does personal computer/pc mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "personal computer designed to be used at a single location, on or close to a desk or table because of its size and power requirements",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does tower mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "computers mainly used by large organizations for critical applications, bulk data- and transactions processing, larger and with more power than other computers",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does mainframe mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "computer program or device providing functions for other programs or devices, clients",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does server mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "computer with high level performance in comparison to usual computers, performance is measured in floting-point operations per seconds (flops)",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does supercomputer mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "set of computers that work together in that way, they can be seen as a single system",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does cluster mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "expansion card generating a feed of output images to a display device (e.g. monitor)",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does graphic card mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "internal expansion card providing input and output of audio signals to and from a computer controlled by computer programs",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does sound card mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "main printed circuit board, holds and allows communication between many crucial electronic system components",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does motherboard/mainboard mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "hardware and software, that's required before launching a system, environment needed to run software",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does system requirements mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "set of rules and methods describing the functionality, organization, and implementation of computer systems",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does computer architecture mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "electronic circuitry within a computer carrying out the instructions of a computer program by performing the basic arithmetic, logic, controlling and input/output operations specified by the instructions",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does CPU mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "computing term stating that processing power for computers doubles every two years",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does Moore's Law mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "is reached, when transistors can become as small as atomic particles, consequence is no more growth in the CPU market concerning speeds",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does atomic limit mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "semiconductor device used to amplify or switch electronic signals and electrical power",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does transistor mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "piece of hardware equipment used to provide data and control signals to an information processing system (e.g. computer)",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does input device mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "piece of hardware equipment converting information into human readable form",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does output device mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "input device, which contains an arrangement of buttons or keys, you can either control the pc with or insert text",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does keyboard mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "hand-held pointing device, creates a symbol on the screen, you can control the computer with by making two dimensional moves and clicking on e.g. icons later",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does mouse mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "output device that displays information in picturial form, comprising display device, circuitry, casing and power supply",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does monitor mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "input device, usually on the top of a display of an information processing system, used to give input or control the system through simple or multi-touch gestures",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does touch screen mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "peripheral device, which creates a persistent representation of graphics or text on paper, mostly human readable",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does printer mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "device that optically scans images, printed or handwritten text or other objects converting it to a digital image",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does scanner mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "input device that consists of a stick pivoting on a base before reporting the angle/direction to the controlled device, often used for video games",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does joystick mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "shared boundary across which two or more seperate components of computer system exchange information",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does interface mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "camera that captures photographs in digital memory",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does digital camera mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "measure for dot density (spatial printing, video, image scanner), number of individual dots able to place in a line within the span of an inch (2.54 cm)",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does dpi mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "physical point in a raster image, smallest controllable element of picture represented on a screen",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does pixel mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "hard copy: permanent copy of displayed or transmitted data in form of a physical object or any media, directly usable by a person soft copy: file, which can be viewed on a screen without printing",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does hard copy/soft copy mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "software application to access information on the world wide web, web pages, videos and images are called by an own identifying URL via the web server",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does browser mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "electro-mechanical data storage device, using magnetic storage to store and retrieve digital information using at least one fast rotating disc coated with magnetic material",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does hard drive mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "industry standard, establishes specifications for cables, connectors and protocols for connection, communication and power supply between computers, peripheral devices or other computers",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does USB mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "type of disc storage composed of a disc of thin and flexible magnetic storage medium, sealed in a rectangular plastic enclosure lined with fabric removing dust particles",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does floppy disc mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "digital optical disc storage format, CD-R disc is a compact disc, that can be written once and read as often as wanted",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does CD-R mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "archiving data that is already in secondary storage, used to restore lost data later",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does back-up mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "a system is backwards compatible if it's able to successfully use interfaces or data from earlier versions of the system or with other systems",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does backwards compatible mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "electronic, non-volatile computer storage medium, can be electrically erased or reprogrammed",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does flash memory mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "optical drive with which CDs, DVDs or Blu-ray discs can be read or recorded through respective software",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does CD Burner mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "system software that manages computer hardware and software resources and provides common services for computer programs",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does operating system mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }, {
-            "_id": "",
+            
             "answer": "mobile operating system developed by Google, based on modified linux kernel, mainly designed for mobile touchscreen devices (tablets, smartphones)",
             "created": "Sun, 24 May 2020 21:42:27 GMT",
             "createdSemester": "SS 20",
             "created_by": "schneiderpa77403@th-nuernberg.de",
-            "latest": "true",
+            "latest": true,
             "question": "Definition - What does android mean?",
-            "tags": ["english 1/2 definitions"],
+            "tags": ["english"],
             "version": 1
         }
-    ]
-}
+]

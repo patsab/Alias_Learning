@@ -8,7 +8,7 @@ regDevider = r'([\s\S]*?);([\s\S]*?);\n'
 
 quests = list()
 
-tags = '"english 3/4 definitions"'
+tags = '"english"'
 filename = 'english_3_4_definitions'
 
 inFile = open(filename + ".txt", "r")
@@ -34,18 +34,16 @@ def writeJson():
         answ = re.sub(r'\n{2,}', '\n', x[1])
         #tmp = re.sub(r'\n\z', '', tmp)
         test.append('{')
-        test.append('"_id": "",')
         test.append('"answer": ' + json.dumps(answ) + ',')
         test.append('"created": "' + strftime("%a, %d %b %Y %H:%M:%S GMT", gmtime()) + '",')
         test.append('"createdSemester": "SS 20",')
         test.append('"created_by": "schneiderpa77403@th-nuernberg.de",')
-        test.append('"latest": "true",')
+        test.append('"latest": true,')
         test.append('"question": ' + json.dumps(x[0]) + ',')
         test.append('"tags": [' + tags + '],')
         test.append('"version": 1')
         test.append('},')
 ##        outFile.write('{')
-##        outFile.write('"id: ",')
 ##        outFile.write('"answer": "' + x[0][1] + '",')
 ##        outFile.write('"created": "Thu, 21 May 2020 18:46:00 GMT",')
 ##        outFile.write('"createdSemester": "SS 20",')
@@ -61,12 +59,11 @@ def writeJson():
         
     answ = re.sub(r'\n{2,}', '\n', quests[-1][1])
     test.append('{')
-    test.append('"_id": "",')
     test.append('"answer": ' + json.dumps(answ) + ',')
     test.append('"created": "' + strftime("%a, %d %b %Y %H:%M:%S GMT", gmtime()) + '",')
     test.append('"createdSemester": "SS 20",')
     test.append('"created_by": "schneiderpa77403@th-nuernberg.de",')
-    test.append('"latest": "true",')
+    test.append('"latest": true,')
     test.append('"question": ' + json.dumps(x[0]) + ',')
     test.append('"tags": [' + tags + '],')
     test.append('"version": 1')
