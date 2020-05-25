@@ -26,8 +26,14 @@ RUN ng build --output-path=dist
 FROM nginx
 
 #copy build from the 'build env'
-COPY nginx.conf.template /etc/nginx/conf.d/default.conf
 COPY --from=build /app/dist /usr/share/nginx/html
+
+#use the dev config for only http 
+#for the other config u need certs, otherwise the container won't start
+#COPY nginx.conf.dev.template /etc/nginx/conf.d/default.conf
+
+#Prod config
+COPY nginx.conf.template /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 CMD ["nginx","-g","daemon off;"]

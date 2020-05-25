@@ -1,12 +1,15 @@
 <div class="container"> 
         <h1>
-        Die Frage war: {{ answerForEvaluation.question }}
+        Die Frage war:<br/> 
+        {{ answerForEvaluation.question }}
         </h1>
         <h1>
-        Die Antwort des Users war: {{ answerForEvaluation.userAnswer }}
+        Die Antwort des Users war: <br/>
+        {{ answerForEvaluation.userAnswer }}
         </h1>
         <h1>
-        Die Antwort auf der Karte war: {{ answerForEvaluation.correctAnswer }}
+        Die Antwort auf der Karte war: <br/>
+        {{ answerForEvaluation.correctAnswer }}
         </h1>
     
         <mat-form-field class="bewertungContainer">
@@ -14,9 +17,9 @@
           <mat-select #bewertung>
             <mat-option value=100>Sehr gut</mat-option>
             <mat-option value=80>gut</mat-option>
-            <mat-option value=60>ausreichend</mat-option>
-            <mat-option value=40>mangelhaft</mat-option>
-            <mat-option value=20>ungenügend</mat-option>
+            <mat-option value=60>befriedigend</mat-option>
+            <mat-option value=40>ausreichend</mat-option>
+            <mat-option value=20>mangelhaft</mat-option>
             <mat-option value=0>falsch</mat-option>
           </mat-select>
         </mat-form-field>

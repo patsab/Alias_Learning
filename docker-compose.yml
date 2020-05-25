@@ -46,4 +46,8 @@ services:
       - mongodb
       - pymongo
     ports:
-      - "80:80"
+    #  - "80:80"
+      - "443:443"
+    #Volum for cert-mount
+    #volumes:
+    #  - /etc/letsencrypt:/etc/letsencrypt

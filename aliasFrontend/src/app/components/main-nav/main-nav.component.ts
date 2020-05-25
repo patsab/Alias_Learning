@@ -22,8 +22,7 @@ export class MainNavComponent implements OnInit{
   constructor(private breakpointObserver: BreakpointObserver
     ,private route:ActivatedRoute
     ,private router:Router
-    ,private oauthService:OAuthService
-    ,private _location:Location) {}
+    ,private oauthService:OAuthService) {}
 
   ngOnInit(){
     //set the heading in the main nav to the current location/function
@@ -85,6 +84,8 @@ export class MainNavComponent implements OnInit{
   }
   
   navigateBack(){
-    this._location.back();
+    this.router.navigate(['/home']);
   }
+
+
 }

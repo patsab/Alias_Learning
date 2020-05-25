@@ -8,7 +8,7 @@ export class AppSettings {
     
     //this is used for redirects etc
     //public static FRONTEND_URI:string = 'http://localhost:4200';
-    public static FRONTEND_URI:string ='http://alias-learning.de'
+    public static FRONTEND_URI:string ='https://alias-learning.de'
     
 
     public static OPENIDCONNECT_URL:string = 'https://git.informatik.fh-nuernberg.de';

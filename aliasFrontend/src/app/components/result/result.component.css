@@ -27,4 +27,9 @@ button{
     width: 320px;
     text-align: center;
 }
+
+span{
+    padding-left: 30px;
+    padding-right: 30px;
+}
   
