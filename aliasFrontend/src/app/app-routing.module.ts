@@ -13,6 +13,7 @@ import { MainNavComponent } from './components/main-nav/main-nav.component';
 import { dashCaseToCamelCase } from '@angular/compiler/src/util';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { FeedbackthxComponent } from './components/feedbackthx/feedbackthx.component';
+import { HowtoComponent } from './components/howto/howto.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,7 @@ const routes: Routes = [
       {path: 'cards/overview',component: CardOverviewComponent},
       {path: 'feedback',component:FeedbackComponent},
       {path: 'feedbackthx',component:FeedbackthxComponent},
+      {path: 'howto',component:HowtoComponent},
     ]},
   {path: '**',redirectTo:'login', pathMatch:'full'}
 ];

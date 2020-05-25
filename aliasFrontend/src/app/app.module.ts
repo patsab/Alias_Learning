@@ -38,6 +38,7 @@ import { OAuthModule , OAuthService } from 'angular-oauth2-oidc';
 import { CorsAuthInterceptor } from 'src/app/scripts/CorsAuthInterceptor';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { FeedbackthxComponent } from './components/feedbackthx/feedbackthx.component';
+import { HowtoComponent } from './components/howto/howto.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { FeedbackthxComponent } from './components/feedbackthx/feedbackthx.compo
     CardOverviewComponent,
     FeedbackComponent,
     FeedbackthxComponent,
+    HowtoComponent,
   ],
   imports: [
     BrowserModule,

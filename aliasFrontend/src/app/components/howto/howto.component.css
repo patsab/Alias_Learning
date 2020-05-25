@@ -1,0 +1,15 @@
+.logo img{
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 100px;
+    width: 300px;
+}
+
+.text {
+    text-align: left;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+

@@ -70,6 +70,8 @@ export class MainNavComponent implements OnInit{
       return 'Antworten evaluieren'
     }else if (url.startsWith('/home/feedback')){
       return 'Feedback'
+    }else if (url.startsWith('/home/howto')){
+      return 'How To'
     }else if (url.startsWith('/home')){
       return 'Home'
     }
