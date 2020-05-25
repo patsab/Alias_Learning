@@ -1,11 +1,8 @@
-#server {  
-#    listen 80;    
-#    server_name alias-learning.de;
-#    root /usr/share/nginx/html;
-#    resolver 127.0.0.11;
-#    return 301 https://$server_name$request_uri;
-#
-#}
+server {  
+    listen 80;    
+    server_name alias-learning.de;
+    return 301 https://alias-learning.de$request_uri;
+}
 
 server {
     listen 443 ssl;

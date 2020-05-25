@@ -30,6 +30,8 @@ services:
       - "5000:5000"
     depends_on: 
       - mongodb
+    #volumes:
+    #  - /etc/letsencrypt:/etc/letsencrypt
   correctness:
     build: ./alias_backend/correctness
     hostname: correctness
@@ -46,8 +48,8 @@ services:
       - mongodb
       - pymongo
     ports:
-    #  - "80:80"
+      - "80:80"
       - "443:443"
-    #Volum for cert-mount
+    #Volume for cert-mount
     #volumes:
     #  - /etc/letsencrypt:/etc/letsencrypt

@@ -11,7 +11,13 @@ import requests as externRequest
 from auth import checkAuth 
 #import for production server
 from waitress import serve
+#openssl for https
+from OpenSSL import SSL
 
+#SSL configs
+context= SSL.Context(SSL.TLSv1_2_METHOD)
+context.use_certificate('/etc/letsencrypt/live/alias-learning.de/fullchain.pem')
+context.use_privatekey('/etc/letsencrypt/live/alias-learning.de/privkey.pem')
 
 #configs and wrappers for flask app 
 app = Flask(__name__)
@@ -647,3 +653,6 @@ if __name__ == "__main__":
     
     #If DB runs from Python script (flask dev server), use: 
     #app.run(port=5000)
+
+    #with mult options
+    #app.run(port=5000,ssl_context=context,threaded=True)

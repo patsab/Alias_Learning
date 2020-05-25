@@ -94,6 +94,20 @@ sudo mkdir -p /data/mongodb
 docker-compose up --build -d
 
 ```
+## Enable SSL
+In the aliasFrontend/Dockerfile there are 2 options to import the config \
+COPY either nginx.conf.template(Https) or nginx.conf.dev.template(Only Http) in the Container\
+
+Mount the Volume with the Certs:\
+```
+#in docker-compose.yml
+#services->frontend->volumes
+volumes:
+  - /etc/letyencrypt:/etc/letsencrypt
+```
+
+The Guide for getting the Certs is here :https://certbot.eff.org/lets-encrypt/ubuntubionic-other
+User with Flag --standalone
 
 ## Import JSON Files to DB
 ```
