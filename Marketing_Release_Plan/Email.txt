@@ -1,21 +1,20 @@
 Hallo,
 
 
-du willst einfacher Lernen? Hier kommt unsere Lösung:
+Du willst einfacher Lernen? Hier kommt unsere Lösung:
 
 - ALIAS, unsere neue KI-gestütze Lernapp für die Fakultät Informatik -
 
 
 Wir, dh. Patrick, Andy und Patrick, sind Informatikstudenten und bestreiten dieses Semester unser IT-Projekt.
 
-Mit dem Lerndienst ALIAS kannst du Karteikarten mit Kommilitonen teilen und so auch anderen bei der Prüfungsvorbereitung helfen.
-Das Besondere ist jedoch das automatische Bewertungssystem.
-Dabei wird eure eigene Bewertung, die Bewertung eurer Kommilitonen und eine KI generierte Bewertung gemittelt.
+Mit dem Lerndienst ALIAS kannst Du Karteikarten mit Kommilitonen teilen und so auch anderen bei der Prüfungsvorbereitung helfen.
+Das Besondere ist jedoch das Bewertungssystem, welches eure eigenen Bewertungen, die eurer Kommilitonen und einer NLP gestützten mittelt.
 
 Ziel unserer Forschung ist es, die automatische Bewertung durch Machine-Learning zu verbessern und die Unterschiede zwischen menschlicher Bewertung und einem tranierten System zu evaluieren.
 
 
-Um euch beim Lernen helfen zu können brauchen wir zuerst eure Hilfe, deshalb bitten wir euch folgende Sachen auszuprobieren:
+Um Dir beim Lernen helfen zu können brauchen wir zunächst deine Hilfe, deshalb bitten wir dich folgende Sachen auszuprobieren:
 
 -	neue Themengebiete anlegen und mit Fragen füllen
 -	aktiv mit ALIAS lernen
@@ -23,10 +22,11 @@ Um euch beim Lernen helfen zu können brauchen wir zuerst eure Hilfe, deshalb bi
 -	Feedback in der App geben
 
 
-Wir freuen uns auf deine Teilnahme!
+Wir freuen uns auf Deine Teilnahme!
 
-http://alias-learning.de
+https://alias-learning.de
 
 
-Viele Grüße,
+Viele Grüße
+
 Patrick, Andy und Patrick
