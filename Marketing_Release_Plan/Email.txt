@@ -9,7 +9,7 @@ Du willst einfacher Lernen? Hier kommt unsere Lösung:
 Wir, dh. Patrick, Andy und Patrick, sind Informatikstudenten und bestreiten dieses Semester unser IT-Projekt.
 
 Mit dem Lerndienst ALIAS kannst Du Karteikarten mit Kommilitonen teilen und so auch anderen bei der Prüfungsvorbereitung helfen.
-Das Besondere ist jedoch das Bewertungssystem, welches eure eigenen Bewertungen, die eurer Kommilitonen und einer NLP gestützten mittelt.
+Das Besondere ist jedoch das Bewertungssystem, welches Deine eigene Bewertungen, die eurer Kommilitonen und einer NLP-generierten, mittelt.
 
 Ziel unserer Forschung ist es, die automatische Bewertung durch Machine-Learning zu verbessern und die Unterschiede zwischen menschlicher Bewertung und einem tranierten System zu evaluieren.
 
