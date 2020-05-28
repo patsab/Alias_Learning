@@ -1,0 +1,1 @@
+docker-compose up --build -d && curl -X POST localhost:8000/init

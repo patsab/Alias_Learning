@@ -20,18 +20,18 @@ services:
     #  - APP_MONGO_USER=${APP_MONGO_USER}
     #  - APP_MONGO_DB=${APP_MONGO_DB}
     #Define the Path to mount the Data of Database
-    #volumes:
-    #  - /data/mongodb:/data/db
+    volumes:
+      - /data/mongodb:/data/db
   pymongo:
     build: ./alias_backend/backend
     hostname: pymongo
     container_name: pymongo
     ports:
-      - "5000:5000"
+      - "8000:8000"
     depends_on: 
       - mongodb
-    #volumes:
-    #  - /etc/letsencrypt:/etc/letsencrypt
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
   correctness:
     build: ./alias_backend/correctness
     hostname: correctness
@@ -51,5 +51,5 @@ services:
       - "80:80"
       - "443:443"
     #Volume for cert-mount
-    #volumes:
-    #  - /etc/letsencrypt:/etc/letsencrypt
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt

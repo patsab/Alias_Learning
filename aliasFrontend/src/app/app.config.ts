@@ -3,7 +3,7 @@ import { AuthConfig  } from 'angular-oauth2-oidc';
 export class AppSettings {
     //the API Endpoint must be reachable by the client
     //public static API_ENDPOINT:string = 'http://localhost:5000/'
-    public static API_ENDPOINT:string = 'http://api.alias-learning.de:5000/';
+    public static API_ENDPOINT:string = 'https://alias-learning.de:8000/';
 
     
     //this is used for redirects etc
