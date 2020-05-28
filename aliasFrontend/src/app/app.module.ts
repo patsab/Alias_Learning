@@ -17,6 +17,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from  '@angular/material/autocomplete';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { MainNavComponent } from './components/main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -39,6 +41,7 @@ import { CorsAuthInterceptor } from 'src/app/scripts/CorsAuthInterceptor';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { FeedbackthxComponent } from './components/feedbackthx/feedbackthx.component';
 import { HowtoComponent } from './components/howto/howto.component';
+
 
 @NgModule({
   declarations: [
@@ -77,7 +80,9 @@ import { HowtoComponent } from './components/howto/howto.component';
     MatSelectModule,
     MatAutocompleteModule,
     ReactiveFormsModule,
+    MatBadgeModule,
     FormsModule,
+    MatDividerModule,
     OAuthModule.forRoot(),
     NgCircleProgressModule.forRoot({
       radius: 100,

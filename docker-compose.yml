@@ -8,8 +8,8 @@ services:
     hostname: mongodb
     container_name: mongodb
     #The Mongo-DB-Ports just need to be opened, when you run the pymongo app on localhost instead inside docker network
-    ports:
-      - 27017:27017
+    #ports:
+    #  - 27017:27017
     #environment:
     #  - MONGO_INITDB_ROOT_USERNAME=${MONGO_ROOT_USER}
     #  - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASS}
@@ -26,8 +26,8 @@ services:
     build: ./alias_backend/backend
     hostname: pymongo
     container_name: pymongo
-    #ports:
-    #  - "5000:5000"
+    ports:
+      - "5000:5000"
     depends_on: 
       - mongodb
   correctness:

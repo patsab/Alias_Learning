@@ -1,6 +1,6 @@
 <div class="container">    
         <h1>
-          Neues Thema hinzufügen
+          Eigenes Thema hinzufügen
         </h1>
         <form class="tags">
             <mat-form-field class="tags">
@@ -22,8 +22,26 @@
             </mat-list-item>
           </mat-list>
 
+
         <span>
-          <button mat-raised-button (click)="createThema()" color="accent">Thema erstellen</button>
+          <button mat-raised-button class="create-button" (click)="createThema()" color="accent">Thema erstellen</button>
         </span>
     
+        <h1>
+          Bestehendes Thema wählen
+        </h1>
+        <br/>
+      
+      <div *ngFor="let recom of recommendation" class="recom-container">
+        
+        <p>
+        <button  mat-stroked-button (click)="createExistingThema(recom)" color="primary" class="tag-button">
+            {{ recom.tag }} <br/>
+            {{ recom.count }} Fragen
+        </button>
+        </p>
+        
+        <br/>
+      </div>
+
     </div>

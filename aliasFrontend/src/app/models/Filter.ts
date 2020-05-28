@@ -19,3 +19,8 @@ export class FilterWithStatistiks{
     statistikOneDay:Statistik;
     statistikSevenDays:Statistik;
 }
+
+export class TagRecommendation{
+    tag:string;
+    count:number;
+}

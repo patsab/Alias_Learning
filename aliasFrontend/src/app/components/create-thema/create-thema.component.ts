@@ -1,14 +1,15 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { map,startWith } from 'rxjs/operators';
+import { map,startWith, shareReplay } from 'rxjs/operators';
 
 //import the classes to know about the data structure
-import { Filter,Thema } from 'src/app/models/Filter';
+import { Filter,Thema, TagRecommendation } from 'src/app/models/Filter';
 
 //the Service is imported and injected, so the data can be retrieved from it
 import { FilterService } from  'src/app/services/filter.service'
 import { Router, ActivatedRoute } from '@angular/router';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 
 @Component({
@@ -22,13 +23,17 @@ export class CreateThemaComponent implements OnInit {
 
   newThema:Thema;
   tags:string[]=[];
+  recommendation:TagRecommendation[]=[];
 
   //these properties are used for autocomplete
   myControl = new FormControl();
   options:string[]=[];
   filteredOptions: Observable<string[]>;
 
-  constructor(private router: Router, private route: ActivatedRoute, private filterService: FilterService) { }
+  constructor(private router: Router
+    , private route: ActivatedRoute
+    , private filterService: FilterService
+    ,private breakpointObserver: BreakpointObserver) { }
 
   ngOnInit(): void {
     //get all tags from db
@@ -67,9 +72,10 @@ export class CreateThemaComponent implements OnInit {
 
   }
 
-  //get all available Projects
+  //get all available tags 
   getAvailableTags():void{
-    this.filterService.getAvailableTags().subscribe(res => {this.options = res})
+    this.filterService.getAvailableTags().subscribe(res => {this.options = res});
+    this.filterService.getFilterWithCountOfQuestions().subscribe(res => {this.recommendation = res});
   }
 
   addTag(tag:string=this.userInput.nativeElement.value):void{
@@ -94,5 +100,14 @@ export class CreateThemaComponent implements OnInit {
     this.tags = this.tags.filter(tag => tag !== tagToDel);
   }
 
+  createExistingThema(thema:TagRecommendation):void{
+    this.addTag(thema.tag);
+    this.createThema();
+  }
 
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+  .pipe(
+    map(result => result.matches),
+    shareReplay()
+  );
 }

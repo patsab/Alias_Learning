@@ -406,6 +406,22 @@ def get_all_tags():
     tag = tagsCollection.find_one({'_id':ObjectId(tags_item_id)})
     return jsonify({'tags': tag['tags']})
 
+#get some Tag recommendations
+@app.route('/tags/recommendation',methods=['GET'])
+def get_tags_with_count():
+    tags = tagsCollection.find_one({'_id':ObjectId(tags_item_id)})
+    existingTags = tags['tags']
+    output = []
+    for tag in existingTags:
+        obj = {}
+        obj['tag']=tag
+        obj['count']=cardsCollection.count_documents(
+            {"tags": tag}
+        )
+        output.append(obj)
+    return jsonify({"result":output})
+
+
 """
 Methods for getting learning advance for user 
 """
@@ -612,12 +628,6 @@ def get_pred(st1,st2):
 """
 This method is used to init default values like tags item id ...
 """
-#if you start the db in a different way than triggering the backend.py script, you need a way to call the init func
-@app.route('/init',methods=['POST'])
-def init_endpoint():
-    init_db()
-    return jsonify()
-
 def init_db():
     #set the id of the tag list
     count = tagsCollection.count_documents({}) 
@@ -649,7 +659,6 @@ def init_db():
     else:
         card = cardsCollection.find_one({'created_by':'Admin'})
         alias_question_id = str(card['_id'])
-    print("test")
 
 
 if __name__ == "__main__":

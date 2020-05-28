@@ -5,7 +5,7 @@ import { map, filter } from 'rxjs/operators';
 
 //import the necessary classes from the models
 //these are used to get or provide the data to the frontend
-import { Filter, Thema, FilterWithStatistiks} from 'src/app/models/Filter'
+import { Filter, Thema, FilterWithStatistiks, TagRecommendation} from 'src/app/models/Filter'
 import { StatistikService } from './statistik.service';
 import { Statistik } from '../models/Statistik';
 
@@ -46,6 +46,12 @@ export class FilterService {
   //delete a thema if the user doesn't need it anymore
   deleteThema(thema:Thema):Observable<Thema>{
     return this.http.post<any>(AppSettings.API_ENDPOINT +'users/delete/filters',thema)
+  }
+
+  //get filter with count
+  getFilterWithCountOfQuestions():Observable<TagRecommendation[]>{
+    return this.http.get<TagRecommendation[]>( AppSettings.API_ENDPOINT +"tags/recommendation")
+      .pipe(map(res => res['result']))
   }
   
 }
