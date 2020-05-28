@@ -8,8 +8,8 @@ services:
     hostname: mongodb
     container_name: mongodb
     #The Mongo-DB-Ports just need to be opened, when you run the pymongo app on localhost instead inside docker network
-    #ports:
-    #  - 27017:27017
+    ports:
+      - 27017:27017
     #environment:
     #  - MONGO_INITDB_ROOT_USERNAME=${MONGO_ROOT_USER}
     #  - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASS}
@@ -20,26 +20,35 @@ services:
     #  - APP_MONGO_USER=${APP_MONGO_USER}
     #  - APP_MONGO_DB=${APP_MONGO_DB}
     #Define the Path to mount the Data of Database
-    volumes:
-      - /data/mongodb:/data/db
+    #volumes:
+    #  - /data/mongodb:/data/db
   pymongo:
     build: ./alias_backend/backend
     hostname: pymongo
     container_name: pymongo
-    ports:
-      - "8000:8000"
+    #ports:
+    #  - "5000:5000"
     depends_on: 
       - mongodb
-    volumes:
-      - /etc/letsencrypt:/etc/letsencrypt
+  backend:
+    build: ./alias_backend/nginx
+    hostname: backend
+    container_name: backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - pymongo
+    #Volumes for cert mount
+    #volumes:
+    #  - /etc/letsencrypt:/etc/letsencrypt
   correctness:
     build: ./alias_backend/correctness
     hostname: correctness
     container_name: correctness
     #ports:
     #  - "5010:5010"
-    depends_on:
-      - pymongo
+    #depends_on:
+    #  - pymongo
   frontend:
     build: ./aliasFrontend
     hostname: frontend
@@ -51,5 +60,5 @@ services:
       - "80:80"
       - "443:443"
     #Volume for cert-mount
-    volumes:
-      - /etc/letsencrypt:/etc/letsencrypt
+    #volumes:
+    #  - /etc/letsencrypt:/etc/letsencrypt

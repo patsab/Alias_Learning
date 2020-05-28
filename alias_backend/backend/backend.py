@@ -11,7 +11,7 @@ import requests as externRequest
 from auth import checkAuth 
 #openssl for https
 #from OpenSSL import SSL
-
+from waitress import serve
 
 
 #SSL configs
@@ -655,8 +655,10 @@ def init_db():
 if __name__ == "__main__":
     init_db()
     
-    #If DB runs from Python script (flask dev server), use: 
-    app.run(port=5000)
+    #use waitress server as production server
+    serve(app,host="0.0.0.0",port=5000)
 
+    #If DB runs from Python script (flask dev server), use: 
+    #app.run(port=5000)
     #with mult options
     #app.run(port=5000,ssl_context=context,threaded=True)
