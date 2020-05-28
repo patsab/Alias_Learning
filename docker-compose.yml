@@ -30,17 +30,6 @@ services:
     #  - "5000:5000"
     depends_on: 
       - mongodb
-  backend:
-    build: ./alias_backend/nginx
-    hostname: backend
-    container_name: backend
-    ports:
-      - "8000:8000"
-    depends_on:
-      - pymongo
-    #Volumes for cert mount
-    #volumes:
-    #  - /etc/letsencrypt:/etc/letsencrypt
   correctness:
     build: ./alias_backend/correctness
     hostname: correctness
