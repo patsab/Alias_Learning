@@ -30,9 +30,9 @@ export class QuestionsService {
   }
 
   //Return an Answer to evaluate
-  getAnswerforEvaluation():Observable<AnswerForEvaluation>{
+  getAnswerforEvaluation(tags:string[]=[]):Observable<AnswerForEvaluation>{
     return this.http
-     .get<AnswerForEvaluation>(AppSettings.API_ENDPOINT +'answer/validate/'+sessionStorage.getItem('email'))
+     .get<AnswerForEvaluation>(AppSettings.API_ENDPOINT +'answer/validate/'+sessionStorage.getItem('email'),{params:{'tags':tags}})
   }
 
   //POST an Evaluation

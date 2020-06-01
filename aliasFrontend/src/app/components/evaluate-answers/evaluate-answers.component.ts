@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { AnswerForEvaluation, Evaluation } from '../../models/Question';
 import { QuestionsService } from 'src/app/services/questions.service';
@@ -13,18 +13,26 @@ export class EvaluateAnswersComponent implements OnInit {
 
   answerForEvaluation:AnswerForEvaluation={question:"",answerId:"",correctAnswer:"",userAnswer:""};
   evaluation:Evaluation;
+  tags:string[]=[]
 
   constructor(private router:Router
-    ,private questionService:QuestionsService) { }
+    ,private questionService:QuestionsService
+    ,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     //get an answer as a result
-    this.nextEvaluation()
+    this.route.queryParamMap.subscribe(params => 
+      {this.tags = params.getAll('tags');
+      this.nextEvaluation()});
   }
 
   //get a new answer for evaluation
   nextEvaluation():void{
-    this.questionService.getAnswerforEvaluation().subscribe(result => {this.answerForEvaluation = result;});
+    if (this.tags==[]){
+      this.questionService.getAnswerforEvaluation().subscribe(result => {this.answerForEvaluation = result;});
+    }else{
+      this.questionService.getAnswerforEvaluation(this.tags).subscribe(result => {this.answerForEvaluation = result;});
+    }
   }
 
   //post an evaluation and get a new one

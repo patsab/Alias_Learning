@@ -553,9 +553,9 @@ def answer_for_evaluation(email,tags=[]):
     if tags:
         #get all cards which match the tags
         cardIDs =[]
-        cards = cardsCollection.find({"$match":{"tags":{"$all":[str(tag) for tag in tags]}}})
+        cards = cardsCollection.find({"tags":{"$all":[str(tag) for tag in tags]}})
         for card in cards:
-            cardIDs.append(str(card['tags']))
+            cardIDs.append(str(card['_id']))
         #get an answer where the cardID is one of these 
         answer = answersCollection.aggregate([
             {"$match":{"cardId":{"$in":cardIDs}}},
@@ -665,9 +665,9 @@ if __name__ == "__main__":
     init_db()
     
     #use waitress server as production server
-    serve(app,host="0.0.0.0",port=5000)
+    #serve(app,host="0.0.0.0",port=5000)
 
     #If DB runs from Python script (flask dev server), use: 
-    #app.run(port=5000)
+    app.run(port=5000)
     #with mult options
     #app.run(port=5000,ssl_context=context,threaded=True)
