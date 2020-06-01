@@ -665,9 +665,9 @@ if __name__ == "__main__":
     init_db()
     
     #use waitress server as production server
-    #serve(app,host="0.0.0.0",port=5000)
+    serve(app,host="0.0.0.0",port=5000)
 
     #If DB runs from Python script (flask dev server), use: 
-    app.run(port=5000)
+    #app.run(port=5000)
     #with mult options
     #app.run(port=5000,ssl_context=context,threaded=True)
