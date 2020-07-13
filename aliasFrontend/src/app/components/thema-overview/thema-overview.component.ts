@@ -87,6 +87,10 @@ export class ThemaOverviewComponent implements OnInit {
     this.router.navigate(['/home/cards/overview'],{queryParams:{tags:this.tags}});
   }
 
+  navigateHome(){
+    this.router.navigate(['/home']);
+  }
+
   deleteThema(){
     let themaToDelete:Thema = {
       email:sessionStorage.getItem("email"),
