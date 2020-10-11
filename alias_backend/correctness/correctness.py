@@ -8,8 +8,8 @@ app.config.from_pyfile('correctness_config_dev.cfg')
 
 
 #load the pretrained language pack
-nlp = spacy.load('de_core_news_md')
-nlp2 = spacy.load('de_trf_bertbasecased_lg')
+nlpNews = spacy.load('de_core_news_md')
+nlpBert = spacy.load('de_trf_bertbasecased_lg')
 
 #stop words are words without relevant meaning, but still there are some words which are usefull
 #These words will be removed from the stop word list, because they sould not be filteres out in the strings
@@ -22,27 +22,30 @@ synonyms={
     "teuer":"kosten"
 }
 
-#compare 2 strings with the core_language pack
-def compare(a_str, b_str):
+#comparison with 'de_core_news_md'
+def compareNews(a_str, b_str):
     try:
-        a_processed = process_text(a_str)
-        b_processed = process_text(b_str)
-        #comparison with 'de_core_news_md'
-        a = nlp(a_processed)
-        b = nlp(b_processed)
-        res1 = int(round(a.similarity(b)*100))
-        #comparison with 'de_trf_bertbasecased_lg'
-        a = nlp2(a_processed)
-        b = nlp2(b_processed)
-        res2 = int(round(a.similarity(b)*100))
-        #return the greater value of the 2 results
-        return max(res1,res2)
+        a_processed = process_text(a_str.lower(),nlpNews)
+        b_processed = process_text(b_str.lower(),nlpNews)
+        a = nlpNews(a_processed)
+        b = nlpNews(b_processed)
+        return int(round(a.similarity(b)*100))
     except:
         return 50
 
-#prepare the text for comparison 
-def process_text(text):
-    doc = nlp(text.lower())
+def compareBert(a_str,b_str):
+    try:
+        a_processed = process_text(a_str,nlpBert)
+        b_processed = process_text(b_str,nlpBert)
+        a = nlpBert(a_processed)
+        b = nlpBert(b_processed)
+        return int(round(a.similarity(b)*100))
+    except:
+        return 50
+
+#prepare the text for comparison
+def process_text(text,nlp):
+    doc = nlp(text)
     result = []
     for token in doc:
         #replace with synonym
@@ -69,7 +72,10 @@ def compare_strings():
         correctAnswer = request.args['correctAnswer']
     except:
         return jsonify({'error':'No strings to compare were provided'}),400
-    return str(compare(userAnswer,correctAnswer))
+    answer = {}
+    answer['bertbased']=compareBert(userAnswer,correctAnswer)
+    answer['news']=compareNews(userAnswer,correctAnswer)
+    return answer
     
 
 if __name__ == "__main__":

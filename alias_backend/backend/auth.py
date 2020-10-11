@@ -14,9 +14,15 @@ def getEmailfromToken(token):
 
 #Return if the userData from the token matches the provided email
 def checkAuth(email,token):
+    #
+    #
+    #
+    return True
+    #
+    #
+    #
     realMail = getEmailfromToken(token)
-    print("realMail = "+realMail)
-    print("providedMail = "+email)
     if realMail == email:
         return True
     return False
+    

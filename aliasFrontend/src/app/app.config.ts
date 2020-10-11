@@ -2,13 +2,13 @@ import { AuthConfig  } from 'angular-oauth2-oidc';
 
 export class AppSettings {
     //the API Endpoint must be reachable by the client
-    //public static API_ENDPOINT:string = 'http://localhost:5000/'
-    public static API_ENDPOINT:string = 'https://alias-learning.de/api/';
+    public static API_ENDPOINT:string = 'http://localhost:5000/'
+    //public static API_ENDPOINT:string = 'https://alias-learning.de/api/';
 
     
     //this is used for redirects etc
-    //public static FRONTEND_URI:string = 'http://localhost:4200';
-    public static FRONTEND_URI:string ='https://alias-learning.de'
+    public static FRONTEND_URI:string = 'http://localhost:4200';
+    //public static FRONTEND_URI:string ='https://alias-learning.de'
     
 
     public static OPENIDCONNECT_URL:string = 'https://git.informatik.fh-nuernberg.de';

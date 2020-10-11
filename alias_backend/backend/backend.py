@@ -9,15 +9,7 @@ from datetime import date,datetime,timedelta
 import requests as externRequest
 #check auth from auth.py
 from auth import checkAuth 
-#openssl for https
-#from OpenSSL import SSL
 from waitress import serve
-
-
-#SSL configs
-#context= SSL.Context(SSL.TLSv1_2_METHOD)
-#context.use_certificate('/etc/letsencrypt/live/alias-learning.de/fullchain.pem')
-#context.use_privatekey('/etc/letsencrypt/live/alias-learning.de/privkey.pem')
 
 #configs and wrappers for flask app 
 app = Flask(__name__)
@@ -617,6 +609,7 @@ def predictCorrect(userAnswer,correctAnswer):
             return 50
     except:
         return 50
+    print (response.text)
     return int(response.text)
 
 #Method to check if the compare-Rest call works
@@ -665,9 +658,7 @@ if __name__ == "__main__":
     init_db()
     
     #use waitress server as production server
-    serve(app,host="0.0.0.0",port=5000)
+    #serve(app,host="0.0.0.0",port=5000)
 
     #If DB runs from Python script (flask dev server), use: 
-    #app.run(port=5000)
-    #with mult options
-    #app.run(port=5000,ssl_context=context,threaded=True)
+    app.run(port=5000)
