@@ -14,6 +14,7 @@ import { dashCaseToCamelCase } from '@angular/compiler/src/util';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { FeedbackthxComponent } from './components/feedbackthx/feedbackthx.component';
 import { HowtoComponent } from './components/howto/howto.component';
+import { StatsComponent } from './components/stats/stats.component';
 
 
 const routes: Routes = [
@@ -32,6 +33,7 @@ const routes: Routes = [
       {path: 'feedback',component:FeedbackComponent},
       {path: 'feedbackthx',component:FeedbackthxComponent},
       {path: 'howto',component:HowtoComponent},
+      {path: 'stats',component:StatsComponent}
     ]},
   {path: '**',redirectTo:'login', pathMatch:'full'}
 ];

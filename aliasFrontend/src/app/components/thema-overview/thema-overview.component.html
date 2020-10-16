@@ -5,7 +5,7 @@
     [rowHeight]="(isHandset$ | async) ? '220px':'350px'">
       
       <mat-grid-tile  colspan="1" rowspan="2">
-        <mat-card class="dashboard-card">
+        <mat-card (click)="viewStats()" class="dashboard-card">
             <mat-card-title class="statistik-card-header">
               Statistik zum Thema <br/><br/><b *ngFor="let tag of tags"> {{ tag }}<br/></b>
             </mat-card-title>

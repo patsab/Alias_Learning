@@ -8,7 +8,7 @@ RUN pip3 install -r requirements.txt
 
 #install the language corpus
 RUN python3 -m spacy download de_trf_bertbasecased_lg
-RUN python3 -m spacy download de_core_news_md
+RUN python3 -m spacy download de_core_news_lg
 
 #get the rest of the code
 COPY ./correctness.py /app/correctness.py

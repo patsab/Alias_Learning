@@ -4,3 +4,14 @@ export class Statistik{
     cardsOverall:number;
     averageCorrectness:number;
 }
+
+export class AnswerStat{
+    question:string;
+    correctAnswer:string;
+    userAnswer:string;
+    prediction_bert:number;
+    prediction_news:number;
+    prediction_user:number[];
+    prediction_own?:number;
+    prediction_avg:number;
+}

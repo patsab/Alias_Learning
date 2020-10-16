@@ -41,6 +41,7 @@ import { CorsAuthInterceptor } from 'src/app/scripts/CorsAuthInterceptor';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { FeedbackthxComponent } from './components/feedbackthx/feedbackthx.component';
 import { HowtoComponent } from './components/howto/howto.component';
+import { StatsComponent } from './components/stats/stats.component';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { HowtoComponent } from './components/howto/howto.component';
     FeedbackComponent,
     FeedbackthxComponent,
     HowtoComponent,
+    StatsComponent,
   ],
   imports: [
     BrowserModule,

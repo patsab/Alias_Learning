@@ -31,7 +31,6 @@ export class CardsService {
   }
 
   getCardsForThema(tags:string[]=[]):Observable<Card[]>{
-    console.log("testlog")
     return this.http
       .get<Card[]>( AppSettings.API_ENDPOINT +'cards',{params:{'tags':tags}})
       .pipe(map(res => res['cards']))

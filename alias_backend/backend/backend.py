@@ -34,7 +34,7 @@ tags_item_id = ""
 
 #Url of the prediction Microservice
 predictUrl = "http://correctness:5010/compare"
-
+#predictUrl = "http://localhost:5010/compare"
 
 """
 Methods for Card Managment
@@ -222,17 +222,21 @@ def create_new_answer_and_get_result():
         #fields which are filled at creation-time
         dataInsert['created']=datetime.utcnow()
         dataInsert['createdSemester']=get_current_Semester()
-        dataInsert['predictedCorrectness']=predictCorrect(dataInsert['userAnswer'],dataInsert['correctAnswer'])
+        print("reached here, line 225")
+        #dataInsert['predictedCorrectness']=predictCorrect(dataInsert['userAnswer'],dataInsert['correctAnswer'])
+        dataInsert['predictedCorrectness_bert'],dataInsert['predictedCorrectness_news']=predictCorrect(dataInsert['userAnswer'],dataInsert['correctAnswer'])
+        print("reached here, line 228")
         dataInsert['cardLatest']=True
         dataInsert['userCorrectness']=[]
-        dataInsert['averageCorrectness']=dataInsert['predictedCorrectness']
+        dataInsert['averageCorrectness']=(dataInsert['predictedCorrectness_bert']+dataInsert['predictedCorrectness_news'])/2
     except:
         return jsonify({'error':'Payload does not contain all necessary fields'}),400
     #Insert card and return id
     answer = answersCollection.insert_one(dataInsert)
     return jsonify({'Message':'Answer "{0}" was created with id {1}'.format(dataInsert['userAnswer'],str(answer.inserted_id)),
-    'predictedCorrectness':str(dataInsert['predictedCorrectness']),
-    'answerId':str(answer.inserted_id)})
+            'predictedCorrectness_bert':str(dataInsert['predictedCorrectness_bert']),
+            'predictedCorrectness_news':str(dataInsert['predictedCorrectness_news']),
+            'answerId':str(answer.inserted_id)})
 
 
 #Get an answer to let the user validate
@@ -433,6 +437,19 @@ def get_progress_for_user(email):
         day = 1
     return progress_for_user(email,day,tags)
 
+@app.route('/users/<email>/stats',methods = ['GET'])
+def get_stats_for_user(email):
+    #check auth
+    if extractMailAndCheckAuth(request,email) == False:
+        return jsonify({}),403
+    #get tags if some are provided
+    tags = request.args.getlist('tags')
+    #get given timeperiod
+    try:
+        day = int(request.args['days'])
+    except:
+        day = 1
+    return jsonify({'stats':stats_for_user(email,day,tags)})
 
 """
 Method for collection User Feedback
@@ -492,8 +509,12 @@ def update_answer_average(answerId):
         sum_of_percent += int(answer['selfgivenCorrectness'])
         count += 1
     #get predicted Correctness
-    if('predictedCorrectness' in answer):
-        sum_of_percent += int(answer['predictedCorrectness'])
+    if('predictedCorrectness_bert' in answer):
+        sum_of_percent += int(answer['predictedCorrectness_bert'])
+        count += 1
+        #get predicted Correctness
+    if('predictedCorrectness_news' in answer):
+        sum_of_percent += int(answer['predictedCorrectness_news'])
         count += 1
     if count > 0:
         newTotalAvg=int(sum_of_percent/count)
@@ -533,6 +554,36 @@ def progress_for_user(email,dayPeriod=1,tags=[]):
         averageCorrectness=int(sum_correctness/count_overall)
     return {'cardsCorrect':count_correct,'cardsOverall':count_overall,'averageCorrectness':averageCorrectness}
 
+
+def stats_for_user(email,dayPeriod=1,tags=[]):
+    #get relevant period
+    startTime = datetime.utcnow() - timedelta(days=dayPeriod)
+    if tags:
+        temp_all_answers = answersCollection.find({'created': {'$gte': startTime},'created_by':email})
+        all_answers=[]
+        #Check for each answer if the appropiate card contains the tags
+        for answer in temp_all_answers:
+            card = cardsCollection.find_one({'_id':ObjectId(answer['cardId'])})
+            #check if the appropiate card contains all tags
+            if (set(tags).issubset(set(card['tags']))):
+                all_answers.append(answer)
+    else:
+        all_answers = answersCollection.find({'created': {'$gte': startTime},'created_by':email}) 
+    #create statistik based on cards with an avg >= 50
+    output = []
+    for answer in all_answers:
+        card = {}
+        card['question'] = answer['question']
+        card['correctAnswer'] = answer['correctAnswer']
+        card['userAnswer'] = answer['userAnswer']
+        card['prediction_bert'] = answer['predictedCorrectness_bert']
+        card['prediction_news'] = answer['predictedCorrectness_news']
+        card['prediction_user'] = answer['userCorrectness']
+        card['prediction_avg'] = answer['averageCorrectness']
+        if('selfgivenCorrectness' in answer):
+            card['prediction_own'] = answer['selfgivenCorrectness']
+        output.append(card)
+    return output
 
 #add a new tag to the tags object in the db
 def add_tag_to_list(tag):
@@ -606,17 +657,11 @@ def predictCorrect(userAnswer,correctAnswer):
         response = externRequest.get(predictUrl,params=payload)
         #set a default value if the correctness service fails
         if response.status_code != 200:
-            return 50
+            return 50,50
+        res = eval(response.text)
+        return int(res['bertbased']),int(res['news'])
     except:
-        return 50
-    print (response.text)
-    return int(response.text)
-
-#Method to check if the compare-Rest call works
-@app.route('/compare/<st1>/<st2>',methods=['GET'])
-def get_pred(st1,st2):
-    return jsonify({'answer':predictCorrect(st1,st2)})
-
+        return 50,50
 
 """
 This method is used to init default values like tags item id ...
@@ -658,7 +703,7 @@ if __name__ == "__main__":
     init_db()
     
     #use waitress server as production server
-    #serve(app,host="0.0.0.0",port=5000)
+    serve(app,host="0.0.0.0",port=5000)
 
     #If DB runs from Python script (flask dev server), use: 
-    app.run(port=5000)
+    #app.run(port=5000)

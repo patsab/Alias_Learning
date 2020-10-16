@@ -1,0 +1,40 @@
+<div class="grid-container">
+ 
+    <mat-grid-list 
+      [cols]="(isHandset$ | async) ? '1':'3'"
+      [rowHeight]="(isHandset$ | async) ? '500px':'600px'">
+      
+      <mat-grid-tile *ngFor="let stat of stats" colspan="1" rowspan="1">
+        <mat-card  class="dashboard-card">
+            <mat-card-title>
+                {{ stat.question }}
+                <br/>
+            </mat-card-title>
+            
+            <mat-card-content *ngIf="stat.correctAnswer">
+                Richtige Antwort:<br/>{{ stat.correctAnswer }}
+            </mat-card-content>
+            <mat-card-content *ngIf="stat.userAnswer">
+                Deine Antwort: <br/>{{ stat.userAnswer }}
+            </mat-card-content>
+            <mat-card-content *ngIf="stat.prediction_bert">
+                Prediction1: <br/>{{ stat.prediction_bert }}
+            </mat-card-content>
+            <mat-card-content *ngIf="stat.prediction_news">
+                Prediction2: <br/> {{ stat.prediction_news }}
+            </mat-card-content>
+            <mat-card-content *ngIf="stat.prediction_user.length > 0">
+                Andere Bewertungen: <br/>{{ stat.prediction_user }}
+            </mat-card-content>
+            <mat-card-content *ngIf="stat.prediction_own">
+                Eigene Bewertung: <br/>{{ stat.prediction_own }}
+            </mat-card-content>
+            <mat-card-content *ngIf="stat.prediction_avg">
+                Durchschnittliche Bewertung: <br/>{{ stat.prediction_avg }}
+            </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+  
+    </mat-grid-list>
+  </div>
+  
